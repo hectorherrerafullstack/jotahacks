@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}IA para ERP/CRM | Implementaciones que convierten datos en decisiones{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Integro IA en tu ERP/CRM para automatizar tareas, scoring, forecasting y extracción de insights. Demo en vivo y evaluación gratis de 15 minutos."/>
+<link rel="prefetch" href="{% url 'demos:apps_index' %}">
+
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"Service",
+  "name":"IA para ERP/CRM",
+  "provider":{"@type":"Organization","name":"Mi Web"},
+  "areaServed":"ES",
+  "description":"Implementación de IA en ERP/CRM para automatización de datos, scoring y forecasting",
+  "serviceType":"AI Integration",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Evaluación inicial de 15 minutos"}
+}</script>
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"{% url 'website:home' %}"},
+    {"@type":"ListItem","position":2,"name":"Servicios","item":"{% url 'services:index' %}"},
+    {"@type":"ListItem","position":3,"name":"IA para ERP/CRM","item":""}
+  ]
+}</script>
+{% endblock %}
+
+{% block content %}
+<section class="relative overflow-hidden bg-[color:var(--background-color)]">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">IA para ERP/CRM: de datos a decisiones</h1>
+        <p class="mt-4 text-lg opacity-90">Automatiza procesos, prioriza oportunidades y pronostica ventas desde tu stack actual. Sin reemplazarlo: lo potenciamos.</p>
+        <div class="mt-6 flex gap-3 flex-wrap">
+          <a href="{% url 'demos:apps_index' %}" class="btn btn-primary">Probar demos</a>
+          <a href="{% url 'website:contacto' %}#agenda" class="btn btn-secondary">Agenda 15 min</a>
+        </div>
+      </div>
+      <div class="md:justify-self-end">
+        <img src="{% static 'imagen/hero-erp-crm.webp' %}" alt="IA integrada en ERP/CRM" class="rounded-2xl shadow-lg max-h-[360px] w-auto" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-4 py-12">
+  <h2 class="text-2xl font-semibold">El problema</h2>
+  <p class="mt-3">Reportes tardíos, campos desordenados, duplicados, y decisiones tomadas a ciegas. Tu ERP/CRM acumula datos pero no los convierte en acción.</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-4 py-8">
+  <h2 class="text-2xl font-semibold">Nuestra solución</h2>
+  <ul class="mt-3 space-y-2 list-disc pl-5">
+    <li>Clasificación y normalización de datos (SKUs, empresas, incidencias).</li>
+    <li>Automatización de tickets y workflows (prioridad, enrutado, SLA).</li>
+    <li>Scoring de oportunidades y <em>next best action</em>.</li>
+    <li>Forecasting de ventas y demanda.</li>
+    <li>Extracción de información desde PDFs y emails.</li>
+    <li>Chatbots internos con acceso a tu base documental.</li>
+  </ul>
+</section>
+
+<section class="max-w-5xl mx-auto px-4 py-8">
+  <h2 class="text-2xl font-semibold">Beneficios</h2>
+  <div class="grid md:grid-cols-3 gap-6 mt-4">
+    <div class="p-5 rounded-xl border border-teal-100 bg-white shadow-sm"><h3 class="font-bold">Menos errores</h3><p class="mt-1">Campos limpios, deduplicados y validados.</p></div>
+    <div class="p-5 rounded-xl border border-teal-100 bg-white shadow-sm"><h3 class="font-bold">Más velocidad</h3><p class="mt-1">Tickets y tareas se resuelven solos.</p></div>
+    <div class="p-5 rounded-xl border border-teal-100 bg-white shadow-sm"><h3 class="font-bold">Mejores decisiones</h3><p class="mt-1">Prioriza por impacto y cierra antes.</p></div>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-4 py-8">
+  <h2 class="text-2xl font-semibold">Cómo trabajo</h2>
+  <ol class="mt-3 space-y-2 list-decimal pl-5">
+    <li>Diagnóstico express (15 min + acceso a entorno de prueba).</li>
+    <li>PoC con tus datos (demo guiada 30–60 min).</li>
+    <li>Integración segura (API/ETL, permisos mínimos).</li>
+    <li>KPIs, telemetría y handoff.</li>
+  </ol>
+</section>
+
+<section class="max-w-6xl mx-auto px-4 py-10">
+  <h2 class="text-2xl font-semibold">Demos relacionadas</h2>
+  <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for app in demos_relacionadas %}
+  <a href="{% url 'demos:app_live' app.slug %}" class="block group rounded-2xl border bg-white p-4 hover:shadow-md transition" data-ga4-event="open_service" data-ga4-label="demo_relacionada">
+      <img src="{{ app.thumbnail_url }}" alt="{{ app.nombre }}" class="rounded-xl aspect-video object-cover">
+      <h3 class="mt-3 font-bold group-hover:underline">{{ app.nombre }}</h3>
+      <p class="text-sm opacity-80">{{ app.descripcion_corta }}</p>
+    </a>
+    {% empty %}
+    <p>No hay demos por ahora.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-4 py-12" id="faq">
+  <h2 class="text-2xl font-semibold">Preguntas frecuentes</h2>
+  <div class="mt-4 space-y-3">
+    {% for q in faq %}
+    <details class="rounded-xl border bg-white p-4">
+      <summary class="font-semibold cursor-pointer">{{ q.pregunta }}</summary>
+      <div class="mt-2 opacity-90">{{ q.respuesta|safe }}</div>
+    </details>
+    {% empty %}
+    <details class="rounded-xl border bg-white p-4"><summary class="font-semibold cursor-pointer">¿Necesito cambiar mi ERP/CRM?</summary><div class="mt-2">No. Integramos sobre tu sistema actual vía API o exportaciones.</div></details>
+    {% endfor %}
+  </div>
+</section>
+
+<a href="{% url 'website:contacto' %}#agenda" class="fixed bottom-4 right-4 px-5 py-3 rounded-full shadow-lg bg-[color:var(--primary-color)] text-white">Reserva 15 min</a>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  document.querySelectorAll('[data-ga4-event]')?.forEach(el=>{
+    el.addEventListener('click',()=>{
+      window.gtag && gtag('event', el.dataset.ga4Event, { label: el.dataset.ga4Label||'' });
+    });
+  });
+</script>
+{% endblock %}

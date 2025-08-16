@@ -1,0 +1,41 @@
+<!-- FILE: templates/blog/post.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ post.title }} | Blog{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ post.excerpt|default:post.title }}"/>
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"{{ post.title|escapejs }}",
+  "datePublished":"{{ post.published_at|date:'Y-m-d' }}",
+  "author":{"@type":"Person","name":"{{ post.author_name|default:'Equipo'|escapejs }}"}
+}
+</script>
+<script type="application/ld+json">{
+  "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"{% url 'website:home' %}"},
+    {"@type":"ListItem","position":2,"name":"Blog","item":"{% url 'blog_index' %}"},
+    {"@type":"ListItem","position":3,"name":"{{ post.title|escapejs }}","item":""}
+  ]}
+</script>
+{% endblock %}
+
+{% block content %}
+<article class="max-w-3xl mx-auto px-4 py-12">
+  <header class="mb-6">
+    <h1 class="text-4xl font-extrabold">{{ post.title }}</h1>
+    <p class="opacity-70 text-sm">{{ post.published_at|date:"d M Y" }} · {{ post.read_time }} min</p>
+  </header>
+  {% if post.cover_url %}
+  <img src="{{ post.cover_url }}" alt="Imagen de portada" class="rounded-xl border mb-6">
+  {% endif %}
+  <div class="prose max-w-none">{{ post.content|safe }}</div>
+  <footer class="mt-10">
+    <a href="{% url 'blog_index' %}" class="underline">← Volver al blog</a>
+  </footer>
+</article>
+{% endblock %}
+

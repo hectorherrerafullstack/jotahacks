@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Convierto tus datos en decisiones | mi web{% endblock %}
+{% block content %}
+<section class="py-10">
+  <div class="grid md:grid-cols-2 gap-8 items-center">
+    <div>
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Convierto tus datos en decisiones.</h1>
+      <p class="mt-4 text-lg">Implemento IA en tus procesos con apps web a medida. Prueba mis demos y agenda una evaluación de 15 min.</p>
+      <div class="mt-6 flex items-center gap-3">
+        <a href="/apps/" class="rounded-lg bg-black text-white px-4 py-2">Probar demos</a>
+        <a href="/contacto/" class="rounded-lg border px-4 py-2">Agenda 15 min</a>
+      </div>
+    </div>
+    <div class="rounded-xl border bg-white p-6">
+      <h2 class="font-semibold">Qué resuelvo</h2>
+      <ul class="mt-3 space-y-2 list-disc list-inside text-gray-700">
+        <li>Extracción de datos de documentos (PDF→JSON/CSV)</li>
+        <li>Clasificación y priorización de tickets</li>
+        <li>IA en ERP/CRM: automatización y asistentes</li>
+        <li>Forecasting / scoring para decisiones</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="py-10 border-t">
+  <h2 class="text-2xl font-bold">Servicios destacados</h2>
+  <div class="mt-6 grid md:grid-cols-3 gap-6">
+    <a href="/servicios/automatizacion-datos/" class="block rounded-xl border bg-white p-5 hover:shadow">Automatización de datos</a>
+    <a href="/servicios/ia-para-erp-crm/" class="block rounded-xl border bg-white p-5 hover:shadow">IA para ERP/CRM</a>
+    <a href="/servicios/extraccion-documentos/" class="block rounded-xl border bg-white p-5 hover:shadow">Extracción de documentos</a>
+  </div>
+</section>
+
+<section class="py-10 border-t">
+  <h2 class="text-2xl font-bold">Demos rápidas</h2>
+  <div class="mt-6 grid md:grid-cols-3 gap-6">
+    <a href="/apps/extractor-facturas/" class="block rounded-xl border bg-white p-5 hover:shadow">Extractor de facturas</a>
+    <a href="/apps/clasificador-tickets/" class="block rounded-xl border bg-white p-5 hover:shadow">Clasificador de tickets</a>
+    <a href="/apps/resumen-reunion/" class="block rounded-xl border bg-white p-5 hover:shadow">Resumen de reunión</a>
+  </div>
+</section>
+
+<section class="py-10 border-t">
+  <h2 class="text-2xl font-bold">Social proof</h2>
+  <p class="mt-2 text-gray-700">Aquí irán logos y/o testimonios.</p>
+</section>
+
+<section class="py-10 border-t">
+  <h2 class="text-2xl font-bold">Del blog</h2>
+  <div class="mt-6 grid md:grid-cols-3 gap-6">
+    <a href="/blog/ia-en-operaciones/" class="block rounded-xl border bg-white p-5 hover:shadow">IA en Operaciones</a>
+    <a href="/blog/erp-crm-inteligentes/" class="block rounded-xl border bg-white p-5 hover:shadow">ERP/CRM inteligentes</a>
+    <a href="/blog/extraccion-documental/" class="block rounded-xl border bg-white p-5 hover:shadow">Extracción documental</a>
+  </div>
+  <div class="mt-6">
+    <a href="/contacto/" class="rounded-lg bg-black text-white px-4 py-2">Agenda 15 min</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Acerca | Convierto tus datos en decisiones{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Implemento IA en tus procesos con apps web a medida. Prueba mis demos y agenda evaluación de 15 minutos."/>
+{% endblock %}
+
+{% block content %}
+<section class="max-w-4xl mx-auto px-4 py-12">
+  <h1 class="text-4xl font-extrabold">Acerca</h1>
+  <p class="mt-3">Desarrollo soluciones de IA para empresas: extracción documental, IA en ERP/CRM, chatbots internos y más. Enfoque práctico, rápido y medible.</p>
+  <ul class="mt-4 list-disc pl-5">
+    <li>Stack: Django, Python, Postgres, React (micro‑apps), Tailwind.</li>
+    <li>Seguridad: sandbox, PII masking, rate limiting.</li>
+    <li>Despliegue: SSR, CDN, Core Web Vitals < 2.5 s.</li>
+  </ul>
+  <div class="mt-6 flex gap-3 flex-wrap">
+    <a href="{% url 'apps_index' %}" class="btn btn-primary">Probar demos</a>
+    <a href="{% url 'contacto' %}#agenda" class="btn btn-secondary">Agenda 15 min</a>
+  </div>
+</section>
+{% endblock %}

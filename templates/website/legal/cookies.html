@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Política de Cookies{% endblock %}
+
+{% block extra_head %}
+<meta name="robots" content="noindex,follow">
+{% endblock %}
+
+{% block content %}
+<section class="max-w-4xl mx-auto px-4 py-12">
+  <h1 class="text-3xl font-extrabold">Política de Cookies</h1>
+  <p class="mt-2 text-sm opacity-80">Fecha: {{ hoy|default:date }}</p>
+  <h2 class="mt-6 text-2xl font-bold">¿Qué cookies usamos?</h2>
+  <ul class="list-disc pl-5 mt-2">
+    <li>Esenciales (sesión, CSRF).</li>
+    <li>Analíticas (GA4) anónimas.</li>
+  </ul>
+  <h2 class="mt-6 text-2xl font-bold">Gestión</h2>
+  <p>Puedes configurar o revocar tu consentimiento desde el banner de cookies.</p>
+</section>
+{% endblock %}

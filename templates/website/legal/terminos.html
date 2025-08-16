@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Términos y Condiciones{% endblock %}
+
+{% block extra_head %}
+<meta name="robots" content="noindex,follow">
+{% endblock %}
+
+{% block content %}
+<section class="max-w-4xl mx-auto px-4 py-12">
+  <h1 class="text-3xl font-extrabold">Términos y Condiciones</h1>
+  <p class="mt-2 text-sm opacity-80">Fecha: {{ hoy|default:date }}</p>
+  <h2 class="mt-6 text-2xl font-bold">Uso del sitio</h2>
+  <p>Prohibido uso malicioso o sobrecarga de demos. Nos reservamos el derecho de limitar el acceso.</p>
+  <h2 class="mt-6 text-2xl font-bold">Propiedad intelectual</h2>
+  <p>El código, diseños y contenidos son de sus autores. Las marcas mencionadas pertenecen a sus titulares.</p>
+  <h2 class="mt-6 text-2xl font-bold">Limitación de responsabilidad</h2>
+  <p>Las demos son experimentales. No hay garantías de exactitud ni disponibilidad.</p>
+</section>
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Política de Privacidad{% endblock %}
+
+{% block extra_head %}
+<meta name="robots" content="noindex,follow">
+{% endblock %}
+
+{% block content %}
+<section class="max-w-4xl mx-auto px-4 py-12">
+  <h1 class="text-3xl font-extrabold">Política de Privacidad</h1>
+  <p class="mt-2 text-sm opacity-80">Fecha: {{ hoy|default:date }}</p>
+  <nav class="mt-4 text-sm flex flex-wrap gap-3">
+    <a href="#datos" class="underline">1. Datos que tratamos</a>
+    <a href="#finalidades" class="underline">2. Finalidades</a>
+    <a href="#legitimacion" class="underline">3. Legitimación</a>
+    <a href="#derechos" class="underline">4. Derechos</a>
+    <a href="#demos" class="underline">5. Demos públicas</a>
+  </nav>
+
+  <h2 id="datos" class="mt-8 text-2xl font-bold">1. Datos que tratamos</h2>
+  <p>Formulario de contacto (nombre, email, web, mensaje). Telemetría anónima en demos.</p>
+
+  <h2 id="finalidades" class="mt-6 text-2xl font-bold">2. Finalidades</h2>
+  <p>Responder consultas, prestar servicios y mejorar demos.</p>
+
+  <h2 id="legitimacion" class="mt-6 text-2xl font-bold">3. Legitimación</h2>
+  <p>Consentimiento y ejecución de contrato.</p>
+
+  <h2 id="derechos" class="mt-6 text-2xl font-bold">4. Derechos</h2>
+  <p>Acceso, rectificación, supresión y otros. Escribe a <a href="mailto:{{ email_privacidad|default:'privacy@example.com' }}" class="underline">{{ email_privacidad|default:'privacy@example.com' }}</a>.</p>
+
+  <h2 id="demos" class="mt-6 text-2xl font-bold">5. Demos públicas</h2>
+  <p>No guardamos contenidos de usuarios. Registramos solo métricas anónimas (evento, timestamp, éxito/error).</p>
+</section>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ app.nombre }} | Demo en vivo{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ app.descripcion_corta }}. Límite: 5 usos/día por IP. Sandbox seguro."/>
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"{{ app.nombre|escapejs }}",
+  "applicationCategory":"BusinessApplication",
+  "operatingSystem":"Web",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="max-w-5xl mx-auto px-4 py-10">
+  <nav class="text-sm mb-4"><a href="{% url 'apps_index' %}" class="underline">← Volver a demos</a></nav>
+  <header class="mb-6">
+    <h1 class="text-3xl font-extrabold">{{ app.nombre }}</h1>
+    <p class="opacity-90">{{ app.descripcion_larga|default:app.descripcion_corta }}</p>
+    <div class="mt-2 text-xs opacity-70">Límites: 5 usos/día por IP · Tamaño máx. {{ app.tamano_max|default:'10MB' }} · Tiempo máx. {{ app.tiempo_max|default:'30s' }}</div>
+  </header>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <form id="app-form" class="rounded-2xl border bg-white p-4 space-y-3" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% if app.acepta_archivos %}
+      <label class="block text-sm font-semibold">Sube archivo</label>
+      <input type="file" name="archivo" class="form-input" accept="{{ app.accept|default:'.pdf,.txt,.csv' }}">
+      {% endif %}
+
+      {% if app.acepta_texto %}
+      <label class="block text-sm font-semibold">Texto de ejemplo</label>
+      <textarea name="texto" rows="6" class="form-textarea" placeholder="{{ app.placeholder|default:'Pega aquí el texto…' }}">{{ app.ejemplo_texto }}</textarea>
+      {% endif %}
+
+      {% for campo in app.campos_extra %}
+      <label class="block text-sm font-semibold" for="extra-{{ forloop.counter }}">{{ campo.label }}</label>
+      <input id="extra-{{ forloop.counter }}" name="{{ campo.name }}" class="form-input" placeholder="{{ campo.placeholder }}" value="{{ campo.value }}">
+      {% endfor %}
+
+      <button type="submit" class="btn btn-primary w-full" data-ga4-event="run_app" data-ga4-label="{{ app.slug }}">Ejecutar</button>
+      <p id="app-status" class="text-xs opacity-70">Sandbox: no guardamos tu contenido, solo métricas anónimas.</p>
+    </form>
+
+    <div class="rounded-2xl border bg-white p-4">
+      <h2 class="font-bold">Salida</h2>
+      <pre id="app-output" class="mt-2 bg-gray-50 p-3 rounded overflow-x-auto text-sm">—</pre>
+      <div class="mt-3 flex gap-2">
+        <button id="btn-copy" class="btn btn-secondary" data-ga4-event="copy_result">Copiar</button>
+        <button id="btn-download-json" class="btn" data-ga4-event="download_result" data-format="json">Descargar JSON</button>
+        <button id="btn-download-csv" class="btn" data-ga4-event="download_result" data-format="csv">Descargar CSV</button>
+      </div>
+      <a href="{% url 'contacto' %}" class="btn btn-accent mt-4">Quiero esto en mi ERP</a>
+    </div>
+  </div>
+
+  {% if app.politica_datos_url %}
+  <p class="mt-6 text-xs">Política de datos de demos: <a class="underline" href="{{ app.politica_datos_url }}">leer</a></p>
+  {% endif %}
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+(function(){
+  const form = document.getElementById('app-form');
+  const out = document.getElementById('app-output');
+  const status = document.getElementById('app-status');
+  const copyBtn = document.getElementById('btn-copy');
+  const dlJson = document.getElementById('btn-download-json');
+  const dlCsv = document.getElementById('btn-download-csv');
+
+  function getCookie(name){const m=document.cookie.match(new RegExp('(^|;\\s*)'+name+'=([^;]*)'));return m?decodeURIComponent(m[2]):''}
+  function csrftoken(){return document.querySelector('input[name=csrfmiddlewaretoken]')?.value || getCookie('csrftoken')}
+
+  function download(text, filename){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'}));a.download=filename;document.body.appendChild(a);a.click();a.remove()}
+
+  copyBtn?.addEventListener('click',()=>{navigator.clipboard.writeText(out.textContent||'');});
+  dlJson?.addEventListener('click',()=>download(out.textContent||'{}','resultado.json'));
+  dlCsv?.addEventListener('click',()=>download(out.textContent||'', 'resultado.csv'));
+
+  form?.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    status.textContent='Procesando…';
+    const fd = new FormData(form);
+    try {
+      const r = await fetch('{% url "api_run_app" app.slug %}', {method:'POST', headers:{'X-CSRFToken': csrftoken()}, body: fd});
+      if(!r.ok) throw new Error('Error '+r.status);
+      const data = await r.json();
+      out.textContent = (typeof data === 'string')? data : JSON.stringify(data, null, 2);
+      status.textContent='Listo';
+    } catch(err){
+      out.textContent = 'Error: '+err.message;
+      status.textContent='Fallo';
+    }
+  });
+})();
+</script>
+{% endblock %}
