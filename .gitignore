@@ -1,0 +1,35 @@
+# Python / Django
+.venv/
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+*.pot
+*.mo
+
+# Django collectstatic
+/staticfiles/
+/media/
+
+# Env
+.env
+*.env
+
+# Node/Tailwind (por si acaso)
+node_modules/
+package-lock.json
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.code-workspace
+
+# Tests/coverage
+.pytest_cache/
+.coverage
+htmlcov/
