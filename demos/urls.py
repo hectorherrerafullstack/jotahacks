@@ -4,6 +4,6 @@ from . import views
 app_name = "demos"
 
 urlpatterns = [
-    path('', views.apps_index_view, name='apps_index'),
-    path('<slug:slug>/', views.app_live_view, name='app_live'),
+    path('', views.apps_index_view, name='apps_index'),  # Índice/galería de mini-apps
+    path('<slug:slug>/', views.app_live_view, name='app_live'),  # App en vivo (con límites) por slug
 ]
