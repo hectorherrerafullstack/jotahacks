@@ -1,0 +1,9 @@
+/*
+Este es el archivo de entrada.
+Tailwind inyectará aquí todas las clases que encuentre en tus plantillas.
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Añade aquí tus propios estilos personalizados si los necesitas */

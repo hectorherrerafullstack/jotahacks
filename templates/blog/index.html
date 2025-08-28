@@ -8,7 +8,7 @@
 <script type="application/ld+json">{
   "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"Inicio","item":"{% url 'website:home' %}"},
-    {"@type":"ListItem","position":2,"name":"Blog","item":"{% url 'blog_index' %}"}
+    {"@type":"ListItem","position":2,"name":"Blog","item":"{% url 'blog:blog_index' %}"}
   ]}
 </script>
 {% endblock %}
@@ -23,7 +23,7 @@
   <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
     {% for post in posts %}
     <article class="rounded-2xl border bg-white overflow-hidden shadow-sm">
-      <a href="{% url 'blog_post' post.slug %}" class="block">
+      <a href="{% url 'blog:blog_post' post.slug %}" class="block">
         <img src="{{ post.cover_url }}" alt="{{ post.title }}" class="aspect-video w-full object-cover">
         <div class="p-4">
           <h2 class="font-bold">{{ post.title }}</h2>
@@ -38,5 +38,3 @@
   </div>
 </section>
 {% endblock %}
-
-

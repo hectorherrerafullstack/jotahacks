@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,37 +8,107 @@
   <meta name="description" content="{% block meta_description %}Implemento IA en tus procesos con apps web a medida. Prueba demos y agenda una evaluación de 15 min.{% endblock %}">
   <!-- Tailwind CDN (dev). Luego montamos build local con Node -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root{ --primary-color:#4f46e5; }
+  </style>
   {% block extra_head %}{% endblock %}
 </head>
-<body class="min-h-screen bg-gray-50 text-gray-900">
-  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
-    <nav class="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
-      <a href="/" class="font-bold">mi web</a>
-      <ul class="flex items-center gap-4 text-sm">
-        <li><a href="/servicios/" class="hover:underline">Servicios</a></li>
-        <li><a href="/proyectos/" class="hover:underline">Proyectos</a></li>
-        <li><a href="/apps/" class="hover:underline">Demos</a></li>
-        <li><a href="/blog/" class="hover:underline">Blog</a></li>
-        <li><a href="/acerca/" class="hover:underline">Acerca</a></li>
-        <li><a href="/contacto/" class="inline-flex items-center gap-2 rounded-lg bg-black text-white px-3 py-1.5">Agenda 15 min</a></li>
-      </ul>
-    </nav>
+
+<body class="min-h-screen bg-[#0b1020] text-gray-100 antialiased">
+
+  <!-- NAVBAR con el estilo del bloque de contacto (enlaces EXACTOS) -->
+  <header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="text-2xl font-bold tracking-tight text-white">
+        mi<span class="text-[var(--primary-color)]">web</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/servicios/" class="text-gray-300 hover:text-white">Servicios</a>
+        <a href="/proyectos/" class="text-gray-300 hover:text-white">Proyectos</a>
+        <a href="/apps/" class="text-gray-300 hover:text-white">Demos</a>
+        <a href="/blog/" class="text-gray-300 hover:text-white">Blog</a>
+        <a href="/acerca/" class="text-gray-300 hover:text-white">Acerca</a>
+        <a href="/contacto/" class="inline-flex items-center gap-2 rounded-full bg-[var(--primary-color)] hover:opacity-90 text-white px-3 py-1.5 shadow-lg shadow-indigo-600/20">
+          Agenda 15 min
+        </a>
+      </nav>
+      <button id="mobile-menu-button" class="md:hidden p-2 text-gray-300" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-menu" width="24" height="24" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-white/10 bg-gray-900">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3 text-sm">
+        <a href="/servicios/" class="text-gray-300 hover:text-white">Servicios</a>
+        <a href="/proyectos/" class="text-gray-300 hover:text-white">Proyectos</a>
+        <a href="/apps/" class="text-gray-300 hover:text-white">Demos</a>
+        <a href="/blog/" class="text-gray-300 hover:text-white">Blog</a>
+        <a href="/acerca/" class="text-gray-300 hover:text-white">Acerca</a>
+        <a href="/contacto/" class="text-white inline-flex items-center gap-2 rounded-full bg-[var(--primary-color)] px-3 py-2 mt-2">Agenda 15 min</a>
+      </div>
+    </div>
   </header>
 
+  <!-- Mantengo tu contenedor de main -->
   <main class="mx-auto max-w-6xl px-4 py-10">
     {% block content %}{% endblock %}
   </main>
 
-  <footer class="mt-10 border-t">
-    <div class="mx-auto max-w-6xl px-4 py-8 text-sm text-gray-600 flex flex-wrap gap-3 justify-between">
-      <span>© {{ now|default:"2025" }} mi web</span>
+ <footer class="mt-10 bg-gray-900 text-gray-400">
+  <!-- Contenido centrado -->
+  <div class="max-w-7xl mx-auto px-6 grid gap-6 md:grid-cols-3 py-10 place-items-center text-center">
+    <div>
+      <a href="/" class="text-2xl font-bold tracking-tight text-white">
+        mi<span class="text-[var(--primary-color)]">web</span>
+      </a>
+      <p class="mt-3 text-sm">Especialistas en IA aplicada y desarrollo de apps web a medida.</p>
+    </div>
+
+    <div>
+      <h4 class="text-white font-semibold mb-3">Contacto</h4>
+      <ul class="space-y-2 text-sm">
+        <li>Tel: <a class="hover:text-[var(--primary-color)]" href="tel:+34123456789">+34 123 456 789</a></li>
+        <li>Email: <a class="hover:text-[var(--primary-color)]" href="mailto:info@miweb.com">info@miweb.com</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-white font-semibold mb-3">Síguenos</h4>
+      <div class="flex gap-3 text-gray-300 justify-center">
+        <i data-lucide="linkedin"></i>
+        <i data-lucide="github"></i>
+        <i data-lucide="twitter"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fila legal centrada -->
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 text-xs text-gray-500
+                flex flex-col items-center gap-2 md:flex-row md:gap-4 md:justify-center">
+      <span>© {{ now|default:"2025" }} mi web. Todos los derechos reservados.</span>
       <nav class="flex gap-4">
-        <a href="/legal/privacidad/" class="hover:underline">Privacidad</a>
-        <a href="/legal/terminos/" class="hover:underline">Términos</a>
-        <a href="/legal/cookies/" class="hover:underline">Cookies</a>
+        <a href="/legal/privacidad/" class="hover:text-white">Privacidad</a>
+        <a href="/legal/terminos/" class="hover:text-white">Términos</a>
+        <a href="/legal/cookies/" class="hover:text-white">Cookies</a>
       </nav>
     </div>
-  </footer>
+  </div>
+</footer>
+
+
   {% block extra_js %}{% endblock %}
+
+  <script>
+    lucide.createIcons();
+    const mobileBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
+  </script>
 </body>
 </html>

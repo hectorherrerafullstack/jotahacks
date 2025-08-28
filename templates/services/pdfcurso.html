@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guía Completa de Django — Explicada paso a paso</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;--ink:#0f172a;--muted:#475569;--brand:#4f46e5;--brand-dark:#4338ca;--card:#ffffff;--line:#e5e7eb;--code:#0b1220;--code-ink:#c7f9cc;--warn:#b91c1c;--ok:#059669;
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.7 "Segoe UI",Roboto,system-ui,-apple-system,sans-serif;}
+    .wrap{max-width:980px;margin:0 auto;padding:40px 20px 80px;}
+    header{text-align:center;margin-bottom:40px}
+    h1{font-size:2.4rem;margin:.2rem 0 0;color:var(--brand)}
+    .subtitle{color:var(--muted)}
+    .toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:24px 0}
+    .toc h3{margin:0 0 8px;color:var(--brand-dark)}
+    .toc ol{margin:0;padding-left:18px;columns:2;column-gap:32px}
+    .toc a{color:var(--brand-dark);text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+
+    article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;margin:18px 0;box-shadow:0 10px 24px rgba(12,18,28,.04)}
+    article h2{margin:0 0 10px;color:var(--brand-dark)}
+    article h3{margin:18px 0 6px;color:var(--ink);font-size:1.05rem}
+    p{margin:.4rem 0}
+    ul{margin:.3rem 0 .8rem 1.2rem}
+    li{margin:.25rem 0}
+
+    .grid{display:grid;gap:14px}
+    @media(min-width:780px){.grid{grid-template-columns:1fr 1fr}}
+
+    .badge{display:inline-block;font-size:.8rem;color:#fff;background:var(--brand);padding:.15rem .5rem;border-radius:999px}
+    .muted{color:var(--muted)}
+
+    pre{background:var(--code);color:var(--code-ink);padding:14px;border-radius:10px;overflow:auto;font-family:"Fira Code",Consolas,monospace;font-size:.95rem}
+    code{background:#eef2ff;color:#1e40af;padding:0 .35rem;border-radius:6px}
+
+    .callout{border-left:4px solid var(--brand);background:#f8fafc;border-radius:10px;padding:10px 12px;margin:.6rem 0}
+    .error{border-left-color:var(--warn);background:#fef2f2}
+    .ok{border-left-color:var(--ok);background:#f0fdf4}
+    .mono{font-family:"Fira Code",Consolas,monospace}
+
+    footer{margin-top:42px;text-align:center;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">Manual completo</div>
+      <h1>Proyecto Django desde cero</h1>
+      <p class="subtitle">Esta guía está pensada para quienes quieren empezar con buen pie en el mundo de Django. Aquí encontrarás cada paso explicado como si comenzaras desde cero, con comandos exactos y comprobaciones. Gracias por apoyarme en este camino; estoy seguro de que eres capaz de construir un proyecto sólido y de empezar a desatar toda tu creatividad.</p>
+    </header>
+
+    <nav class="toc">
+      <h3>Índice</h3>
+      <ol>
+        <li><a href="#c1">Instalar VS Code</a></li>
+        <li><a href="#c2">Extensiones de VS Code</a></li>
+        <li><a href="#c3">Instalar Python</a></li>
+        <li><a href="#c4">Instalar Git</a></li>
+        <li><a href="#c5">Carpeta de trabajo</a></li>
+        <li><a href="#c6">Entorno virtual</a></li>
+        <li><a href="#c7">Activar entorno</a></li>
+        <li><a href="#c8">Instalar Django</a></li>
+        <li><a href="#c9">Crear proyecto</a></li>
+        <li><a href="#c10">Migraciones</a></li>
+        <li><a href="#c11">Superusuario</a></li>
+        <li><a href="#c12">Servidor</a></li>
+        <li><a href="#c13">Crear app</a></li>
+        <li><a href="#c14">Vista inicial</a></li>
+        <li><a href="#c15">URLs</a></li>
+        <li><a href="#c16">Plantilla Home</a></li>
+        <li><a href="#c17">Ver resultado</a></li>
+      </ol>
+    </nav>
+
+    <!-- C1 -->
+    <article id="c1">
+      <h2>Capítulo 1 — Instalar Visual Studio Code (VS Code)</h2>
+      <p><strong>Qué estás haciendo:</strong> instalas el editor donde vas a escribir y organizar el proyecto.</p>
+      <p><strong>Por qué:</strong> VS Code trae terminal integrada, extensiones y es gratis.</p>
+      <h3>Cómo (clic a clic)</h3>
+      <ul>
+        <li>Abre <span class="mono">code.visualstudio.com</span> y descarga para tu sistema.</li>
+        <li>Windows: siguiente → aceptar → instalar. Marca <em>Agregar al PATH</em>.</li>
+        <li>macOS: arrastra VS Code a <em>Aplicaciones</em>.</li>
+        <li>Linux: instala <em>.deb/.rpm</em> o usa tu gestor de paquetes.</li>
+        <li>Abre VS Code. Deberías ver la pantalla de <em>Get Started</em>.</li>
+      </ul>
+      <div class="callout error"><strong>Errores comunes:</strong> en Linux puede faltar <span class="mono">libX11</span> u otros paquetes. Instálalos con <span class="mono">apt</span> o <span class="mono">dnf</span>.</div>
+    </article>
+
+    <!-- C2 -->
+    <article id="c2">
+      <h2>Capítulo 2 — Instalar extensiones de VS Code</h2>
+      <p><strong>Qué estás haciendo:</strong> añades herramientas para que VS Code entienda Python y Django.</p>
+      <p><strong>Por qué:</strong> tendrás autocompletado, linting y ayudas específicas.</p>
+      <h3>Cómo</h3>
+      <ul>
+        <li>Abre VS Code → <strong>Extensiones</strong> (<span class="mono">Ctrl+Shift+X</span>).</li>
+        <li>Instala: <em>Python (Microsoft)</em>, <em>Pylance</em>, <em>Django</em>, <em>EditorConfig</em>, <em>Prettier</em> (opcional).</li>
+      </ul>
+      <div class="callout ok"><strong>Comprobación:</strong> las extensiones muestran un ✔ verde al quedar instaladas.</div>
+    </article>
+
+    <!-- C3 -->
+    <article id="c3">
+      <h2>Capítulo 3 — Instalar Python (GRATIS)</h2>
+      <p><strong>Qué estás haciendo:</strong> instalas el lenguaje que usa Django.</p>
+      <p><strong>Por qué:</strong> sin Python, no se puede ejecutar Django.</p>
+      <div class="grid">
+        <div>
+          <h3>Windows</h3>
+          <ul>
+            <li>Entra en <span class="mono">python.org → Downloads → Windows</span>.</li>
+            <li>Descarga <em>Windows installer (64-bit)</em> y marca <strong>Add Python to PATH</strong>.</li>
+          </ul>
+          <h3>Verificar</h3>
+          <pre>python --version
+pip --version</pre>
+          <p class="muted">Si falla, usa:</p>
+          <pre>py -3 --version
+py -3 -m pip --version</pre>
+          <div class="callout error"><strong>Nota:</strong> si se abre Microsoft Store al escribir <span class="mono">python</span>, desactiva los <em>App Execution Aliases</em>.</div>
+        </div>
+        <div>
+          <h3>macOS</h3>
+          <ul>
+            <li>Descarga el instalador universal desde <span class="mono">python.org → macOS</span> y ejecuta.</li>
+          </ul>
+          <h3>Verificar</h3>
+          <pre>python3 --version
+pip3 --version</pre>
+          <p class="muted">Si aparece Python 2.x al escribir <span class="mono">python</span>, usa <span class="mono">python3</span>.</p>
+          <h3>Linux (Ubuntu/Debian)</h3>
+          <pre>sudo apt update
+sudo apt install -y python3 python3-pip python3-venv
+python3 --version
+pip3 --version</pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- C4 -->
+    <article id="c4">
+      <h2>Capítulo 4 — Instalar Git</h2>
+      <p><strong>Qué estás haciendo:</strong> instalas el sistema de control de versiones.</p>
+      <p><strong>Por qué:</strong> podrás guardar cambios, crear copias de seguridad y volver atrás.</p>
+      <h3>Cómo</h3>
+      <ul>
+        <li>Windows: descarga en <span class="mono">git-scm.com</span> y sigue <em>Next</em>.</li>
+        <li>macOS: <span class="mono">brew install git</span></li>
+        <li>Ubuntu/Debian: <span class="mono">sudo apt install -y git</span></li>
+      </ul>
+      <h3>Verificar</h3>
+      <pre>git --version</pre>
+      <div class="callout">(Opcional) Configura tu autor:
+        <pre>git config --global user.name "Tu Nombre"
+git config --global user.email "tu@email.com"</pre>
+      </div>
+    </article>
+
+    <!-- C5 -->
+    <article id="c5">
+      <h2>Capítulo 5 — Crear carpeta de trabajo</h2>
+      <p><strong>Qué estás haciendo:</strong> creas la carpeta que contendrá tu proyecto.</p>
+      <p><strong>Por qué:</strong> tener todo el código en un lugar claro evita confusiones.</p>
+      <pre>mkdir proyectos_django
+cd proyectos_django</pre>
+    </article>
+
+    <!-- C6 -->
+    <article id="c6">
+      <h2>Capítulo 6 — Crear entorno virtual (venv)</h2>
+      <p><strong>Qué estás haciendo:</strong> creas una "mochila" para aislar dependencias.</p>
+      <p><strong>Por qué:</strong> cada proyecto tendrá sus librerías sin chocar con otras.</p>
+      <pre>python -m venv .venv</pre>
+      <div class="callout ok"><strong>Resultado esperado:</strong> aparece una carpeta <span class="mono">.venv</span> en tu proyecto.</div>
+    </article>
+
+    <!-- C7 -->
+    <article id="c7">
+      <h2>Capítulo 7 — Activar el entorno virtual</h2>
+      <p><strong>Qué estás haciendo:</strong> te "pones" la mochila para trabajar dentro de ella.</p>
+      <div class="grid">
+        <div>
+          <h3>Windows (PowerShell)</h3>
+          <pre>.\.venv\Scripts\Activate.ps1</pre>
+        </div>
+        <div>
+          <h3>macOS / Linux</h3>
+          <pre>source .venv/bin/activate</pre>
+        </div>
+      </div>
+      <div class="callout ok"><strong>Comprobación:</strong> verás <span class="mono">(.venv)</span> al inicio de tu línea de comandos.</div>
+      <div class="callout error"><strong>Windows:</strong> si PowerShell bloquea la activación, ejecuta como admin:
+        <pre>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</pre>
+      </div>
+    </article>
+
+    <!-- C8 -->
+    <article id="c8">
+      <h2>Capítulo 8 — Instalar Django</h2>
+      <p><strong>Qué estás haciendo:</strong> instalas el framework web.</p>
+      <p><strong>Por qué:</strong> trae herramientas listas para no empezar desde cero.</p>
+      <pre>pip install django
+python -m django --version</pre>
+      <div class="callout ok"><strong>Comprobación:</strong> debe mostrarse la versión instalada (por ejemplo, 5.x).</div>
+    </article>
+
+    <!-- C9 -->
+    <article id="c9">
+      <h2>Capítulo 9 — Crear proyecto Django</h2>
+      <p><strong>Qué estás haciendo:</strong> generas la estructura base (configuración, rutas principales, etc.).</p>
+      <pre>django-admin startproject config .</pre>
+      <div class="callout ok"><strong>Resultado:</strong> se crea la carpeta <span class="mono">config/</span> y el archivo <span class="mono">manage.py</span>.</div>
+    </article>
+
+    <!-- C10 -->
+    <article id="c10">
+      <h2>Capítulo 10 — Migraciones iniciales</h2>
+      <p><strong>Qué estás haciendo:</strong> preparas la base de datos con las tablas por defecto.</p>
+      <pre>python manage.py migrate</pre>
+      <div class="callout ok"><strong>Comprobación:</strong> verás mensajes de "Applying ... OK".</div>
+    </article>
+
+    <!-- C11 -->
+    <article id="c11">
+      <h2>Capítulo 11 — Crear superusuario</h2>
+      <p><strong>Qué estás haciendo:</strong> creas el usuario administrador del panel de Django.</p>
+      <pre>python manage.py createsuperuser</pre>
+      <p class="muted">Sigue las preguntas de usuario y contraseña.</p>
+    </article>
+
+    <!-- C12 -->
+    <article id="c12">
+      <h2>Capítulo 12 — Encender el servidor de desarrollo</h2>
+      <p><strong>Qué estás haciendo:</strong> pones el proyecto a correr localmente.</p>
+      <pre>python manage.py runserver</pre>
+      <div class="callout ok"><strong>Comprobación:</strong> abre <span class="mono">http://127.0.0.1:8000/</span> y deberías ver la página de bienvenida de Django.</div>
+      <p class="muted">Para detenerlo, vuelve a la terminal y presiona <strong>Ctrl+C</strong>.</p>
+    </article>
+
+    <!-- C13 -->
+    <article id="c13">
+      <h2>Capítulo 13 — Crear una aplicación (app)</h2>
+      <p><strong>Qué estás haciendo:</strong> creas un "barrio" dentro del proyecto con su propia lógica.</p>
+      <pre>python manage.py startapp miapp</pre>
+      <p>Abre <span class="mono">config/settings.py</span> y añade la app:</p>
+      <pre>INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "miapp",  # ← añade esto
+]</pre>
+    </article>
+
+    <!-- C14 -->
+    <article id="c14">
+      <h2>Capítulo 14 — Crear la vista inicial</h2>
+      <p><strong>Qué estás haciendo:</strong> defines qué se devuelve cuando alguien visita tu sitio.</p>
+      <p>Edita <span class="mono">miapp/views.py</span>:</p>
+      <pre>from django.shortcuts import render
+
+def home(request):
+    return render(request, "miapp/home.html")</pre>
+    </article>
+
+    <!-- C15 -->
+    <article id="c15">
+      <h2>Capítulo 15 — Conectar las URLs</h2>
+      <p><strong>Qué estás haciendo:</strong> creas las "señales de tráfico" para llegar a cada vista.</p>
+      <p><span class="mono">miapp/urls.py</span>:</p>
+      <pre>from django.urls import path
+from .views import home
+
+urlpatterns = [
+    path("", home, name="home"),
+]</pre>
+      <p><span class="mono">config/urls.py</span>:</p>
+      <pre>from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("miapp.urls")),
+]</pre>
+    </article>
+
+    <!-- C16 -->
+    <article id="c16">
+      <h2>Capítulo 16 — Plantilla Home (HTML)</h2>
+      <p><strong>Qué estás haciendo:</strong> creas el archivo que verá el usuario en el navegador.</p>
+      <p>Crea carpetas de plantillas:</p>
+      <pre>mkdir -p miapp/templates/miapp</pre>
+      <p>Archivo <span class="mono">miapp/templates/miapp/home.html</span>:</p>
+      <pre>&lt;!doctype html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Inicio | Mi App&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Bienvenido a mi primera app Django&lt;/h1&gt;
+  &lt;p&gt;Si ves esto, todo funciona correctamente.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </article>
+
+    <!-- C17 -->
+    <article id="c17">
+      <h2>Capítulo 17 — Ver resultado</h2>
+      <p><strong>Qué estás haciendo:</strong> compruebas el flujo completo funcionando.</p>
+      <pre>python manage.py runserver</pre>
+      <p>Abre <span class="mono">http://127.0.0.1:8000/</span> y revisa que cargue la Home.</p>
+    </article>
+
+    <article>
+      <h2>Siguiente paso</h2>
+      <p>En un <strong>siguiente vídeo</strong> verás la <strong>configuración del frontend</strong>: organización de <em>templates</em> globales, <em>static</em> (CSS/JS/imágenes), y buenas prácticas para integrar HTML/CSS modernos con Django.</p>
+    </article>
+
+    <footer>
+      <p>© 2025 — Guía Django paso a paso</p>
+    </footer>
+  </div>
+</body>
+</html>

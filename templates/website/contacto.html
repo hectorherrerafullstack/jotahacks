@@ -11,7 +11,7 @@
 <section class="max-w-4xl mx-auto px-4 py-12">
   <h1 class="text-4xl font-extrabold">Contacto</h1>
   <p class="mt-2">Cuéntame brevemente tu reto. Respondo rápido.</p>
-  <form method="post" action="{% url 'contacto' %}" class="mt-6 grid gap-4 rounded-2xl border bg-white p-6" id="contact-form">
+  <form method="post" action="{% url 'website:contacto' %}" class="mt-6 grid gap-4 rounded-2xl border bg-white p-6" id="contact-form">
     {% csrf_token %}
     <label class="block">
       <span class="text-sm font-semibold">Nombre</span>
@@ -35,7 +35,6 @@
   <div id="agenda" class="mt-10">
     <h2 class="text-2xl font-bold">Agenda 15 minutos</h2>
     <p class="opacity-80">Reserva una llamada rápida para evaluar el encaje.</p>
-    <!-- Placeholder de calendario (Inserta tu embed de Calendly u otro) -->
     <div class="mt-4 rounded-2xl border bg-white p-4">
       <p class="text-sm">Inserta aquí el calendario (Calendly/Cal.com).</p>
     </div>

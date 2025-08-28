@@ -17,8 +17,8 @@
 }</script>
 <script type="application/ld+json">{
   "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Inicio","item":"{% url 'home' %}"},
-    {"@type":"ListItem","position":2,"name":"Proyectos","item":"{% url 'proyectos_index' %}"},
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"{% url 'website:home' %}"},
+    {"@type":"ListItem","position":2,"name":"Proyectos","item":"{% url 'gallery:proyectos' %}"},
     {"@type":"ListItem","position":3,"name":"{{ proyecto.titulo|escapejs }}","item":""}
   ]}
 </script>
@@ -26,7 +26,7 @@
 
 {% block content %}
 <article class="max-w-4xl mx-auto px-4 py-12">
-  <nav class="text-sm mb-4"><a href="{% url 'proyectos_index' %}" class="underline">← Volver a proyectos</a></nav>
+  <nav class="text-sm mb-4"><a href="{% url 'gallery:proyectos' %}" class="underline">← Volver a proyectos</a></nav>
   <header>
     <h1 class="text-4xl font-extrabold">{{ proyecto.titulo }}</h1>
     <p class="mt-2 opacity-80">{{ proyecto.resumen }}</p>
@@ -67,9 +67,9 @@
   </section>
 
   <footer class="mt-10">
-    <a href="{% url 'contacto' %}" class="btn btn-primary">Quiero evaluar algo similar</a>
+    <a href="{% url 'website:contacto' %}" class="btn btn-primary">Quiero evaluar algo similar</a>
     {% if proyecto.demo_slug %}
-      <a href="{% url 'app_live' proyecto.demo_slug %}" class="btn btn-secondary ml-2">Probar demo relacionada</a>
+      <a href="{% url 'demos:app_live' proyecto.demo_slug %}" class="btn btn-secondary ml-2">Probar demo relacionada</a>
     {% endif %}
   </footer>
 </article>
