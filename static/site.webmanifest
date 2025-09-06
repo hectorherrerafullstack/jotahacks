@@ -1,0 +1,16 @@
+{
+  "name": "Héctor Herrera - IA y Desarrollo Web",
+  "short_name": "HectorIA",
+  "description": "Desarrollo web e implementación de IA",
+  "theme_color": "#0b1020",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/static/img/hector.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

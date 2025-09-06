@@ -4,9 +4,9 @@ from django import forms
 class ContactForm(forms.Form):
     # Campos del formulario clásico
     name = forms.CharField(max_length=120)
-    phone = forms.CharField(max_length=50, required=True)
+    email = forms.EmailField()
+    phone = forms.CharField(max_length=50, required=False)
     company = forms.CharField(max_length=120, required=False)
-    sector = forms.CharField(max_length=60, required=False)
     message = forms.CharField(widget=forms.Textarea)
 
     # Selects opcionales (permitimos vacío)
