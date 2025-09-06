@@ -1,16 +1,19 @@
 from django.shortcuts import render
 
 def index_view(request):
-    return render(request, 'services/index.html')
+    return render(request, 'servicios/index.html')
 
-def automatizacion_datos_view(request):
-    return render(request, 'services/automatizacion_datos.html')
+def software_a_medida_view(request):
+    return render(request, 'servicios/software-a-medida.html')
 
-def ia_erp_crm_view(request):
-    return render(request, 'services/ia_erp_crm.html')
+def integraciones_api_view(request):
+    return render(request, 'servicios/integraciones-api.html')
 
-def chatbots_internos_view(request):
-    return render(request, 'services/chatbots_internos.html')
+def automatizacion_procesos_ia_view(request):
+    return render(request, 'servicios/automatizacion-procesos-ia.html')
 
-def extraccion_documentos_view(request):
-    return render(request, 'services/extraccion_documentos.html')
+def erp_crm_medida_view(request):
+    return render(request, 'servicios/erp-crm-medida.html')
+
+
+

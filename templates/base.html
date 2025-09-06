@@ -1,114 +1,284 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+
   <title>{% block title %}Convierto tus datos en decisiones | IA aplicada{% endblock %}</title>
-  <meta name="description" content="{% block meta_description %}Implemento IA en tus procesos con apps web a medida. Prueba demos y agenda una evaluación de 15 min.{% endblock %}">
-  <!-- Tailwind CDN (dev). Luego montamos build local con Node -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <meta name="description"
+    content="{% block meta_description %}Implemento IA en tus procesos con apps web a medida. Prueba demos y agenda una evaluación de 15 min.{% endblock %}">
+
+  <!-- Canonical (sobrescribe en cada vista si procede) -->
+  {% block canonical %}
+  <link rel="canonical" href="https://hectorherrerafullstack.com/">{% endblock %}
+
+  <!-- Open Graph / Twitter (defaults; sobreescribe en cada vista si procede) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Héctor Herrera">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="{% block og_url %}https://hectorherrerafullstack.com/{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}Convierto tus datos en decisiones | IA aplicada{% endblock %}">
+  <meta property="og:description"
+    content="{% block og_description %}Implemento IA en tus procesos con apps web a medida.{% endblock %}">
+  <meta property="og:image"
+    content="{% block og_image %}https://hectorherrerafullstack.com/static/img/og-default.jpg{% endblock %}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title"
+    content="{% block twitter_title %}Convierto tus datos en decisiones | IA aplicada{% endblock %}">
+  <meta name="twitter:description"
+    content="{% block twitter_description %}Implemento IA en tus procesos con apps web a medida.{% endblock %}">
+  <meta name="twitter:image"
+    content="{% block twitter_image %}https://hectorherrerafullstack.com/static/img/og-default.jpg{% endblock %}">
+
+  <!-- Tema / PWA mínimos -->
+  <meta name="theme-color" content="#0b1020">
+  <meta name="color-scheme" content="dark light">
+  <link rel="manifest" href="{% static 'site.webmanifest' %}">
+  <link rel="icon" href="{% static 'favicon.ico' %}">
+  <link rel="apple-touch-icon" href="{% static 'icons/apple-touch-icon.png' %}">
+
+  <!-- Performance: preconnect a Google Fonts (si las usas en vistas) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Tailwind build -->
+  <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+
+  <!-- Iconos -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+
   <style>
-    :root{ --primary-color:#4f46e5; }
+    :root {
+      --primary-color: #4f46e5;
+    }
   </style>
+
   {% block extra_head %}{% endblock %}
 </head>
 
-<body class="min-h-screen bg-[#0b1020] text-gray-100 antialiased">
 
-  <!-- NAVBAR con el estilo del bloque de contacto (enlaces EXACTOS) -->
-  <header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="/" class="text-2xl font-bold tracking-tight text-white">
-        mi<span class="text-[var(--primary-color)]">web</span>
+<body class="min-h-screen bg-[#0b1020] text-gray-100 antialiased">
+  <!-- Skip link -->
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-2 focus:left-2 focus:bg-indigo-600 focus:text-white focus:px-3 focus:py-2 rounded">
+    Saltar al contenido
+  </a>
+
+  <!-- NAVBAR -->
+<header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur border-b border-white/10 relative" role="banner">
+  <div class="max-w-7xl mx-auto pl-6 pr-12 md:px-6 h-16 flex items-center justify-between">
+    <a href="/" class="text-2xl font-bold tracking-tight text-white" aria-label="Inicio">
+      Hector<span class="text-[var(--primary-color)]">Herrera</span>
+    </a>
+
+    <!-- Desktop -->
+<nav class="hidden md:flex items-center gap-6 text-lg font-bold" aria-label="Menú principal">
+  <!-- Servicios (hover/focus abre; click en texto navega; chevron despliega) -->
+  <div id="services-root" class="relative group/services flex items-center -space-x-1">
+    <!-- Texto -->
+    <a id="services-link" href="/servicios/"
+       class="inline-flex items-center text-gray-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded-md pl-1 pr-0 py-1"
+       aria-haspopup="true" aria-expanded="false">
+      Servicios
+    </a>
+
+    <!-- Chevron (centrado y más pegado) -->
+    <button id="services-toggle" type="button"
+            class="inline-flex items-center justify-center h-6 w-6 p-0 rounded-md text-gray-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+            aria-label="Desplegar Servicios" aria-expanded="false" aria-controls="services-panel">
+      <i id="services-chevron" data-lucide="chevron-down" class="w-4 h-4 opacity-80 transition-transform"></i>
+    </button>
+
+    <!-- Panel: compacto y sin salirse -->
+    <div id="services-panel" role="menu" aria-label="Submenú de Servicios"
+     class="absolute right-0 left-auto top-full mt-3 w-[min(88vw,480px)]
+            bg-gray-900/95 border border-white/10 backdrop-blur
+            rounded-xl shadow-lg p-2 grid grid-cols-2 gap-1
+            opacity-0 pointer-events-none
+            transition duration-150 ease-out
+            group-hover/services:opacity-100 group-hover/services:pointer-events-auto
+            group-focus-within/services:opacity-100 group-focus-within/services:pointer-events-auto
+            data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto z-40">
+
+      <!-- Ver todo -->
+      
+      <!-- Resto -->
+      <a href="/software-a-medida/" role="menuitem"
+         class="flex items-start gap-2 rounded-md px-2.5 py-1.5 text-gray-300 hover:text-white hover:bg-white/5">
+        <i data-lucide="app-window" class="w-4 h-4 mt-0.5 opacity-80"></i>
+        <div>
+          <p class="font-semibold text-[13px] text-white leading-tight">Software a medida</p>
+          <p class="text-[11px] text-gray-400 leading-snug">Apps y backends según tus flujos.</p>
+        </div>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="/servicios/" class="text-gray-300 hover:text-white">Servicios</a>
-        <a href="/proyectos/" class="text-gray-300 hover:text-white">Proyectos</a>
-        <a href="/apps/" class="text-gray-300 hover:text-white">Demos</a>
-        <a href="/blog/" class="text-gray-300 hover:text-white">Blog</a>
-        <a href="/acerca/" class="text-gray-300 hover:text-white">Acerca</a>
-        <a href="/contacto/" class="inline-flex items-center gap-2 rounded-full bg-[var(--primary-color)] hover:opacity-90 text-white px-3 py-1.5 shadow-lg shadow-indigo-600/20">
-          Agenda 15 min
-        </a>
-      </nav>
-      <button id="mobile-menu-button" class="md:hidden p-2 text-gray-300" aria-label="Abrir menú">
-        <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-menu" width="24" height="24" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
-        </svg>
+
+      <a href="/integraciones-api/" role="menuitem"
+         class="flex items-start gap-2 rounded-md px-2.5 py-1.5 text-gray-300 hover:text-white hover:bg-white/5">
+        <i data-lucide="merge" class="w-4 h-4 mt-0.5 opacity-80"></i>
+        <div>
+          <p class="font-semibold text-[13px] text-white leading-tight">Integraciones API</p>
+          <p class="text-[11px] text-gray-400 leading-snug">Tu web, CRM, pagos y Google conectados.</p>
+        </div>
+      </a>
+
+      <a href="/automatizacion-procesos-ia/" role="menuitem"
+         class="flex items-start gap-2 rounded-md px-2.5 py-1.5 text-gray-300 hover:text-white hover:bg-white/5">
+        <i data-lucide="bot" class="w-4 h-4 mt-0.5 opacity-80"></i>
+        <div>
+          <p class="font-semibold text-[13px] text-white leading-tight">Automatización con IA</p>
+          <p class="text-[11px] text-gray-400 leading-snug">Resúmenes, respuestas y OCR.</p>
+        </div>
+      </a>
+
+      <a href="/erp-crm-medida/" role="menuitem"
+         class="flex items-start gap-2 rounded-md px-2.5 py-1.5 text-gray-300 hover:text-white hover:bg-white/5">
+        <i data-lucide="layout-dashboard" class="w-4 h-4 mt-0.5 opacity-80"></i>
+        <div>
+          <p class="font-semibold text-[13px] text-white leading-tight">ERP/CRM a medida</p>
+          <p class="text-[11px] text-gray-400 leading-snug">Datos unificados y paneles claros.</p>
+        </div>
+      </a>
+
+      
+
+
+    </div>
+  </div>
+
+  
+<!--<a href="/proyectos/" class="text-gray-300 hover:text-white">Proyectos</a>
+  <a href="/apps/" class="text-gray-300 hover:text-white">Demos</a>
+  <a href="/zona/" class="text-gray-300 hover:text-white">Zona</a>-->
+  <a href="/sobre-mi/" class="text-gray-300 hover:text-white font-bold">Sobre mí</a>
+  <a href="/contacto/"
+     class="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--primary-color)] hover:opacity-90 text-white px-4 py-2 shadow-lg shadow-indigo-600/20 font-bold">
+    Agenda
+  </a>
+</nav>
+
+<!-- Botón móvil -->
+<button id="mobile-menu-button"
+        class="md:hidden p-2 text-gray-300 absolute right-1 top-1/2 -translate-y-1/2"
+        aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-menu" width="45" height="45" viewBox="0 0 24 24"
+    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" />
+  </svg>
+</button>
+
+<!-- Menú móvil (centrado) -->
+<div id="mobile-menu"
+     class="md:hidden absolute right-0 top-16 z-50
+            bg-gray-900/95 border border-white/10 shadow-xl
+            rounded-bl-xl rounded-r-none
+            p-1 w-[min(220px)]  text-center
+            origin-top-right transition-all duration-200 ease-out
+            opacity-0 translate-x-2 pointer-events-none"
+     aria-hidden="true" data-open="false">
+  <div class="flex flex-col gap-0.5 text-lg font-bold" role="menu" aria-label="Menú móvil">
+
+    <div class="flex items-center justify-center px-3 py-1 rounded-md">
+      <!-- Espaciador: mismo ancho que el botón, para centrar el texto -->
+      <span class="w-9 h-9 shrink-0 -mr-[9px]" aria-hidden="true"></span>
+
+      <a href="/servicios/"
+         class="inline-flex items-center text-center text-gray-300 hover:text-white px-2 py-0 rounded-md"
+         role="menuitem">
+        Servicios
+      </a>
+
+      <button id="mobile-services-toggle"
+              class="-ml-[9px] p-2 rounded-md text-gray-300 hover:text-white
+                     min-w-[36px] min-h-[36px] flex items-center justify-center"
+              aria-label="Desplegar Servicios" aria-expanded="false" aria-controls="mobile-services-panel">
+        <i id="mobile-services-chevron" data-lucide="chevron-down"
+           class="w-6 h-6 opacity-80 transition-transform translate-y-px"></i>
       </button>
     </div>
 
-    <!-- Menú móvil -->
-    <div id="mobile-menu" class="md:hidden hidden border-t border-white/10 bg-gray-900">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3 text-sm">
-        <a href="/servicios/" class="text-gray-300 hover:text-white">Servicios</a>
-        <a href="/proyectos/" class="text-gray-300 hover:text-white">Proyectos</a>
-        <a href="/apps/" class="text-gray-300 hover:text-white">Demos</a>
-        <a href="/blog/" class="text-gray-300 hover:text-white">Blog</a>
-        <a href="/acerca/" class="text-gray-300 hover:text-white">Acerca</a>
-        <a href="/contacto/" class="text-white inline-flex items-center gap-2 rounded-full bg-[var(--primary-color)] px-3 py-2 mt-2">Agenda 15 min</a>
-      </div>
+    <div id="mobile-services-panel"
+         class="overflow-hidden max-h-0 transition-[max-height] duration-200 ease-in-out">
+     
+      <a href="/software-a-medida/" role="menuitem" class="block text-gray-300 hover:text-white px-3 py-1 rounded-md pl-7">Software a medida</a>
+      <a href="/integraciones-api/" role="menuitem" class="block text-gray-300 hover:text-white px-3 py-1 rounded-md pl-7">Integraciones API</a>
+      <a href="/automatizacion-procesos-ia/" role="menuitem" class="block text-gray-300 hover:text-white px-3 py-1 rounded-md pl-7">Automatización con IA</a>
+      <a href="/erp-crm-medida/" role="menuitem" class="block text-gray-300 hover:text-white px-3 py-1 rounded-md pl-7">ERP/CRM a medida</a>
     </div>
-  </header>
 
-  <!-- Mantengo tu contenedor de main -->
-  <main class="mx-auto max-w-6xl px-4 py-10">
+    <!-- Resto de enlaces 
+    <a href="/proyectos/" class="block text-gray-300 hover:text-white px-3 py-1 rounded-md" role="menuitem">Proyectos</a>
+    <a href="/apps/" class="block text-gray-300 hover:text-white px-3 py-1 rounded-md" role="menuitem">Demos</a>
+    <a href="/zona/" class="block text-gray-300 hover:text-white px-3 py-1 rounded-md" role="menuitem">Zona</a>-->
+    <a href="/sobre-mi/" class="block text-gray-300 hover:text-white px-3 py-1 rounded-md font-bold" role="menuitem">Sobre mí</a>
+    <a href="/contacto/" class="inline-flex items-center justify-center self-center text-white bg-[var(--primary-color)] hover:opacity-90 px-4 py-2 mt-0.5 rounded-full font-bold" role="menuitem">
+      Agenda diagnóstico
+    </a>
+  </div>
+</div>
+
+
+
+</header>
+
+
+  <!-- MAIN -->
+  <main id="main" class="mx-auto max-w-6xl px-4 py-10" role="main">
     {% block content %}{% endblock %}
   </main>
 
- <footer class="mt-10 bg-gray-900 text-gray-400">
-  <!-- Contenido centrado -->
-  <div class="max-w-7xl mx-auto px-6 grid gap-6 md:grid-cols-3 py-10 place-items-center text-center">
-    <div>
-      <a href="/" class="text-2xl font-bold tracking-tight text-white">
-        mi<span class="text-[var(--primary-color)]">web</span>
-      </a>
-      <p class="mt-3 text-sm">Especialistas en IA aplicada y desarrollo de apps web a medida.</p>
-    </div>
+  <!-- FOOTER -->
+  <footer class="mt-10 bg-gray-900 text-gray-400" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-6 grid gap-6 md:grid-cols-3 py-10 place-items-center text-center">
+      <div>
+        <a href="/" class="text-2xl font-bold tracking-tight text-white">
+          mi<span class="text-[var(--primary-color)]">web</span>
+        </a>
+        <p class="mt-3 text-sm">Especialistas en IA aplicada y desarrollo de apps web a medida.</p>
+      </div>
 
-    <div>
-      <h4 class="text-white font-semibold mb-3">Contacto</h4>
-      <ul class="space-y-2 text-sm">
-        <li>Tel: <a class="hover:text-[var(--primary-color)]" href="tel:+34123456789">+34 123 456 789</a></li>
-        <li>Email: <a class="hover:text-[var(--primary-color)]" href="mailto:info@miweb.com">info@miweb.com</a></li>
-      </ul>
-    </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Contacto</h4>
+        <ul class="space-y-2 text-sm">
+          <li>Tel: <a class="hover:text-[var(--primary-color)]" href="tel:+34123456789">+34 123 456 789</a></li>
+          <li>Email: <a class="hover:text-[var(--primary-color)]" href="mailto:info@miweb.com">info@miweb.com</a></li>
+        </ul>
+      </div>
 
-    <div>
-      <h4 class="text-white font-semibold mb-3">Síguenos</h4>
-      <div class="flex gap-3 text-gray-300 justify-center">
-        <i data-lucide="linkedin"></i>
-        <i data-lucide="github"></i>
-        <i data-lucide="twitter"></i>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Síguenos</h4>
+        <div class="flex gap-3 text-gray-300 justify-center" aria-label="Redes sociales">
+          <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+          <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+          <a href="#" aria-label="Twitter/X"><i data-lucide="twitter"></i></a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Fila legal centrada -->
-  <div class="border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-6 py-4 text-xs text-gray-500
-                flex flex-col items-center gap-2 md:flex-row md:gap-4 md:justify-center">
-      <span>© {{ now|default:"2025" }} mi web. Todos los derechos reservados.</span>
-      <nav class="flex gap-4">
-        <a href="/legal/privacidad/" class="hover:text-white">Privacidad</a>
-        <a href="/legal/terminos/" class="hover:text-white">Términos</a>
-        <a href="/legal/cookies/" class="hover:text-white">Cookies</a>
-      </nav>
+    <div class="border-t border-white/10">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 text-xs text-gray-500 flex flex-col items-center gap-2 md:flex-row md:gap-4 md:justify-center">
+        <span>© {{ now|default:"2025" }} Todos los derechos reservados.</span>
+        <nav class="flex gap-4" aria-label="Legal">
+          <a href="/legal/privacidad/" class="hover:text-white">Privacidad</a>
+          <a href="/legal/terminos/" class="hover:text-white">Términos</a>
+          <a href="/legal/cookies/" class="hover:text-white">Cookies</a>
+        </nav>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
 
   {% block extra_js %}{% endblock %}
 
-  <script>
-    lucide.createIcons();
-    const mobileBtn = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileBtn?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
-  </script>
+  <script src="{% static 'js/base.js' %}"></script>
+  <script src="{% static 'js/ui.core.js' %}"></script>
+<script src="{% static 'js/hero.particles.js' %}"></script>
+<script src="{% static 'js/effects.tilt.js' %}"></script>
+<script src="{% static 'js/apps.gallery.js' %}"></script>
+<script src="{% static 'js/boot.init.js' %}"></script>
+
 </body>
+
 </html>

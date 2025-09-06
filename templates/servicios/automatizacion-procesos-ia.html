@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# ───────── SEO ───────── #}
+{% block title %}Servicios de RPA para PyMEs: automatiza procesos, ahorra costes y mantiene el trato humano{% endblock %}
+{% block meta_description %}Automatizo solo donde tiene sentido de negocio. IA y robots que ayudan sin sustituir el trato humano. Beneficios claros: menos tiempo, menos errores, más foco y datos bajo control.{% endblock %}
+{% block canonical %}<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}/servicios/automatizacion-procesos-ia/">{% endblock %}
+
+{# OG/Twitter #}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_title %}RPA e IA para PyMEs — automatiza con cabeza{% endblock %}
+{% block og_description %}Automatizo donde hay retorno: horas y costes recortados, con trazabilidad y revisión humana cuando aporta.{% endblock %}
+{% block og_image %}https://hectorherrerafullstack.com/static/img/og-default.jpg{% endblock %}
+{% block twitter_title %}Automatización con IA (RPA) · PyMEs{% endblock %}
+{% block twitter_description %}Procesos que se ejecutan solos donde tiene sentido. Integración con ERP/CRM y RGPD por diseño.{% endblock %}
+{% block twitter_image %}https://hectorherrerafullstack.com/static/img/og-default.jpg{% endblock %}
+
+{# ───────── JSON-LD ───────── #}
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Service",
+  "name":"Servicios de RPA para PyMEs",
+  "serviceType":"RPA e IA aplicada",
+  "url":"{{ request.scheme }}://{{ request.get_host }}/servicios/automatizacion-procesos-ia/",
+  "description":"Automatizo solo donde hay ROI: menos horas, menos errores y más foco. Trazabilidad, anonimización y revisión humana.",
+  "provider":{"@type":"Person","name":"Héctor Herrera","url":"https://hectorherrerafullstack.com/"},
+  "areaServed":{"@type":"Country","name":"España"},
+  "audience":{"@type":"BusinessAudience","businessAudienceType":"PYME"},
+  "offers":{"@type":"Offer","priceCurrency":"EUR","availability":"https://schema.org/InStock"}
+}
+</script>
+{% endblock %}
+
+{# ───────── CONTENIDO ───────── #}
+{% block content %}
+
+<!-- HERO (centrado, CTAs calcadas) -->
+<section class="hero-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] -mt-10">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-content w-full px-6">
+    <div class="max-w-6xl mx-auto py-10 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+        Servicios de RPA para PyMEs: automatiza procesos, ahorra costes y mantiene el trato humano
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-gray-300/90 max-w-3xl mx-auto">
+        Automatizo solo donde tiene sentido de negocio: si recortas horas y gasto, lo hacemos; si no, te lo digo claro.
+        No sustituyo el trato directo con tus clientes: la IA y los robots ayudan, no venden por ti.
+      </p>
+      <div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href="/apps/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+          <i data-lucide="sparkles" class="mr-2 w-4 h-4"></i> Probar demos
+        </a>
+        <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+          <i data-lucide="calendar" class="mr-2 w-4 h-4"></i> Agenda 15’ — diagnóstico sin coste
+        </a>
+      </div>
+      <p class="mt-5 text-xs sm:text-sm text-white/70">Regla: si no mejora <strong>tiempo</strong>, <strong>coste</strong> o <strong>margen</strong>, no se automatiza.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS (centrado, sin emojis) -->
+<section class="apps-section py-14" id="beneficios">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Beneficios que verás</h2>
+    <ul class="mx-auto max-w-3xl text-gray-300/90 space-y-2 list-disc list-inside">
+      <li>Menos tiempo en tareas repetitivas (back-office, documentos, conciliaciones).</li>
+      <li>Coste por operación más bajo y con menos errores.</li>
+      <li>Prioridad en lo que importa: leads y tareas con impacto.</li>
+      <li>Datos bajo control: trazabilidad, anonimización y RGPD.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 1) Resultados en 60″ -->
+<section class="services-section py-14" id="resultados">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">1) Resultados en 60″: lo que automatizamos y lo que ganas</h2>
+    <p class="text-gray-300/90 mb-4 max-w-3xl mx-auto">
+      En mi trabajo diario, la IA y RPA entran solo donde el cliente gana tiempo o reduce gasto. No hago “automatizaciones por moda”.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 text-left">
+      <article class="app-card p-6">
+        <ul class="text-gray-300/90 space-y-2 list-disc list-inside">
+          <li><strong>Documentos y facturas</strong>: extracción de datos (IDP), validación y asiento en ERP, con revisión humana ligera.</li>
+          <li><strong>Pedidos y albaranes</strong>: lectura, cotejo, alta y confirmación.</li>
+          <li><strong>Back-office</strong>: conciliaciones, partes de trabajo, actualización de CRM.</li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <ul class="text-gray-300/90 space-y-2 list-disc list-inside">
+          <li><strong>Lead scoring</strong>: la IA clasifica y prioriza oportunidades; el trato humano cierra.</li>
+          <li><strong>Prioridad de tareas</strong>: triage inteligente para que el equipo no se atasque.</li>
+        </ul>
+      </article>
+    </div>
+    <p class="text-gray-300/85 mt-4 max-w-3xl mx-auto">
+      <strong>Qué ganas</strong>: menos horas quemadas, menor tasa de error, más foco comercial. Cuando incorporo scoring a la entrada de leads,
+      el equipo deja de “picar” plantillas y pasa a llamar antes a los contactos con mayor probabilidad.
+    </p>
+  </div>
+</section>
+
+<!-- 2) ¿Por qué conmigo? -->
+<section class="apps-section py-14" id="porque">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">2) ¿Por qué conmigo? Personalización real y datos bajo control</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 text-left">
+      <article class="app-card p-6">
+        <ul class="text-gray-300/90 space-y-2 list-disc list-inside">
+          <li><strong>Automatización que desatasca atascos</strong>: detectamos cuellos de botella concretos y los resolvemos.</li>
+          <li><strong>No sustituyo el trato humano</strong>: la IA apoya, tú personalizas.</li>
+          <li><strong>Privacidad por diseño</strong>: trazabilidad y anonimización para que ningún dato sensible termine en terceros sin control.</li>
+          <li><strong>Anti-“delirios”</strong>: la IA se valida; si un output no es fiable, el robot no sigue y salta a revisión.</li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <p class="text-gray-300/90">
+          Esta mezcla de <strong>personalización + gobernanza de datos</strong> hace que el robot trabaje y el negocio avance más rápido.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 3) Cómo trabajamos -->
+<section class="services-section py-16" id="proceso">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">3) Cómo trabajamos: trazabilidad, anonimización y revisión humana (cuando aporta)</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-6 md:gap-7 text-left">
+      <article class="step-card p-5"><span class="badge">1</span><h3 class="text-base font-semibold text-white mt-6">Descubrimiento (1–2 semanas)</h3><p class="text-gray-300/90">Mapeo de procesos y “quick wins”. Si no veo retorno, te lo diré.</p></article>
+      <article class="step-card p-5"><span class="badge">2</span><h3 class="text-base font-semibold text-white mt-6">Diseño</h3><p class="text-gray-300/90">Definimos entradas/salidas, reglas y puntos de verificación humana.</p></article>
+      <article class="step-card p-5"><span class="badge">3</span><h3 class="text-base font-semibold text-white mt-6">Datos</h3><p class="text-gray-300/90">Inventario, trazabilidad y anonimización; control de acceso y logs.</p></article>
+      <article class="step-card p-5"><span class="badge">4</span><h3 class="text-base font-semibold text-white mt-6">Construcción</h3><p class="text-gray-300/90">RPA + IA cuando conviene: bots que leen documentos, consultan sistemas y ejecutan acciones.</p></article>
+      <article class="step-card p-5"><span class="badge">5</span><h3 class="text-base font-semibold text-white mt-6">Validación</h3><p class="text-gray-300/90">Umbrales de confianza anti-alucinaciones; si la IA no está segura, no decide.</p></article>
+      <article class="step-card p-5"><span class="badge">6</span><h3 class="text-base font-semibold text-white mt-6">Piloto supervisado</h3><p class="text-gray-300/90">Medimos tiempo de ciclo, coste por operación y tasa de error.</p></article>
+      <article class="step-card p-5"><span class="badge">7</span><h3 class="text-base font-semibold text-white mt-6">Despliegue y orquestación</h3><p class="text-gray-300/90">Monitorización, alertas y mejora continua.</p></article>
+    </div>
+    <p class="text-gray-300/85 mt-4 max-w-3xl mx-auto"><strong>Regla mía</strong>: “no cuento con los delirios”. Prefiero perder una automatización marginal que arriesgar datos o decisiones.</p>
+  </div>
+</section>
+
+<!-- 4) Casos rápidos (4–6 semanas) -->
+<section class="apps-section py-14" id="casos-rapidos">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">4) Casos rápidos (4–6 semanas): lead scoring, back-office y documentos</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 text-left">
+      <article class="app-card p-6">
+        <ul class="text-gray-300/90 space-y-2 list-disc list-inside">
+          <li><strong>Lead scoring que prioriza ventas</strong>: la IA etiqueta y el bot empuja a CRM; tú decides a quién llamas primero. Resultado típico: comerciales con más tiempo en lo que suma.</li>
+          <li><strong>Back-office sin atascos</strong>: altas, conciliaciones y partes de trabajo cargados sin teclear tres veces lo mismo.</li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <ul class="text-gray-300/90 space-y-2 list-disc list-inside">
+          <li><strong>Facturas y pedidos</strong>: lectura, validación y contabilización; revisión humana cuando algo no cuadra.</li>
+          <li><strong>Atención asistida (no invasiva)</strong>: asistentes internos que no reemplazan tu relación con el cliente final.</li>
+        </ul>
+      </article>
+    </div>
+    <p class="text-gray-300/85 mt-4 max-w-3xl mx-auto">Cuando integro esto junto al profesional, el cambio se nota en semanas: menos tickets en cola, más horas en tareas de valor y ni rastro de correos-plantilla.</p>
+  </div>
+</section>
+
+<!-- 5) Roadmap y KPIs -->
+<section class="services-section py-14" id="roadmap">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">5) Roadmap y KPIs: de piloto a escalado (sin “delirios”)</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 text-left">
+      <article class="step-card p-6"><span class="badge">Sem. 1–2</span><h3 class="text-base font-semibold text-white mt-6">Descubrimiento + KPIs</h3><p class="text-gray-300/90">Tiempo de ciclo, coste/operación, tasa de error, conversión de lead.</p></article>
+      <article class="step-card p-6"><span class="badge">Sem. 3–4</span><h3 class="text-base font-semibold text-white mt-6">Piloto</h3><p class="text-gray-300/90">Con revisión humana y umbrales de confianza para la IA.</p></article>
+      <article class="step-card p-6"><span class="badge">Sem. 5–6</span><h3 class="text-base font-semibold text-white mt-6">Ajustes y formación</h3><p class="text-gray-300/90">Documentación y equipo listo.</p></article>
+    </div>
+    <p class="text-gray-300/85 mt-4 max-w-3xl mx-auto"><strong>Mes 2</strong>: escalar a procesos vecinos; orquestación y gobernanza. El éxito se mide en horas liberadas, errores evitados y conversión. Si un bloque falla por baja confianza, hay trazabilidad para corregir y mejorar.</p>
+  </div>
+</section>
+
+<!-- 6) Planes y precios orientativos -->
+<section class="apps-section py-14" id="precios">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">6) Planes y precios orientativos</h2>
+    <p class="text-gray-300/85 text-center">Los precios dependen del proceso, herramientas y sistemas. Esto es una guía para decidir.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 mt-6 text-left">
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">Piloto</h3>
+        <p class="text-gray-300/90">Para 1 proceso acotado</p>
+        <ul class="text-gray-300/90 list-disc list-inside mt-2">
+          <li>Descubrimiento, diseño</li>
+          <li>Bot + IA si aplica</li>
+          <li>Validación y 2 semanas de soporte</li>
+        </ul>
+        <p class="text-white font-semibold mt-3">Desde 1.900 €</p>
+      </article>
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">Escala PyME</h3>
+        <p class="text-gray-300/90">Para 2–3 procesos conectados</p>
+        <ul class="text-gray-300/90 list-disc list-inside mt-2">
+          <li>Orquestación y monitoreo</li>
+          <li>Revisión humana</li>
+          <li>Formación de equipo</li>
+        </ul>
+        <p class="text-white font-semibold mt-3">Desde 4.900 €</p>
+      </article>
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">A medida</h3>
+        <p class="text-gray-300/90">Para procesos críticos</p>
+        <ul class="text-gray-300/90 list-disc list-inside mt-2">
+          <li>Integraciones avanzadas</li>
+          <li>Compliance reforzado</li>
+          <li>SLO y mantenimiento</li>
+        </ul>
+        <p class="text-white font-semibold mt-3">A consultar</p>
+      </article>
+    </div>
+    <p class="text-gray-300/75 text-center mt-3 text-sm">*Orientativo para referencia rápida. El presupuesto se cierra tras el pre-diagnóstico.</p>
+  </div>
+</section>
+
+<!-- 7) FAQ -->
+<section id="faq" class="services-section py-14">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">7) Preguntas frecuentes (FAQ)</h2>
+    <div class="faq-accordion max-w-3xl mx-auto mt-6 text-left">
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Qué proceso automatizo primero?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">El que combina volumen, reglas claras y impacto en coste/tiempo. Empezamos por un “quick win” para ver ROI pronto.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Vas a sustituir mi atención al cliente?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">No. Lo he dicho siempre: no sustituyo el trato humano. La IA prioriza, propone y documenta; tú personalizas y decides.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Compartirás mis datos con terceros?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">No sin control. Trabajo con trazabilidad, anonimización y RGPD. Definimos dónde residen datos y quién accede.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Qué pasa con las alucinaciones de la IA?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">No las doy por buenas. Uso umbral de confianza, grounding con tus datos y revisión humana cuando toca.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Herramientas?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">RPA + IA en función de tu stack. No me caso con marcas: no uso genéricos que no rindan en negocio.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Mantenimiento?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Incluye monitorización, actualización y mejoras según métricas.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL (centrado) + Conclusión -->
+<section class="services-section py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="text-gray-300/90 max-w-3xl mx-auto mb-4">
+      Si te encaja este enfoque y quieres explorar si aplica a tu caso, podemos preparar un pre-diagnóstico breve sin compromiso.
+    </p>
+    <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+      <i data-lucide="calendar" class="mr-2 w-4 h-4" aria-hidden="true"></i> Agenda 15’ — diagnóstico sin coste
+    </a>
+  </div>
+</section>
+
+{% endblock %}
+
+{# ───────── JS ───────── #}
+{% block extra_js %}
+<script defer src="{% static 'js/ui.core.js' %}"></script>
+<script defer src="{% static 'js/hero.particles.js' %}"></script>
+<script defer src="{% static 'js/effects.tilt.js' %}"></script>
+<script defer src="{% static 'js/apps.gallery.js' %}"></script>
+<script defer src="{% static 'js/boot.init.js' %}"></script>
+{% endblock %}

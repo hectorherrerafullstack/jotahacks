@@ -1,899 +1,590 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load static %}
 
-{% block title %}mi web | Convierto tus datos en decisiones.{% endblock %}
-{% block meta_description %}Implemento IA en tus procesos con apps web a medida. Prueba demos y agenda una evaluación de
-15 min.{% endblock %}
+{% block title %}Desarrollador full stack freelance en España | Software y apps a medida con IA{% endblock %}
+{% block meta_description %}Programador freelance en España. Desarrollo de software y aplicaciones a medida, automatización con IA (chatbots, OCR, rutas, dashboards) e integraciones API para PYMEs. MVP en semanas, sin proyectos eternos.{% endblock %}
+
+{% block canonical %}<link rel="canonical" href="https://hectorherrerafullstack.com/">{% endblock %}
+
+{% block og_url %}https://hectorherrerafullstack.com/{% endblock %}
+{% block og_title %}Desarrollador full stack freelance en España | Software a medida con IA{% endblock %}
+{% block og_description %}Soluciones a medida para PYMEs en España: automatización con IA, integraciones API y cuadros de mando. Primera versión útil en semanas.{% endblock %}
+{% block og_image %}https://hectorherrerafullstack.com/static/img/og-ia-vinaros.jpg{% endblock %}
+
+{% block twitter_title %}Programador full stack freelance en España{% endblock %}
+{% block twitter_description %}Software y aplicaciones a medida con IA para PYMEs en toda España. MVP en semanas, enfoque a resultados.{% endblock %}
+{% block twitter_image %}https://hectorherrerafullstack.com/static/img/og-ia-vinaros.jpg{% endblock %}
 
 {% block extra_head %}
-<link
-  href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;600;700&display=swap"
-  rel="stylesheet" />
-<script src="https://unpkg.com/lucide@latest"></script>
-<style>
- /* =============================
-   Variables y tipografía base
-   ============================= */
-:root {
-  --primary-color: #4f46e5; /* indigo-600 */
-  --secondary-color: #ec4899; /* pink-500 */
-  --dark-bg: #0b1020;        /* alto contraste */
-  --grid-color: rgba(255, 255, 255, .06);
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.lucide && lucide.createIcons) lucide.createIcons();
+  });
+</script>
+
+<!-- Organization / ProfessionalService (enfoque nacional) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://hectorherrerafullstack.com/#service",
+  "name": "Héctor Herrera — Desarrollador full stack freelance",
+  "url": "https://hectorherrerafullstack.com/",
+  "image": "https://hectorherrerafullstack.com/static/img/og-ia-vinaros.jpg",
+  "logo": "https://hectorherrerafullstack.com/static/img/logo.svg",
+  "description": "Desarrollo de software a medida y automatización con IA (chatbots, OCR, rutas) e integraciones API para PYMEs en España. MVP en semanas.",
+  "telephone": "+34 600 000 000",
+  "priceRange": "€€",
+  "areaServed": { "@type": "Country", "name": "España" },
+  "knowsLanguage": ["es-ES","ca-ES"],
+  "sameAs": [
+    "https://www.linkedin.com/in/tu-perfil/",
+    "https://github.com/tu-usuario"
+  ],
+  "knowsAbout": ["Django","Python","RAG","Optimización de rutas","OCR","Dashboards","Integraciones API","Automatización de procesos con IA"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios",
+    "itemListElement": [
+      { "@type": "Offer", "name": "Software a medida", "itemOffered": { "@type": "Service", "serviceType": "Aplicaciones web y herramientas internas" } },
+      { "@type": "Offer", "name": "Automatización con IA", "itemOffered": { "@type": "Service", "serviceType": "Chatbots, OCR, rutas, clasificación por imagen" } },
+      { "@type": "Offer", "name": "Integraciones API / ERP-CRM", "itemOffered": { "@type": "Service", "serviceType": "TPV/ERP/CRM, WhatsApp Business, Stripe, Google Sheets" } },
+      { "@type": "Offer", "name": "Mantenimiento y evolución", "itemOffered": { "@type": "Service", "serviceType": "Soporte, actualizaciones y mejoras continuas" } }
+    ]
+  }
 }
+</script>
 
-body{
-  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial;
-  color:#374151;background:var(--dark-bg)
+<!-- FAQPage -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Necesito muchos datos para empezar?","acceptedAnswer":{"@type":"Answer","text":"No. Empezamos con lo que ya tienes (TPV, Excel, agendas). Si falta algo, lo capturamos sin fricción."}},
+    {"@type":"Question","name":"¿Se integra con mis sistemas actuales?","acceptedAnswer":{"@type":"Answer","text":"Sí: TPV/ERP/CRM o, de momento, hojas de cálculo. Lo importante es validar valor rápido."}},
+    {"@type":"Question","name":"¿La IA es cara para una pyme?","acceptedAnswer":{"@type":"Answer","text":"Solo la aplico donde aporta. Empezamos pequeño, medimos retorno y escalamos con criterio."}},
+    {"@type":"Question","name":"¿Puedo empezar con un piloto barato?","acceptedAnswer":{"@type":"Answer","text":"Sí, un MVP para demostrar impacto en semanas."}}
+  ]
 }
-h1,h2,h3,h4,h5{
-  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial
+</script>
+
+<!-- BreadcrumbList (global) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://hectorherrerafullstack.com/"},
+    {"@type":"ListItem","position":2,"name":"Home"}
+  ]
 }
-
-/* =============================
-   HERO (mobile-first, compacto)
-   ============================= */
-.hero-section{
-  position:relative;overflow:hidden;
-  min-height:62vh;           /* ↓ antes 86vh */
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;background:var(--dark-bg)
-}
-@media (min-width:640px){ .hero-section{ min-height:78vh; } }  /* sm */
-@media (min-width:1024px){ .hero-section{ min-height:86vh; } } /* lg+ */
-
-.hero-section:after{
-  content:"";position:absolute;inset:0;
-  background-image:
-    linear-gradient(var(--grid-color) 1px,transparent 1px),
-    linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
-  background-size:24px 24px,24px 24px;pointer-events:none;z-index:6
-}
-
-#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:5}
-.hero-content{position:relative;z-index:20}
-
-/* Capa oscura por encima del canvas y la rejilla */
-.hero-section::before{
-  content:"";
-  position:absolute; inset:0;
-  /* radial + ligera caída vertical */
-  background:
-    radial-gradient(120% 80% at 50% 18%, rgba(0,0,0,.55) 0%, rgba(0,0,0,.28) 45%, rgba(0,0,0,.60) 100%),
-    linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,0) 30%, rgba(0,0,0,.35));
-  z-index: 7; /* canvas=5, grid(:after)=6, overlay=7, content=20 */
-}
-
-/* Sombra de texto discreta en los elementos clave del hero */
-.hero-kicker,
-.hero-title,
-.hero-lead{
-  text-shadow:
-    0 1px 2px rgba(0,0,0,.55),
-    0 4px 16px rgba(0,0,0,.35);
-}
-.hero-title{ text-wrap: balance; }
-
-/* =============================
-   Botones / CTAs
-   ============================= */
-.cta-btn{
-  position:relative;padding:.875rem 1.5rem;border-radius:9999px;font-weight:700;
-  transition:transform .2s ease, box-shadow .2s ease
-}
-.cta-primary{background:var(--primary-color);color:#fff;box-shadow:0 10px 30px rgba(79,70,229,.35)}
-.cta-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(79,70,229,.5)}
-
-/* =============================
-   Servicios (glass cards)
-   ============================= */
-.services-section{position:relative;color:#e5e7eb;background:var(--dark-bg)}
-.services-section:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;display:none}
-
-.svc-card{
-  position:relative;border-radius:18px;border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.04);backdrop-filter:blur(6px);
-  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;overflow:hidden;
-  --sheen-alpha:.16;--gx:50%;--gy:38%
-}
-.svc-card:hover{box-shadow:0 20px 50px rgba(79,70,229,.25);border-color:rgba(79,70,229,.35)}
-.svc-card::after{
-  content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;mix-blend-mode:screen;
-  opacity:var(--sheen-alpha);transition:opacity .25s ease, background-position .25s ease;
-  background:radial-gradient(140% 180% at var(--gx) var(--gy), rgba(255,255,255,.14), rgba(255,255,255,0.06) 28%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0) 68%);
-  background-repeat:no-repeat;background-size:150% 150%;
-}
-.svc-icon{width:54px;height:54px;display:grid;place-items:center;border-radius:14px;background:var(--grid-color);border:1px solid rgba(255,255,255,.14)}
-.svc-icon i{width:24px;height:24px}
-.chip{border:1px solid rgba(255,255,255,.18);border-radius:9999px;padding:.35rem .7rem;font-size:.8rem;backdrop-filter:blur(6px);color:#d1d5db}
-
-/* =============================
-   Clientes / Trust (logos)
-   ============================= */
-.brands-section{position:relative;color:#e5e7eb;background:var(--dark-bg);padding:4rem 0}
-.brands-sub{color:#a5b4fc;letter-spacing:.2em;text-transform:uppercase;font-size:.75rem}
-.brands-grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:1rem;justify-items:center}
-@media(min-width:640px){.brands-grid{grid-template-columns:repeat(1,minmax(0,1fr));}}
-@media(min-width:768px){.brands-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
-@media(min-width:1024px){.brands-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
-.brand{
-  display:flex;align-items:center;justify-content:center;width:100%;height:72px;margin-bottom:.75rem;border-radius:14px;
-  border:1px solid var(--grid-color);background:rgba(255,255,255,.03);filter:grayscale(100%);opacity:.85;
-  transition:filter .25s ease, opacity .25s ease, transform .2s ease, border-color .2s ease
-}
-.brand:hover{filter:none;opacity:1;transform:translateY(-2px);border-color:rgba(255,255,255,.16)}
-.brand-item{width:100%;max-width:22rem;text-align:center}
-.brand-title{font-weight:600;color:#fff;margin-bottom:.25rem}
-.brand-desc{font-size:.9rem;color:#cbd5e1;opacity:.9}
-.brand{width:100%;}
-
-/* =============================
-   Apps / Demos (glass cards)
-   ============================= */
-.apps-section{position:relative;color:#e5e7eb;background:var(--dark-bg);padding:6rem 0}
-.apps-section:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;display:none}
-
-.toolbar{position:sticky;top:64px;z-index:30;background:rgba(10,15,31,.7);backdrop-filter:blur(8px);border:1px solid var(--grid-color);border-radius:16px}
-.filter-btn{border:1px solid rgba(255,255,255,.16);border-radius:9999px;padding:.45rem .9rem;font-size:.85rem;color:#cbd5e1;background:rgba(255,255,255,.04)}
-.filter-btn.active{border-color:rgba(79,70,229,.65);color:#fff;background:rgba(79,70,229,.15)}
-
-.app-card{
-  position:relative;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);
-  backdrop-filter:blur(6px);transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;overflow:hidden
-}
-.app-card:hover{box-shadow:0 18px 45px rgba(79,70,229,.25);border-color:rgba(79,70,229,.35)}
-
-.app-media{aspect-ratio:16/9;background:#111827;border:1px solid var(--grid-color);border-radius:12px}
-.badge{position:absolute;top:12px;left:12px;border-radius:9999px;padding:.25rem .55rem;font-size:.72rem;background:#111827;border:1px solid rgba(255,255,255,.18);color:#e5e7eb}
-.tag{border:1px solid rgba(255,255,255,.18);border-radius:9999px;padding:.25rem .55rem;font-size:.72rem;color:#d1d5db}
-
-/* =============================
-   Ratings / Testimonios (base)
-   ============================= */
-.rating-wrap{border-top:1px solid rgba(255,255,255,.08);margin-top:.75rem;padding-top:.75rem}
-.stars{display:flex;gap:4px}
-.star{width:18px;height:18px;color:#9ca3af;cursor:pointer;transition:transform .15s ease}
-.star.filled{color:#fbbf24}
-.star:hover{transform:scale(1.05)}
-.testimonial{font-size:.82rem;color:#cbd5e1;opacity:.85;margin-top:.5rem}
-
-/* =============================
-   SOCIAL PROOF / TESTIMONIOS
-   ============================= */
-.testimonials-section{position:relative;color:#e5e7eb;background:var(--dark-bg)}
-
-/* Tarjeta de review con mismo lenguaje visual (glass + brillo) */
-.review-card{
-  position:relative;border-radius:18px;border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.04);backdrop-filter:blur(6px);
-  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;overflow:hidden
-}
-.review-card:hover{box-shadow:0 20px 50px rgba(79,70,229,.25);border-color:rgba(79,70,229,.35)}
-.review-card::after{
-  content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;mix-blend-mode:screen;
-  opacity:.16;transition:opacity .25s ease, background-position .25s ease;
-  background:radial-gradient(140% 180% at 50% 38%, rgba(255,255,255,.14), rgba(255,255,255,.06) 28%, rgba(255,255,255,.02) 50%, rgba(255,255,255,0) 68%);
-  background-repeat:no-repeat;background-size:150% 150%
-}
-
-/* Avatar circular con iniciales */
-.avatar{
-  width:40px;height:40px;border-radius:9999px;display:inline-flex;align-items:center;justify-content:center;
-  background:#111827;border:1px solid rgba(255,255,255,.12);color:#e5e7eb;font-weight:700
-}
-
-/* =============================
-   Accesibilidad / rendimiento
-   ============================= */
-@media (prefers-reduced-motion:reduce){
-  .svc-card,.app-card,.cta-btn,.review-card{transition:none}
-}
-
-</style>
+</script>
 {% endblock %}
 
 {% block content %}
 
-<!-- HERO -->
+<!-- HERO: enfoque nacional -->
 <section class="hero-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] -mt-10">
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
   <div class="hero-content w-full px-6">
-    <div class="max-w-5xl mx-auto pt-6 sm:pt-8 md:pt-10 text-center">
-      <p class="hero-kicker text-sm sm:text-base md:text-lg text-gray-300/90 mb-3">
-        IA aplicada a negocio — sin humo, con impacto.
-      </p>
-
-      <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-4">
-        Convierto tus <span class="text-indigo-300">datos</span> en decisiones.
+    <div class="max-w-5xl mx-auto pt-8 sm:pt-10 md:pt-12 text-center">
+    
+      <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.1] mb-3">
+        Software a medida con <span class="text-indigo-300">IA aplicada</span> para que tu pyme gane horas, control y margen
       </h1>
-
-      <p class="hero-lead text-lg sm:text-xl text-gray-300/90 mb-6">
-        Diseño apps a medida con IA: RAG, ETL inteligente y automatización que recorta tiempos y costes.
+      <p class="hero-lead text-base sm:text-lg text-gray-300/90 mb-6">
+        ¿Tu operación vive entre Excels, WhatsApps y copias pegadas? Construyo <strong>aplicaciones a medida</strong> e
+        <strong>integro IA</strong> en procesos clave para eliminar tareas repetitivas, reducir errores y decidir con datos.
+        Primera versión útil en semanas, no meses.
       </p>
-
-      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
-        <a href="#contacto" class="cta-btn cta-primary inline-flex items-center justify-center
-            w-auto self-center h-12 px-5 rounded-full
-            font-semibold text-base shadow-lg shadow-indigo-600/20
-            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500/40">
-          <span class="sm:hidden leading-none">Agenda 15 min</span>
-          <span class="hidden sm:inline leading-none">Agenda una evaluación de 15 min</span>
+      <div class="flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-center">
+        <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center justify-center h-12 px-5 rounded-full font-semibold text-base">
+          <i data-lucide="calendar" class="mr-2 w-5 h-5" aria-hidden="true"></i> Hablemos de tu caso (15 min)
         </a>
-
-        <a href="#servicios" class="cta-btn cta-primary inline-flex items-center justify-center
-            w-auto self-center h-12 px-5 rounded-full
-            font-semibold text-base shadow-lg shadow-indigo-600/20
-            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500/40">
-          <span class="leading-none">Ver servicios</span>
+        <a href="#proyectos" class="cta-btn cta-primary inline-flex items-center justify-center h-12 px-5 rounded-full font-semibold text-base">
+          <i data-lucide="list-checks" class="mr-2 w-5 h-5" aria-hidden="true"></i> Ver soluciones reales
         </a>
       </div>
-
-
-      <p class="mt-6 text-sm text-white/60">
-        ¿Necesitas <span id="typing-text" class="text-white/80 font-semibold"></span>
+      <p class="mt-5 text-xs sm:text-sm text-white/70">
+        Regla de oro: <strong>si no te ahorra tiempo o da más margen, no se desarrolla</strong>.
       </p>
     </div>
   </div>
 </section>
-
-<!-- SERVICIOS -->
-<section id="servicios" class="services-section py-24">
-  <div class="relative z-10 max-w-7xl mx-auto px-6">
-    <div class="text-center mb-14">
-      <p class="text-sm uppercase tracking-[0.2em] text-indigo-300/80 mb-2">Qué hacemos</p>
-      <h2 class="text-3xl sm:text-4xl font-bold text-white">Servicios que convierten IA en <span
-          class="text-indigo-300">impacto</span></h2>
-      <p class="mt-3 text-gray-300/85 max-w-2xl mx-auto">Arquitectura, automatización y modelos conversacionales que
-        aceleran tus decisiones. Sin humo, con entregables reales.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7">
-      <article class="svc-card p-6 group">
-        <div class="svc-icon mb-4"><i data-lucide="database"></i></div>
-        <h3 class="text-xl font-semibold text-white mb-2">Arquitectura de Datos Inteligente</h3>
-        <p class="text-gray-300/90 mb-4">Del caos a un <em>data layer</em> listo para IA: normalización, catálogos y
-          gobernanza.</p>
-        <ul class="text-sm text-gray-300/85 space-y-1.5 mb-5 list-disc list-inside">
-          <li>Modelado & ETL moderno</li>
-          <li>Data Lake / Warehouse</li>
-          <li>APIs y sincronización</li>
-        </ul>
-        <a href="{% url 'services:servicios_index' %}"
-          class="inline-flex items-center gap-2 text-indigo-300 group-hover:text-white transition-colors">Explorar<i
-            data-lucide="arrow-right"></i></a>
-      </article>
-
-      <article class="svc-card p-6 group">
-        <div class="svc-icon mb-4"><i data-lucide="bot"></i></div>
-        <h3 class="text-xl font-semibold text-white mb-2">Automatización con IA</h3>
-        <p class="text-gray-300/90 mb-4">Flujos que se orquestan solos: menos fricción, más foco del equipo.</p>
-        <ul class="text-sm text-gray-300/85 space-y-1.5 mb-5 list-disc list-inside">
-          <li>Integración ERP/CRM/BI</li>
-          <li>Agentes y tareas autónomas</li>
-          <li>Validaciones y control</li>
-        </ul>
-        <a href="{% url 'services:servicios_index' %}"
-          class="inline-flex items-center gap-2 text-indigo-300 group-hover:text-white transition-colors">Explorar<i
-            data-lucide="arrow-right"></i></a>
-      </article>
-
-      <article class="svc-card p-6 group">
-        <div class="svc-icon mb-4"><i data-lucide="message-square"></i></div>
-        <h3 class="text-xl font-semibold text-white mb-2">Asistentes con RAG Conversacional</h3>
-        <p class="text-gray-300/90 mb-4">Bots que responden con tus datos y documentos, con trazabilidad y
-          <em>guardrails</em>.</p>
-        <ul class="text-sm text-gray-300/85 space-y-1.5 mb-5 list-disc list-inside">
-          <li>Ingesta de PDFs, wikis y manuales</li>
-          <li>Relevancia y citaciones</li>
-          <li>Panel y métricas</li>
-        </ul>
-        <a href="{% url 'services:servicios_index' %}"
-          class="inline-flex items-center gap-2 text-indigo-300 group-hover:text-white transition-colors">Explorar<i
-            data-lucide="arrow-right"></i></a>
-      </article>
-
-      <article class="svc-card p-6 group">
-        <div class="svc-icon mb-4"><i data-lucide="cpu"></i></div>
-        <h3 class="text-xl font-semibold text-white mb-2">NLP & Analítica en Lenguaje</h3>
-        <p class="text-gray-300/90 mb-4">Del feedback a acción: clasificación, resumen y detección de intención.</p>
-        <ul class="text-sm text-gray-300/85 space-y-1.5 mb-5 list-disc list-inside">
-          <li>Topic modeling & sentiment</li>
-          <li>Resúmenes ejecutivos</li>
-          <li>Alertas automáticas</li>
-        </ul>
-        <a href="{% url 'services:servicios_index' %}"
-          class="inline-flex items-center gap-2 text-indigo-300 group-hover:text-white transition-colors">Explorar<i
-            data-lucide="arrow-right"></i></a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- TRUST / CLIENTES -->
-<section id="clientes" class="brands-section">
+<!-- Sobre mí (neutral, no localista) -->
+<section id="sobre-mi" class="services-section py-20">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-8">
-      <p class="brands-sub mb-2">Software</p>
-      <h2 class="text-2xl sm:text-3xl font-bold text-white">Software desarrollados</h2>
-      <p class="mt-2 text-gray-300/85 max-w-2xl mx-auto">Productos y soluciones ya lanzadas (no mini-apps). Sustituye
-        los placeholders por tus logotipos.</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Soy Héctor, tu socio tecnológico</h2>
+      <p class="mt-3 text-gray-300/85 max-w-2xl mx-auto">
+        4 años ayudando a PYMEs a <strong>automatizar</strong> lo que frena y a <strong>decidir con datos</strong>.
+        Trabajo <strong>en remoto en toda España</strong> y presencial bajo demanda.
+      </p>
     </div>
-    <div class="brands-grid">
-      <!-- CheckLink -->
-      <div class="brand-item">
-        <div class="brand" title="CheckLink">
-          <img alt="Logo CheckLink"
-            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='72' viewBox='0 0 220 72'><rect x='0' y='0' width='220' height='72' fill='none' stroke='%23e5e7eb' stroke-dasharray='4 4'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23e5e7eb' font-family='Inter, Arial' font-size='14'>CHECKLINK</text></svg>" />
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-7 items-stretch">
+      <article class="about-card p-5 lg:col-span-5">
+        <div class="rounded-2xl overflow-hidden border border-white/10 about-photo">
+          <picture>
+            <source srcset="{% static 'img/hector.png' %}" type="image/webp">
+            <img src="{% static 'img/hector.png' %}" alt="Héctor Herrera, desarrollador full stack freelance en España"
+                 width="960" height="640" class="w-full object-cover" loading="lazy" decoding="async">
+          </picture>
         </div>
-        <h3 class="brand-title">CheckLink</h3>
-        <p class="brand-desc">Gestión integral de limpieza: reprograma turnos por cancelación, recoge preferencias por
-          estancia y profundidad, y optimiza rutas y horas sueltas para reducir gasolina y tiempo. Control de
-          productividad y reseñas para <em>insights</em> operativos.</p>
-      </div>
-      <!-- Scandallo -->
-      <div class="brand-item">
-        <div class="brand" title="Scandallo">
-          <img alt="Logo Scandallo"
-            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='72' viewBox='0 0 220 72'><rect x='0' y='0' width='220' height='72' fill='none' stroke='%23e5e7eb' stroke-dasharray='4 4'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23e5e7eb' font-family='Inter, Arial' font-size='14'>SCANDALLO</text></svg>" />
-        </div>
-        <h3 class="brand-title">Scandallo</h3>
-        <p class="brand-desc">Para bares y restaurantes: captura facturas con IA (sin OCR tradicional), convierte papel
-          en datos y genera escandallos y fichas técnicas con costes siempre al día, para ajustar precios y margen en
-          tiempo real.</p>
-      </div>
-      <!-- Fence Estimator (US) -->
-      <div class="brand-item">
-        <div class="brand" title="Fence Estimator (US)">
-          <img alt="Logo Fence Estimator"
-            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='72' viewBox='0 0 220 72'><rect x='0' y='0' width='220' height='72' fill='none' stroke='%23e5e7eb' stroke-dasharray='4 4'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23e5e7eb' font-family='Inter, Arial' font-size='14'>FENCE ESTIMATOR</text></svg>" />
-        </div>
-        <h3 class="brand-title">Fence Estimator (US)</h3>
-        <p class="brand-desc">Presupuestos de vallas residenciales con catálogo actualizado de Home Depot: calcula pie
-          lineal, coste por calidades y materiales, valida normativas locales y estima entregas usando históricos de
-          proyectos cerrados.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- APPS / DEMOS -->
-<section id="apps" class="apps-section">
-  <div class="relative z-10 max-w-7xl mx-auto px-6">
-    <div class="text-center mb-10">
-      <p class="text-sm uppercase tracking-[0.2em] text-indigo-300/80 mb-2">Demos en vivo</p>
-      <h2 class="text-3xl sm:text-4xl font-bold text-white">Mini-apps listas para probar</h2>
-      <p class="mt-3 text-gray-300/85 max-w-2xl mx-auto">Explora casos de uso reales: OCR, clasificación, RAG,
-        normalización… Todo rápido y sin instalar nada.</p>
-    </div>
-
-    <!-- Toolbar filtros / búsqueda / orden -->
-    <div class="toolbar p-3 mb-8">
-      <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filtros">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="rag">RAG</button>
-          <button class="filter-btn" data-filter="nlp">NLP</button>
-          <button class="filter-btn" data-filter="ocr">OCR</button>
-          <button class="filter-btn" data-filter="etl">ETL</button>
-          <button class="filter-btn" data-filter="agentes">Agentes</button>
-        </div>
-        <div class="flex items-center gap-2 w-full md:w-auto">
-          <div class="relative flex-1 md:flex-none">
-            <input id="app-search" type="search" placeholder="Buscar demos…"
-              class="w-full md:w-72 px-3 py-2 rounded-lg bg-[#0f162e] text-gray-200 border border-white/10 outline-none" />
-            <i data-lucide="search" class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
-          </div>
-          <label class="sr-only" for="app-sort">Ordenar</label>
-          <select id="app-sort" class="px-3 py-2 rounded-lg bg-[#0f162e] text-gray-200 border border-white/10">
-            <option value="popular">Popular</option>
-            <option value="new">Novedad</option>
-            <option value="az">A–Z</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <!-- Grid de apps -->
-    <div id="apps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
-      <!-- 1: Extractor de facturas -->
-      <article class="app-card p-5 group" data-tags="ocr,etl" data-title="Extractor de facturas" data-date="2025-07-15"
-        data-popularity="95" data-rating="4.7" data-quote="Nos ahorró horas de captura. — Marta, Operaciones">
-        <div class="relative app-media mb-4 grid place-items-center">
-          <span class="badge">Live</span>
-          <i data-lucide="file-text" class="w-10 h-10 text-gray-300"></i>
-        </div>
-        <h3 class="text-lg font-semibold text-white">Extractor de facturas</h3>
-        <p class="text-gray-300/90 mt-1 mb-3">Convierte PDF a JSON/CSV en segundos. Detección de campos y validación.
+      </article>
+      <article class="about-card p-6 lg:col-span-7 flex flex-col items-center text-center">
+        <h3 class="text-xl font-semibold text-white mb-3">Compromiso: soluciones que funcionan</h3>
+        <p class="text-gray-300/90 mb-4 max-w-2xl">
+          Nada de demos que se guardan en un cajón. Construyo herramientas para uso diario: simplifican el trabajo del
+          equipo y te dan control. Si no aporta valor, no se desarrolla.
         </p>
-        <p class="flex flex-wrap gap-2 mb-4"><span class="tag">OCR</span><span class="tag">ETL</span><span
-            class="tag">Validación</span></p>
-        <div class="flex items-center gap-3">
-          <a href="{% url 'demos:apps_index' %}"
-            class="cta-btn bg-white/10 border border-white/20 text-white hover:bg-white/15">Ver demo</a>
-          <a href="#" class="inline-flex items-center gap-2 text-indigo-300 hover:text-white"><i
-              data-lucide="github"></i>GitHub</a>
-        </div>
-      </article>
-
-      <!-- 2: Clasificador de tickets -->
-      <article class="app-card p-5 group" data-tags="nlp" data-title="Clasificador de tickets" data-date="2025-06-22"
-        data-popularity="88" data-rating="4.5" data-quote="Rutas más rápidas y menos re-trabajo. — Luis, Soporte">
-        <div class="relative app-media mb-4 grid place-items-center">
-          <span class="badge">Live</span>
-          <i data-lucide="inbox"></i>
-        </div>
-        <h3 class="text-lg font-semibold text-white">Clasificador de tickets</h3>
-        <p class="text-gray-300/90 mt-1 mb-3">Rutea tickets por intención y prioridad en tiempo real.</p>
-        <p class="flex flex-wrap gap-2 mb-4"><span class="tag">NLP</span><span class="tag">Clasificación</span></p>
-        <div class="flex items-center gap-3">
-          <a href="{% url 'demos:apps_index' %}"
-            class="cta-btn bg-white/10 border border-white/20 text-white hover:bg-white/15">Ver demo</a>
-          <a href="#" class="inline-flex items-center gap-2 text-indigo-300 hover:text-white"><i
-              data-lucide="github"></i>GitHub</a>
-        </div>
-      </article>
-
-      <!-- 3: Normalizador de SKUs -->
-      <article class="app-card p-5 group" data-tags="etl" data-title="Normalizador de SKUs" data-date="2025-05-12"
-        data-popularity="82" data-rating="4.3" data-quote="Catálogo limpio en días, no semanas. — Andrea, E-commerce">
-        <div class="relative app-media mb-4 grid place-items-center">
-          <span class="badge">Beta</span>
-          <i data-lucide="package"></i>
-        </div>
-        <h3 class="text-lg font-semibold text-white">Normalizador de SKUs</h3>
-        <p class="text-gray-300/90 mt-1 mb-3">Detecta duplicados, estandariza catálogos y unifica referencias.</p>
-        <p class="flex flex-wrap gap-2 mb-4"><span class="tag">ETL</span><span class="tag">Deduplicación</span></p>
-        <div class="flex items-center gap-3">
-          <a href="{% url 'demos:apps_index' %}"
-            class="cta-btn bg-white/10 border border-white/20 text-white hover:bg-white/15">Ver demo</a>
-          <a href="#" class="inline-flex items-center gap-2 text-indigo-300 hover:text-white"><i
-              data-lucide="github"></i>GitHub</a>
-        </div>
-      </article>
-
-      <!-- 4: Resumen de contratos -->
-      <article class="app-card p-5 group" data-tags="nlp" data-title="Resumen de contratos" data-date="2025-08-01"
-        data-popularity="90" data-rating="4.6" data-quote="Nos ahorra horas legales por contrato. — Sergio, Legal">
-        <div class="relative app-media mb-4 grid place-items-center">
-          <span class="badge">Nuevo</span>
-          <i data-lucide="scroll-text"></i>
-        </div>
-        <h3 class="text-lg font-semibold text-white">Resumen de contratos</h3>
-        <p class="text-gray-300/90 mt-1 mb-3">Genera resúmenes ejecutivos con cláusulas clave y riesgos.</p>
-        <p class="flex flex-wrap gap-2 mb-4"><span class="tag">NLP</span><span class="tag">Resumen</span></p>
-        <div class="flex items-center gap-3">
-          <a href="{% url 'demos:apps_index' %}"
-            class="cta-btn bg-white/10 border border-white/20 text-white hover:bg-white/15">Ver demo</a>
-          <a href="#" class="inline-flex items-center gap-2 text-indigo-300 hover:text-white"><i
-              data-lucide="github"></i>GitHub</a>
-        </div>
-      </article>
-
-      <!-- 5: QA con RAG -->
-      <article class="app-card p-5 group" data-tags="rag,nlp" data-title="QA con RAG" data-date="2025-04-30"
-        data-popularity="97" data-rating="4.8" data-quote="Respuestas con fuentes, impecable. — Clara, Operaciones">
-        <div class="relative app-media mb-4 grid place-items-center">
-          <span class="badge">Live</span>
-          <i data-lucide="message-circle-question"></i>
-        </div>
-        <h3 class="text-lg font-semibold text-white">QA con RAG</h3>
-        <p class="text-gray-300/90 mt-1 mb-3">Asistente que responde con tus documentos y cita fuentes.</p>
-        <p class="flex flex-wrap gap-2 mb-4"><span class="tag">RAG</span><span class="tag">Conversacional</span></p>
-        <div class="flex items-center gap-3">
-          <a href="{% url 'demos:apps_index' %}"
-            class="cta-btn bg-white/10 border border-white/20 text-white hover:bg-white/15">Ver demo</a>
-          <a href="#" class="inline-flex items-center gap-2 text-indigo-300 hover:text-white"><i
-              data-lucide="github"></i>GitHub</a>
-        </div>
-      </article>
-
-      <!-- 6: Detección de anomalías -->
-      <article class="app-card p-5 group" data-tags="agentes,etl" data-title="Detección de anomalías"
-        data-date="2025-03-05" data-popularity="76" data-rating="4.1"
-        data-quote="Alertas a tiempo y menos sustos. — Pablo, Finanzas">
-        <div class="relative app-media mb-4 grid place-items-center">
-          <span class="badge">Beta</span>
-          <i data-lucide="activity"></i>
-        </div>
-        <h3 class="text-lg font-semibold text-white">Detección de anomalías</h3>
-        <p class="text-gray-300/90 mt-1 mb-3">Monitorea KPIs y dispara acciones automáticas ante desvíos.</p>
-        <p class="flex flex-wrap gap-2 mb-4"><span class="tag">Agentes</span><span class="tag">ETL</span></p>
-        <div class="flex items-center gap-3">
-          <a href="{% url 'demos:apps_index' %}"
-            class="cta-btn bg-white/10 border border-white/20 text-white hover:bg-white/15">Ver demo</a>
-          <a href="#" class="inline-flex items-center gap-2 text-indigo-300 hover:text-white"><i
-              data-lucide="github"></i>GitHub</a>
-        </div>
+        <ul class="text-gray-300/90 space-y-2 mb-6 text-left">
+          <li class="flex gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i><span>Primera versión útil en pocas semanas.</span></li>
+          <li class="flex gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i><span>Experiencia en logística, hostelería, retail y servicios.</span></li>
+          <li class="flex gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i><span>Trato directo conmigo: sin intermediarios.</span></li>
+        </ul>
+        <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-5 rounded-full font-semibold text-sm">
+          <i data-lucide="calendar" class="mr-2 w-4 h-4"></i> ¿Lo vemos en 15 minutos?
+        </a>
       </article>
     </div>
   </div>
 </section>
-<section id="testimonios" class="testimonials-section py-14 sm:py-16">
-    <div class="max-w-7xl mx-auto px-6">
-      <!-- Cabecera -->
-      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-        <p class="text-sm uppercase tracking-[0.2em] text-indigo-300/80 mb-2">Testimonios</p>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white">Clientes que convierten datos en <span class="text-indigo-300">decisiones</span></h2>
-        <p class="mt-3 text-gray-300/85">Resultados reales: menos horas manuales, más visibilidad y decisiones más rápidas.</p>
-      </div>
+<!-- Dolor / Objeciones -->
+<section class="services-section py-10">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">Si te suena esto, estamos alineados</h2>
+    <ul class="mt-5 space-y-3 text-gray-300/90">
+      <li>• Partes, albaranes y pedidos repartidos entre Excel, WhatsApp y papel → <em>nada cuadra</em>.</li>
+      <li>• Errores al teclear facturas y stock → <em>márgenes que se evaporan</em>.</li>
+      <li>• Presupuestos que tardan días → <em>leads fríos y ventas que no llegan</em>.</li>
+      <li>• Rutas mal planificadas → <em>tiempo perdido, combustible y clientes irritados</em>.</li>
+      <li>• Te dejaron tirado con una demo bonita que nadie usa.</li>
+      <li>• Miedo a “cambiarlo todo” o a <em>parar la operación</em>.</li>
+    </ul>
+    <p class="mt-4 text-center text-gray-300/80">
+      Solución: <strong>empezar pequeño</strong>, atacar el mayor atasco y medir impacto (tiempo, coste, margen). Luego, escalar con cabeza.
+    </p>
+  </div>
+</section>
 
-      <!-- Grid de reseñas -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
-        <!-- Review 1 -->
-        <article class="review-card p-6">
-          <div class="flex items-center justify-between mb-3">
-            <div class="flex items-center gap-3">
-              <span class="avatar">M</span>
-              <div>
-                <p class="text-white font-semibold leading-tight">Marta G.</p>
-                <p class="text-xs text-gray-400">Operaciones · Retail</p>
-              </div>
-            </div>
-            <div class="stars" aria-label="Valoración 5 de 5">
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-            </div>
-          </div>
-          <blockquote class="testimonial">“El extractor de facturas nos ahorró horas de captura cada semana. La validación automática reduce errores y el equipo está encantado.”</blockquote>
-          <div class="rating-wrap"><span class="text-xs text-gray-400">Uso: OCR + ETL · Ahorro estimado: 6 h/semana</span></div>
-        </article>
+<!-- Servicios principales -->
+<section class="services-section py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Servicios principales</h2>
+      <p class="mt-3 text-gray-300/85">Soluciones que resuelven problemas concretos y medibles.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
+      <a href="/software-a-medida/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="code" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Software a medida</h3>
+        <p class="text-gray-300/90">Aplicaciones y herramientas construidas para tu operación real.</p>
+      </a>
+      <a href="/integraciones-api/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="plug-zap" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Integraciones API</h3>
+        <p class="text-gray-300/90">WhatsApp Business, Stripe, Google Sheets, TPV/ERP/CRM y más.</p>
+      </a>
+      <a href="/automatizacion-procesos-ia/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="bot" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Automatización con IA</h3>
+        <p class="text-gray-300/90">Asistentes, chatbots, OCR y flujos que ahorran horas cada semana.</p>
+      </a>
+      <a href="/erp-crm-medida/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="panels-top-left" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">ERP/CRM a medida</h3>
+        <p class="text-gray-300/90">Clientes, inventario y procesos sin encorsetarte.</p>
+      </a>
+      <a href="/mantenimiento-soporte/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="wrench" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Mantenimiento y soporte</h3>
+        <p class="text-gray-300/90">Estabilidad, actualizaciones y soporte directo.</p>
+      </a>
+      <a href="/consultoria-mvp/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="lightbulb" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Consultoría MVP</h3>
+        <p class="text-gray-300/90">De la idea al primer producto útil sin quemar presupuesto.</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-        <!-- Review 2 -->
-        <article class="review-card p-6">
-          <div class="flex items-center justify-between mb-3">
-            <div class="flex items-center gap-3">
-              <span class="avatar">L</span>
-              <div>
-                <p class="text-white font-semibold leading-tight">Luis R.</p>
-                <p class="text-xs text-gray-400">Soporte · SaaS</p>
-              </div>
-            </div>
-            <div class="stars" aria-label="Valoración 4 de 5">
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-            </div>
-          </div>
-          <blockquote class="testimonial">“El clasificador de tickets nos da rutas más rápidas y menos re-trabajo. El SLA mejoró sin contratar más personal.”</blockquote>
-          <div class="rating-wrap"><span class="text-xs text-gray-400">Uso: NLP · Mejora SLA: 18%</span></div>
-        </article>
 
-        <!-- Review 3 -->
-        <article class="review-card p-6">
-          <div class="flex items-center justify-between mb-3">
-            <div class="flex items-center gap-3">
-              <span class="avatar">A</span>
-              <div>
-                <p class="text-white font-semibold leading-tight">Andrea S.</p>
-                <p class="text-xs text-gray-400">E-commerce</p>
-              </div>
-            </div>
-            <div class="stars" aria-label="Valoración 4 de 5">
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star filled"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-              <svg viewBox="0 0 24 24" class="star"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
-            </div>
-          </div>
-          <blockquote class="testimonial">“El normalizador de SKUs dejó el catálogo limpio en días, no semanas. Mucho menos duplicado y menos incidencias.”</blockquote>
-          <div class="rating-wrap"><span class="text-xs text-gray-400">Uso: ETL · Duplicados: −72%</span></div>
-        </article>
 
+<!-- Spotlight IA -->
+<section class="apps-section py-16">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white">Automatización de procesos con IA</h2>
+    <p class="mt-3 text-gray-300/85 max-w-3xl mx-auto">
+      Elimina tareas repetitivas, acelera soporte y ventas, y conecta tus sistemas para trabajar en automático.
+    </p>
+    <div class="mt-5">
+      <a href="/automatizacion-procesos-ia/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+        <i data-lucide="sparkles" class="mr-2 w-4 h-4" aria-hidden="true"></i> Ver cómo lo implemento
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Resultados / KPIs -->
+<section class="apps-section py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Resultados en semanas, no meses</h2>
+      <p class="mt-3 text-gray-300/85">Mini-casos reales (sin nombres) y el módulo que lo hizo posible.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Rutas optimizadas</h3>
+        <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
+          <li>-18% tiempo por turno</li>
+          <li>-12% combustible</li>
+          <li>Módulo: <a href="/software-a-medida/" class="underline">Software a medida</a></li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Facturas por foto</h3>
+        <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
+          <li>Entrada 3× más rápida</li>
+          <li>-25% errores manuales</li>
+          <li>Módulo: <a href="/automatizacion-procesos-ia/" class="underline">IA (OCR)</a></li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Leads filtrados</h3>
+        <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
+          <li>-40% llamadas improductivas</li>
+          <li>+22% cierres</li>
+          <li>Módulo: <a href="/integraciones-api/" class="underline">Chatbot/API</a></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Qué hago (neutral y nacional) -->
+<section id="que-hago" class="services-section py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Aplicaciones a medida e integraciones para PYMEs en España</h2>
+      <p class="mt-3 text-gray-300/85 max-w-3xl mx-auto">
+        Herramientas que resuelven problemas concretos con <strong>inteligencia artificial aplicada</strong> y sistemas que se hablan entre sí.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7">
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="app-window" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Apps a medida</h3>
+        <p class="text-gray-300/90">Una herramienta central: clientes, pedidos, personal y facturación, a tu manera.</p>
+      </article>
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="bot" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">IA en tus procesos</h3>
+        <p class="text-gray-300/90">Chat 24/7, rutas de reparto, control de stock por imagen. Sin rehacerlo todo.</p>
+      </article>
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="workflow" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Digitalización</h3>
+        <p class="text-gray-300/90">Adiós al papel y a los grupos caóticos. Todo en el mismo sitio y sin fricción.</p>
+      </article>
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="plug-zap" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Sistemas conectados</h3>
+        <p class="text-gray-300/90">Que tu TPV, stock y hojas hablen entre sí. Tus datos trabajando para ti.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Proyectos -->
+<section id="proyectos" class="apps-section py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Aplicaciones reales, uso diario</h2>
+      <p class="mt-3 text-gray-300/85 max-w-2xl mx-auto">
+        No es un catálogo cerrado: son <strong>ejemplos reales</strong> ya desarrollados. Tu solución será a medida según tus objetivos y retorno.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      <article class="app-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="svc-icon"><i data-lucide="route" aria-hidden="true"></i></div>
+          <h3 class="text-lg font-semibold text-white">Chclean — gestión de limpieza</h3>
         </div>
-        <div class="mt-10 text-center">
-  <h3 class="text-2xl sm:text-3xl font-semibold text-white mb-3">¿Listo para convertir tus datos en decisiones?</h3>
-  <p class="text-gray-300/85 max-w-2xl mx-auto mb-5">Agenda una evaluación de 15 minutos y te enseño dónde la IA recorta tiempo y costes en tus procesos.</p>
-  <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center justify-center h-11 px-6 rounded-full font-semibold text-sm mx-auto">Agenda 15 min</a>
-</div>
+        <p class="text-gray-300/90">Cada empleado ve en su móvil la ruta del día, tareas y material; sin llamadas a la oficina.</p>
+        <ul class="text-gray-300/85 mt-3 space-y-1 list-disc list-inside">
+          <li><strong>Rutas con IA</strong> que ahorran combustible y tiempo.</li>
+          <li><strong>Productividad</strong> por equipo y control de incidencias.</li>
+          <li><strong>Reporte con foto</strong> tras cada servicio.</li>
+          <li>Leads filtrados por chatbot e integración con CRM.</li>
+        </ul>
+        <p class="text-xs text-gray-400 mt-4">Tecnología: Django · IA para rutas y rendimiento.</p>
+      </article>
 
+      <article class="app-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="svc-icon"><i data-lucide="utensils" aria-hidden="true"></i></div>
+          <h3 class="text-lg font-semibold text-white">Scandallo — restauración</h3>
+        </div>
+        <p class="text-gray-300/90">Fotografía la factura, la IA lee precios y actualiza escandallos al instante. Margen real de cada plato.</p>
+        <ul class="text-gray-300/85 mt-3 space-y-1 list-disc list-inside">
+          <li><strong>Panel diario</strong> de gastos, ventas y beneficios.</li>
+          <li><strong>Gestión de mermas</strong> y sugerencias rentables.</li>
+          <li>Stock y coste por ración en tiempo real.</li>
+        </ul>
+        <p class="text-xs text-gray-400 mt-4">Tecnología: Django · IA (OCR/Visión) · Dashboards.</p>
+      </article>
 
+      <article class="app-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="svc-icon"><i data-lucide="ruler" aria-hidden="true"></i></div>
+          <h3 class="text-lg font-semibold text-white">EasyFence — presupuestos al instante</h3>
+        </div>
+        <p class="text-gray-300/90">Conectado a precios de proveedores, calcula material y mano de obra y genera presupuestos profesionales en minutos.</p>
+        <ul class="text-gray-300/85 mt-3 space-y-1 list-disc list-inside">
+          <li>Cumple normativa local automáticamente.</li>
+          <li>Presupuestos claros que se entienden y aceptan.</li>
+          <li><strong>Menos errores y cierres más rápidos</strong>.</li>
+        </ul>
+        <p class="text-xs text-gray-400 mt-4">Tecnología: Django · Integraciones API · Cálculo en tiempo real.</p>
+      </article>
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center justify-center h-11 px-6 rounded-full font-semibold text-sm">
+        <i data-lucide="calendar" class="mr-2 w-5 h-5" aria-hidden="true"></i> ¿Ves algo parecido en tu negocio?
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Blog destacado -->
+<section class="apps-section py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Aprende y decide con criterio</h2>
+      <p class="mt-3 text-gray-300/85">Guías prácticas para PYMEs: precio, integraciones y automatización.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      <a href="/blog/precio-software-a-medida-espana-2025/" class="app-card p-6 block">
+        <h3 class="text-lg font-semibold text-white mb-2">Precio del software a medida en España (2025)</h3>
+        <p class="text-gray-300/90">Rangos, variables y ejemplos para calcular una inversión sensata.</p>
+      </a>
+      <a href="/blog/integraciones-api-estrategicas-para-pymes/" class="app-card p-6 block">
+        <h3 class="text-lg font-semibold text-white mb-2">3 integraciones API que resuelven el 80% de casos</h3>
+        <p class="text-gray-300/90">Stripe, WhatsApp Business y Google Sheets en la práctica.</p>
+      </a>
+      <a href="/blog/automatizaciones-ia-para-pymes/" class="app-card p-6 block">
+        <h3 class="text-lg font-semibold text-white mb-2">Automatizaciones con IA para ahorrar horas al mes</h3>
+        <p class="text-gray-300/90">Casos concretos de soporte, ventas y operaciones.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Módulos -->
+<section id="modulos" class="services-section py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Funcionalidades que resuelven problemas</h2>
+      <p class="mt-3 text-gray-300/85 max-w-3xl mx-auto">Ejemplos de módulos que integro cuando aportan valor real. Empezamos por la pieza que más te duele y crecemos desde ahí.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="clipboard-list" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Informes automáticos</h3>
+        <p class="text-gray-300/90">Partes, albaranes y resúmenes diarios sin teclear. Menos papeleo, más control.</p>
+      </article>
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="message-square" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Asistente 24/7</h3>
+        <p class="text-gray-300/90">Gestiona reservas y FAQs; pasa a humano solo cuando hace falta.</p>
+      </article>
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="map-pin" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Rutas óptimas</h3>
+        <p class="text-gray-300/90">Ahorra combustible y tiempo. Replanifica ante imprevistos.</p>
+      </article>
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="scan-line" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Docs por foto</h3>
+        <p class="text-gray-300/90">Foto a factura o albarán y la IA extrae los datos sin errores.</p>
+      </article>
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="chart-no-axes-combined" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Paneles claros</h3>
+        <p class="text-gray-300/90">Métricas clave: margen, productividad, costes. Decidir con datos.</p>
+      </article>
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="plug" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Integraciones</h3>
+        <p class="text-gray-300/90">TPV, facturación, hojas y más. Sin cambiarlo todo de golpe.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Método -->
+<section id="metodo" class="apps-section py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Mi método: claro y sin sorpresas</h2>
+      <p class="mt-3 text-gray-300/85">Resultado tangible cuanto antes. Nada de proyectos eternos.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-7">
+      <article class="step-card p-5"><span class="badge">1</span><h3 class="text-base font-semibold text-white mt-6">Diagnóstico (30’)</h3><p class="text-gray-300/90">Elegimos un objetivo que mueva una métrica en 30–60 días.</p></article>
+      <article class="step-card p-5"><span class="badge">2</span><h3 class="text-base font-semibold text-white mt-6">Prototipo</h3><p class="text-gray-300/90">Pantallas navegables para validar antes de programar.</p></article>
+      <article class="step-card p-5"><span class="badge">3</span><h3 class="text-base font-semibold text-white mt-6">MVP</h3><p class="text-gray-300/90">Funcionalidad mínima que ya ahorra tiempo o coste.</p></article>
+      <article class="step-card p-5"><span class="badge">4</span><h3 class="text-base font-semibold text-white mt-6">Integración</h3><p class="text-gray-300/90">Conecto con TPV/ERP/CRM o Excel para que todo fluya.</p></article>
+      <article class="step-card p-5"><span class="badge">5</span><h3 class="text-base font-semibold text-white mt-6">Mejora</h3><p class="text-gray-300/90">Añadimos lo siguiente solo si el impacto es real.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- Tecnología y RGPD -->
+<section id="tecnologia" class="services-section py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Tecnología fiable y datos seguros</h2>
+      <p class="mt-3 text-gray-300/85">
+        Menos palabras raras y más negocio funcionando sin sustos. Base sólida = menos errores, más estabilidad y datos protegidos.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="settings-2" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Desarrollo sólido</h3>
+        <p class="text-gray-300/90">Un sistema estable cuando más lo necesitas. Preparado para crecer sin rehacerlo todo.</p>
+      </article>
+      <article class="svc-card p-6">
+        <div class="svc-icon mb-4"><i data-lucide="lock" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-2">Cumplimiento RGPD</h3>
+        <p class="text-gray-300/90">Acceso controlado, cifrado y procesos ajustados a la ley. Trabaja tranquilo y evita riesgos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Precios (España) -->
+<section id="precios" class="apps-section py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Precios de desarrollo a medida — España</h2>
+    </div>
+    <p class="mt-3 text-gray-300/85 text-center">
+      Rango según alcance e impacto. Incluye mi implicación directa, formación y soporte inicial.
+      Después, mejoras por bolsa de horas transparente.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 mt-6">
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Solución específica (MVP)</h3>
+        <p class="text-gray-300/90 mb-1">2.000 – 6.000 €</p>
+        <p class="text-gray-300/90">2–6 semanas</p>
+        <p class="text-gray-300/80 mt-2 text-sm">Un módulo concreto para quitar el mayor atasco. Versión funcional en pocas semanas.</p>
+      </article>
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">App departamental</h3>
+        <p class="text-gray-300/90 mb-1">6.000 – 15.000 €</p>
+        <p class="text-gray-300/90">6–12 semanas</p>
+        <p class="text-gray-300/80 mt-2 text-sm">Para logística, ventas, producción o servicios. Digitaliza procesos clave.</p>
+      </article>
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Sistema integral</h3>
+        <p class="text-gray-300/90 mb-1">Desde 15.000 €</p>
+        <p class="text-gray-300/90">12+ semanas</p>
+        <p class="text-gray-300/80 mt-2 text-sm">Conecta áreas de negocio: clientes, personal, inventario, finanzas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (incluye objeciones) -->
+<section id="faq" class="services-section py-16">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="faq-title text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Dudas habituales</h2>
+    </div>
+    <div class="faq-wrap mt-6">
+      <div class="faq-accordion max-w-3xl mx-auto">
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">No tengo nada digitalizado, ¿podemos hacer algo?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Sí. Empezamos por el proceso que más tiempo consume y montamos la base correcta desde el principio. Te enseño una <strong>demo</strong> con datos de prueba para validar rápido.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">Ya uso un programa, ¿se puede integrar sin cambiarlo todo?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Sí. Añadimos piezas (chat, rutas, etc.) como módulos seguros por API o importaciones programadas, sin interrumpir tu operación.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿La IA es cara para una pyme?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Implemento solo donde aporta. Empezamos pequeño con retorno claro; caro es seguir perdiendo tiempo y margen. Si no compensa, no se hace.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Qué pasa después de la entrega?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Formación, documentación y soporte inicial. Después, mejoras con bolsa de horas y métricas para decidir qué construir.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">Me dejaron tirado con una demo que nadie usa, ¿cómo lo evitas?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Diseño con tu equipo y arranco con un <strong>MVP usable</strong> en semanas. Medimos uso real e impacto (tiempo/margen). Si no aporta, paramos o pivotamos sin hundir presupuesto.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Tendré que cambiarlo todo de golpe?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">No. Integro por <strong>API o procesos programados</strong> para convivir con tu TPV/ERP/CRM. Empezamos por una pieza que quite horas y errores.</div>
+        </details>
       </div>
-  </section>
+    </div>
+  </div>
+</section>
 
+<!-- Zonas de servicio (enlaces a landings locales) -->
+<section id="zona" class="apps-section py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Trabajo en remoto en toda España</h2>
+    <p class="text-gray-300/85">
+      Para cercanía local, consulta las landings:
+      <a href="/vinaros-desarrollador-full-stack/" class="underline">Vinaròs</a> ·
+      <a href="/castellon-desarrollador-full-stack/" class="underline">Castellón</a>
+    </p>
+  </div>
+</section>
 
-
+<!-- CTA final -->
+<section class="services-section py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">¿Quitamos horas muertas este mes?</h2>
+    <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+      <i data-lucide="calendar" class="mr-2 w-4 h-4" aria-hidden="true"></i> Agenda 15’ — diagnóstico sin coste
+    </a>
+    <p class="mt-3 text-gray-300/75 text-sm">Trae un ejemplo real (factura, parte, ruta). Te digo <strong>qué automatizar primero</strong> y qué no compensa tocar.</p>
+  </div>
+</section>
 
 {% endblock %}
 
 {% block extra_js %}
-<script>
-  // ===== Menú móvil (no rompe si no existe en base)
-  const mobileBtn = document.getElementById('mobile-menu-button');
-  const nav = document.getElementById('mobile-menu');
-  mobileBtn?.addEventListener('click', () => nav?.classList.toggle('hidden'));
-
-  // ===== Typing minimal =====
-  const typingText = document.getElementById('typing-text');
-  const phrases = ["una app?", "una plataforma?", "un smart contract?", "un juego?", "un producto?", "una blockchain?", "un token?"];
-  let p = 0, i = 0, del = false;
-  function type() {
-    const word = phrases[p];
-    if (typingText) { typingText.textContent = word.slice(0, i); }
-    if (!del && i < word.length) { i++; setTimeout(type, 120); }
-    else if (del && i > 0) { i--; setTimeout(type, 60); }
-    else { del = !del; if (!del) { p = (p + 1) % phrases.length; } setTimeout(type, del ? 1100 : 280); }
-  }
-
-  // ===== Canvas Particles (siempre activo en Hero) =====
-  const canvas = document.getElementById('hero-canvas');
-  let ctx = null;
-  const DPR = Math.min(window.devicePixelRatio || 1, 2);
-  const state = {
-    w: 0, h: 0,
-    particles: [],
-    linkDistance: 140,
-    baseSpeed: .35,
-    density: 23000,
-    mouse: { x: -9999, y: -9999, radius: 110, breakRadius: 52, active: false, lastMove: 0 },
-    repel: true
-  };
-
-  function initCanvasSize() {
-    if (!canvas) return;
-    const hero = document.querySelector('.hero-section');
-    const w = hero?.clientWidth || window.innerWidth;
-    const h = hero?.clientHeight || Math.max(480, Math.floor(window.innerHeight * 0.86));
-    state.w = w; state.h = h;
-    canvas.style.width = w + 'px';
-    canvas.style.height = h + 'px';
-    canvas.width = Math.floor(w * DPR);
-    canvas.height = Math.floor(h * DPR);
-    if (!ctx) { ctx = canvas.getContext('2d'); }
-    if (!ctx) return;
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.scale(DPR, DPR);
-    const target = Math.max(56, Math.min(180, Math.floor((w * h) / state.density)));
-    const cur = state.particles.length;
-    if (cur < target) { for (let i = 0; i < target - cur; i++) state.particles.push(makeParticle()); }
-    else if (cur > target) { state.particles.length = target; }
-  }
-
-  function rand(min, max) { return Math.random() * (max - min) + min; }
-  function makeParticle() {
-    const angle = Math.random() * Math.PI * 2;
-    return {
-      x: Math.random() * state.w, y: Math.random() * state.h,
-      vx: Math.cos(angle) * state.baseSpeed + rand(-.1, .1),
-      vy: Math.sin(angle) * state.baseSpeed + rand(-.1, .1), r: rand(1.2, 3.4), a: rand(.38, .9)
-    };
-  }
-
-  function update() {
-    for (const p of state.particles) {
-      if (state.repel) {
-        const dx = state.mouse.x - p.x, dy = state.mouse.y - p.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < state.mouse.radius) {
-          const f = (state.mouse.radius - dist) / state.mouse.radius;
-          p.x -= (dx / dist) * f * 2.0; p.y -= (dy / dist) * f * 2.0;
-        }
-      }
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0 || p.x > state.w) p.vx *= -1;
-      if (p.y < 0 || p.y > state.h) p.vy *= -1;
-    }
-  }
-
-  function draw() {
-    if (!ctx) return;
-    ctx.clearRect(0, 0, state.w, state.h);
-    for (const p of state.particles) {
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${p.a})`; ctx.fill();
-    }
-    const L = state.particles.length;
-    for (let i = 0; i < L; i++) {
-      const a = state.particles[i];
-      for (let j = i + 1; j < L; j++) {
-        const b = state.particles[j];
-        const dx = a.x - b.x, dy = a.y - b.y; const d = Math.hypot(dx, dy);
-        if (d < state.linkDistance) {
-          if (segmentCircleIntersects(a.x, a.y, b.x, b.y, state.mouse.x, state.mouse.y, state.mouse.breakRadius)) continue;
-          const alpha = 1 - (d / state.linkDistance);
-          ctx.lineWidth = 1; ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-        }
-      }
-    }
-  }
-
-  function segmentCircleIntersects(ax, ay, bx, by, cx, cy, r) {
-    const dX = bx - ax, dY = by - ay; const fX = ax - cx, fY = ay - cy;
-    const A = dX * dX + dY * dY; const B = 2 * (fX * dX + fY * dY); const C = (fX * fX + fY * fY) - r * r;
-    let disc = B * B - 4 * A * C; if (disc < 0) return false; disc = Math.sqrt(disc);
-    const t1 = (-B - disc) / (2 * A); const t2 = (-B + disc) / (2 * A);
-    return (t1 >= 0 && t1 <= 1) || (t2 >= 0 && t2 <= 1);
-  }
-
-  function loop() { update(); draw(); requestAnimationFrame(loop); }
-
-  function startParticles() {
-    initCanvasSize();
-    requestAnimationFrame(initCanvasSize);
-    setTimeout(initCanvasSize, 120);
-    const hero = document.querySelector('.hero-section');
-    if (hero && 'ResizeObserver' in window) {
-      const ro = new ResizeObserver(() => initCanvasSize());
-      ro.observe(hero);
-    }
-    window.addEventListener('resize', initCanvasSize);
-    window.addEventListener('mousemove', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      state.mouse.x = e.clientX - rect.left; state.mouse.y = e.clientY - rect.top;
-      state.mouse.active = true; state.mouse.lastMove = performance.now();
-    });
-    window.addEventListener('mouseleave', () => { state.mouse.x = -9999; state.mouse.y = -9999; });
-    loop();
-  }
-
-  // Tilt en tarjetas (servicios + apps)
-  function tiltApps(selector) {
-    const cards = document.querySelectorAll(selector);
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        const x = e.clientX - r.left; const y = e.clientY - r.top;
-        const rx = ((y / r.height) - 0.5) * 8;
-        const ry = ((x / r.width) - 0.5) * -8;
-        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(900px) rotateX(0) rotateY(0)';
-      });
-    });
-  }
-
-  // Servicios: tilt + brillo que sigue al mouse
-  function tiltSvcCards() {
-    const cards = document.querySelectorAll('.svc-card');
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        const x = e.clientX - r.left; const y = e.clientY - r.top;
-        const nx = (x / r.width) - 0.5;
-        const ny = (y / r.height) - 0.5;
-
-        const rx = ny * 6;            // rotateX
-        const ry = -nx * 6;           // rotateY
-        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-
-        const gx = 50 - nx * 12; // %
-        const gy = 38 - ny * 10; // %
-        card.style.setProperty('--gx', `${gx}%`);
-        card.style.setProperty('--gy', `${gy}%`);
-        card.style.setProperty('--sheen-alpha', '.16');
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(900px) rotateX(0) rotateY(0)';
-        card.style.setProperty('--gx', '50%');
-        card.style.setProperty('--gy', '38%');
-        card.style.setProperty('--sheen-alpha', '.12');
-      });
-    });
-  }
-
-  // ===== Filtros de Apps =====
-  function setupFilters() {
-    const grid = document.getElementById('apps-grid');
-    if (!grid) return;
-    const cards = Array.from(grid.querySelectorAll('.app-card'));
-    const buttons = Array.from(document.querySelectorAll('.filter-btn'));
-    const search = document.getElementById('app-search');
-    const sort = document.getElementById('app-sort');
-
-    let currentFilter = 'all';
-    let query = '';
-    let order = sort?.value || 'popular';
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.dataset.filter;
-        render();
-      });
-    });
-
-    function debounce(fn, ms) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); } }
-    search?.addEventListener('input', debounce(() => { query = (search.value || '').toLowerCase().trim(); render(); }, 120));
-    sort?.addEventListener('change', () => { order = sort.value; render(); });
-
-    function render() {
-      const filtered = cards.filter(card => {
-        const tags = (card.dataset.tags || '').split(',').map(s => s.trim());
-        const matchesTag = currentFilter === 'all' || tags.includes(currentFilter);
-        const title = (card.dataset.title || '').toLowerCase();
-        const matchesText = !query || title.includes(query);
-        card.classList.toggle('hidden', !(matchesTag && matchesText));
-        return matchesTag && matchesText;
-      });
-      filtered.sort((a, b) => {
-        if (order === 'popular') return (parseInt(b.dataset.popularity || '0') - parseInt(a.dataset.popularity || '0'));
-        if (order === 'new') return (new Date(b.dataset.date) - new Date(a.dataset.date));
-        if (order === 'az') return (a.dataset.title || '').localeCompare(b.dataset.title || '');
-        return 0;
-      });
-      filtered.forEach(el => grid.appendChild(el));
-    }
-
-    render();
-  }
-
-  // ===== Ratings + Testimonios (apps) =====
-  function enhanceRatings() {
-    const cards = document.querySelectorAll('.app-card');
-    cards.forEach(card => {
-      if (card.querySelector('.rating-wrap')) return;
-      const title = card.dataset.title || 'app';
-      const key = 'rating:' + title;
-      const initial = Math.round(parseFloat(card.dataset.rating || '0')) || 4;
-      const saved = parseInt(localStorage.getItem(key) || '0');
-      let rating = saved > 0 ? saved : initial;
-
-      const wrap = document.createElement('div');
-      wrap.className = 'rating-wrap';
-      const row = document.createElement('div');
-      row.className = 'flex items-center justify-between';
-
-      const starsBox = document.createElement('div');
-      starsBox.className = 'stars';
-      const label = document.createElement('span');
-      label.className = 'text-xs text-gray-400';
-      label.textContent = rating + '/5';
-
-      function starSVG() {
-        const ns = 'http://www.w3.org/2000/svg';
-        const svg = document.createElementNS(ns, 'svg');
-        svg.setAttribute('viewBox', '0 0 24 24');
-        svg.setAttribute('class', 'star');
-        const p = document.createElementNS(ns, 'path');
-        p.setAttribute('d', 'M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z');
-        p.setAttribute('fill', 'currentColor');
-        svg.appendChild(p);
-        return svg;
-      }
-      function paint(n) {
-        starsBox.querySelectorAll('.star').forEach((s, i) => {
-          s.classList.toggle('filled', i < n);
-        });
-        label.textContent = n + '/5';
-      }
-      for (let i = 0; i < 5; i++) {
-        const s = starSVG();
-        if (i < rating) s.classList.add('filled');
-        s.addEventListener('mouseenter', () => paint(i + 1));
-        s.addEventListener('mouseleave', () => paint(rating));
-        s.addEventListener('click', () => { rating = i + 1; paint(rating); localStorage.setItem(key, String(rating)); });
-        starsBox.appendChild(s);
-      }
-      row.appendChild(starsBox);
-      row.appendChild(label);
-      wrap.appendChild(row);
-
-      const quote = card.dataset.quote;
-      if (quote) {
-        const q = document.createElement('p');
-        q.className = 'testimonial';
-        q.textContent = '“' + quote + '”';
-        wrap.appendChild(q);
-      }
-      card.appendChild(wrap);
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    type();
-    startParticles();
-    lucide.createIcons();
-    tiltSvcCards();
-    tiltApps('.app-card');
-    setupFilters();
-    enhanceRatings();
-  });
-</script>
+<script src="{% static 'js/ui.core.js' %}"></script>
+<script src="{% static 'js/hero.particles.js' %}"></script>
+<script src="{% static 'js/effects.tilt.js' %}"></script>
+<script src="{% static 'js/apps.gallery.js' %}"></script>
+<script src="{% static 'js/boot.init.js' %}"></script>
 {% endblock %}

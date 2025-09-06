@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# ───────── SEO ───────── #}
+{% block title %}Software a medida | Desarrollo de aplicaciones y herramientas internas con IA{% endblock %}
+{% block meta_description %}Aplicaciones a medida alineadas a tus flujos reales. Integraciones limpias, automatización selectiva con IA y entregables por sprints. Medimos tiempo, coste y margen desde el día uno.{% endblock %}
+{% block canonical %}<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}/servicios/software-a-medida/">{% endblock %}
+
+{# OG/Twitter #}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_title %}Software a medida para tu operación real{% endblock %}
+{% block og_description %}Herramientas internas, paneles y procesos que encajan con tu forma de trabajar. IA solo cuando aporta retorno.{% endblock %}
+{% block og_image %}https://hectorherrerafullstack.com/static/img/og-default.jpg{% endblock %}
+{% block twitter_title %}Software a medida · Apps y paneles con IA{% endblock %}
+{% block twitter_description %}Entregables por sprints, CI/CD, RGPD y ROI medible. Integra tu TPV/ERP/CRM y unifica datos.{% endblock %}
+{% block twitter_image %}https://hectorherrerafullstack.com/static/img/og-default.jpg{% endblock %}
+
+{# ───────── JSON-LD ───────── #}
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Service",
+  "name":"Software a medida",
+  "serviceType":"Desarrollo de software a medida con IA",
+  "url":"{{ request.scheme }}://{{ request.get_host }}/servicios/software-a-medida/",
+  "description":"Diseño y desarrollo de aplicaciones internas, paneles y flujos a medida; integraciones REST/GraphQL y automatización selectiva con IA.",
+  "provider":{"@type":"Person","name":"Héctor Herrera","url":"https://hectorherrerafullstack.com/"},
+  "areaServed":{"@type":"Country","name":"España"},
+  "audience":{"@type":"BusinessAudience","businessAudienceType":"PYME"},
+  "offers":{"@type":"Offer","priceCurrency":"EUR","availability":"https://schema.org/InStock"},
+  "isRelatedTo":[
+    {"@type":"Service","name":"Integraciones API","url":"{{ request.scheme }}://{{ request.get_host }}/integraciones-api/"},
+    {"@type":"Service","name":"Automatización procesos IA","url":"{{ request.scheme }}://{{ request.get_host }}/automatizacion-procesos-ia/"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Cuándo conviene software a medida?","acceptedAnswer":{"@type":"Answer","text":"Cuando tu operación no encaja en un SaaS genérico, cuando hay pasos manuales o silos de datos que frenan ventas y servicio, o cuando necesitas propiedad sobre procesos y datos."}},
+    {"@type":"Question","name":"¿Cómo controláis la calidad?","acceptedAnswer":{"@type":"Answer","text":"Pruebas automáticas, control de versiones de prompts si hay IA, entornos por rama y revisiones quincenales con métricas de impacto."}},
+    {"@type":"Question","name":"¿Y el RGPD?","acceptedAnswer":{"@type":"Answer","text":"Proveedores UE cuando aplica, cifrado en tránsito y reposo, mínimos privilegios y registro de auditoría. No se usan tus datos para entrenar servicios públicos."}},
+    {"@type":"Question","name":"¿Puedo integrar mi ERP/CRM?","acceptedAnswer":{"@type":"Answer","text":"Sí. Conectamos por REST/GraphQL, webhooks o importaciones programadas. El objetivo es convivir, no romper lo que ya funciona."}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"{{ request.scheme }}://{{ request.get_host }}/"},
+    {"@type":"ListItem","position":2,"name":"Servicios","item":"{{ request.scheme }}://{{ request.get_host }}/servicios/"},
+    {"@type":"ListItem","position":3,"name":"Software a medida","item":"{{ request.scheme }}://{{ request.get_host }}/servicios/software-a-medida/"}
+  ]
+}
+</script>
+{% endblock %}
+
+{# ───────── CONTENIDO ───────── #}
+{% block content %}
+
+<!-- HERO (ya centrado) -->
+<section class="hero-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] -mt-10">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-content w-full px-6">
+    <div class="max-w-6xl mx-auto py-10 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+        Software a medida <span class="text-indigo-300">para tu operación real</span>
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-gray-300/90 max-w-3xl mx-auto">
+        Construyo <strong>aplicaciones internas</strong>, <strong>paneles</strong> y <strong>flujos</strong> que encajan con tu manera de trabajar.
+        Integro tus sistemas (ERP/CRM/TPV) y aplico <strong>IA solo cuando aporta ROI</strong>. Entregables por sprints, sin proyectos eternos.
+      </p>
+      <div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href="/apps/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+          <i data-lucide="sparkles" class="mr-2 w-4 h-4"></i> Probar demos
+        </a>
+        <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+          <i data-lucide="calendar" class="mr-2 w-4 h-4"></i> Agenda 15’ — diagnóstico sin coste
+        </a>
+      </div>
+      <p class="mt-5 text-xs sm:text-sm text-white/70">Regla: si no mejora <strong>tiempo</strong>, <strong>coste</strong> o <strong>margen</strong>, no se desarrolla.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA (centrado) -->
+<section class="apps-section py-14" id="problema">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">El problema que suelo ver</h2>
+    <ul class="mx-auto max-w-3xl text-gray-300/90 space-y-2 list-disc list-inside">
+      <li>Procesos críticos repartidos entre hojas, correos y apps que no se hablan.</li>
+      <li>Datos duplicados y errores de transcripción al pasar información entre sistemas.</li>
+      <li>Reportes tardíos; las decisiones llegan cuando el problema ya pasó.</li>
+      <li>Limitaciones de SaaS genéricos: pagan por funciones que no usan y falta lo que sí necesitan.</li>
+    </ul>
+    <p class="text-gray-300/85 mt-4 max-w-3xl mx-auto">Si te suena, probablemente necesitas un módulo o app propia que se adapte a tu flujo y no al revés.</p>
+  </div>
+</section>
+
+<!-- SOLUCIÓN (centrado) -->
+<section class="services-section py-14" id="solucion">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">La solución: app a medida, integrada y medible</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Qué entrego</h3>
+        <ul class="mx-auto max-w-3xl text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Aplicación interna o módulo con autenticación y roles.</li>
+          <li>Integraciones REST/GraphQL y webhooks con tu ERP/CRM.</li>
+          <li>Paneles de control con KPIs de negocio.</li>
+          <li>Automatizaciones puntuales (OCR, clasificación, recordatorios) cuando aportan.</li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Cómo se justifica</h3>
+        <ul class="mx-auto max-w-3xl text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Métricas desde el Sprint 0: horas ahorradas, % error, lead-time, margen.</li>
+          <li>CI/CD y demos quincenales: sabes qué llega y cuándo.</li>
+          <li>RGPD y seguridad: mínimos privilegios, logs y proveedores en la UE cuando aplica.</li>
+          <li>Propiedad del stack y sin lock-in de licencias innecesarias.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS (centrado) -->
+<section class="apps-section py-14" id="beneficios">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Beneficios esperables</h2>
+    <ul class="mx-auto max-w-3xl text-gray-300/90 space-y-2 list-disc list-inside">
+      <li>Menos tiempo en tareas repetitivas y traspasos manuales.</li>
+      <li>Datos consistentes y trazables entre sistemas.</li>
+      <li>Paneles claros para decidir a tiempo.</li>
+      <li>Ahorro en licencias y menos dependencias de terceros.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CÓMO TRABAJO (centrado) -->
+<section class="services-section py-16" id="proceso">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Cómo trabajo</h2>
+      <p class="mt-3 text-gray-300/85">Sprints con entregables visibles y métricas desde el día uno.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-7">
+      <article class="step-card p-5"><span class="badge">1</span><h3 class="text-base font-semibold text-white mt-6">Diagnóstico</h3><p class="text-gray-300/90">Elegimos el atasco con más retorno (30–60 días).</p></article>
+      <article class="step-card p-5"><span class="badge">2</span><h3 class="text-base font-semibold text-white mt-6">Prototipo</h3><p class="text-gray-300/90">Validación con el equipo antes de programar.</p></article>
+      <article class="step-card p-5"><span class="badge">3</span><h3 class="text-base font-semibold text-white mt-6">MVP</h3><p class="text-gray-300/90">Versión que ya ahorra tiempo/coste.</p></article>
+      <article class="step-card p-5"><span class="badge">4</span><h3 class="text-base font-semibold text-white mt-6">Integración</h3><p class="text-gray-300/90">TPV/ERP/CRM o hojas. Sin parar la operación.</p></article>
+      <article class="step-card p-5"><span class="badge">5</span><h3 class="text-base font-semibold text-white mt-6">Mejora</h3><p class="text-gray-300/90">Añadimos solo si el impacto es real.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- DEMOS RELACIONADAS (centrado) -->
+<section class="apps-section py-16" id="demos">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Prueba demos relacionadas</h2>
+      <p class="mt-3 text-gray-300/85">Valida el enfoque en 30–60 s antes de pedir presupuesto.</p>
+    </div>
+
+    <div id="apps-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      <a href="/apps/extractor-facturas/" class="app-card p-6 block"
+         data-title="Extractor de campos de factura" data-tags="ocr,erp" data-rating="4.6" data-popularity="97"
+         data-quote="Entrada de facturas 3× más rápida y menos errores.">
+        <h3 class="text-lg font-semibold text-white mb-1">Extractor de campos de factura</h3>
+        <p class="text-gray-300/90">PDF → JSON/CSV en segundos. Ideal para compras y contabilidad.</p>
+        <span class="inline-block text-xs mt-3 px-2 py-0.5 rounded-full bg-white/10">Límite: 5 usos/día</span>
+      </a>
+
+      <a href="/apps/normalizador-skus/" class="app-card p-6 block"
+         data-title="Normalizador de SKUs" data-tags="erp" data-rating="4.5" data-popularity="81"
+         data-quote="Catálogo limpio y deduplicado, sin dolores.">
+        <h3 class="text-lg font-semibold text-white mb-1">Normalizador de SKUs</h3>
+        <p class="text-gray-300/90">Deduplica y mapea referencias para un inventario consistente.</p>
+        <span class="inline-block text-xs mt-3 px-2 py-0.5 rounded-full bg-white/10">Límite: 5 usos/día</span>
+      </a>
+
+      <a href="/apps/clasificador-tickets/" class="app-card p-6 block"
+         data-title="Clasificador de tickets" data-tags="tickets,chatbot" data-rating="4.5" data-popularity="83"
+         data-quote="Menos ruido en soporte y SLA más corto.">
+        <h3 class="text-lg font-semibold text-white mb-1">Clasificador de tickets</h3>
+        <p class="text-gray-300/90">Texto → categoría/prioridad. Encamina y mide con claridad.</p>
+        <span class="inline-block text-xs mt-3 px-2 py-0.5 rounded-full bg-white/10">Límite: 5 usos/día</span>
+      </a>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/apps/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+        <i data-lucide="list-checks" class="mr-2 w-4 h-4"></i> Ver todas las demos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS RELACIONADOS (centrado) -->
+<section class="services-section py-16" id="proyectos">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Casos y resultados</h2>
+      <p class="mt-3 text-gray-300/85">Ejemplos reales (sin nombres) y el módulo que lo hizo posible.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      <a class="app-card p-6 block" href="/proyectos/">
+        <h3 class="text-lg font-semibold text-white mb-2">Pedidos y stock unificados</h3>
+        <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
+          <li>-35% errores de inventario</li><li>-22% roturas</li><li>Stack: Django + API ERP</li>
+        </ul>
+      </a>
+      <a class="app-card p-6 block" href="/proyectos/">
+        <h3 class="text-lg font-semibold text-white mb-2">Rutas y partes en móvil</h3>
+        <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
+          <li>-18% tiempo/turno</li><li>+100% trazabilidad</li><li>Stack: Web app + Maps</li>
+        </ul>
+      </a>
+      <a class="app-card p-6 block" href="/proyectos/">
+        <h3 class="text-lg font-semibold text-white mb-2">Reporting de gerencia</h3>
+        <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
+          <li>Paneles diarios</li><li>Decisiones a tiempo</li><li>Stack: ETL + Dashboards</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS Y PLAZOS (centrado) -->
+<section class="apps-section py-14" id="precios">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Precios y plazos orientativos — España</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 mt-6">
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">MVP específico (2–6 semanas)</h3>
+        <p class="text-gray-300/90 mb-1">2.000–6.000 €</p>
+        <p class="text-gray-300/80 text-sm">Una pieza concreta para resolver el mayor cuello de botella.</p>
+      </article>
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">App departamental (6–12 semanas)</h3>
+        <p class="text-gray-300/90 mb-1">6.000–15.000 €</p>
+        <p class="text-gray-300/80 text-sm">Digitaliza logística, ventas, producción o servicios con integraciones.</p>
+      </article>
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">Sistema integral (12+ semanas)</h3>
+        <p class="text-gray-300/90 mb-1">desde 15.000 €</p>
+        <p class="text-gray-300/80 text-sm">Varias áreas conectadas con automatizaciones y paneles.</p>
+      </article>
+    </div>
+    <p class="text-gray-300/80 text-sm mt-4">El precio final depende del alcance y de las integraciones necesarias.</p>
+  </div>
+</section>
+
+<!-- FAQ (centrado) -->
+<section id="faq" class="services-section py-14">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">Preguntas frecuentes</h2>
+    <div class="faq-accordion max-w-3xl mx-auto mt-6">
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Cuándo conviene software a medida?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Cuando el SaaS genérico te encorseta, hay pasos manuales que cuestan horas o necesitas propiedad sobre procesos y datos.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Cómo controláis la calidad?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Pruebas, CI/CD, demos quincenales y métricas de impacto definidas desde el Sprint 0.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Y el RGPD?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Proveedores en la UE cuando aplica, cifrado, mínimos privilegios y logs de auditoría.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Puedo integrar mi ERP/CRM?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Sí: REST/GraphQL, webhooks o importaciones programadas. Convivimos con lo que ya funciona.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL (centrado) -->
+<section class="services-section py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+      <i data-lucide="calendar" class="mr-2 w-4 h-4" aria-hidden="true"></i> Agenda 15’ — diagnóstico sin coste
+    </a>
+    <p class="mt-3 text-gray-300/75 text-sm">Trae un parte/factura/ruta. Te digo qué automatizar primero.</p>
+  </div>
+</section>
+
+<!-- CTA sticky -->
+
+
+{% endblock %}
+
+{# ───────── JS ───────── #}
+{% block extra_js %}
+<script defer src="{% static 'js/ui.core.js' %}"></script>
+<script defer src="{% static 'js/hero.particles.js' %}"></script>
+<script defer src="{% static 'js/effects.tilt.js' %}"></script>
+<script defer src="{% static 'js/apps.gallery.js' %}"></script>
+<script defer src="{% static 'js/boot.init.js' %}"></script>
+{% endblock %}

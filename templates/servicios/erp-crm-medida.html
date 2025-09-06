@@ -1,0 +1,399 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# ───────── SEO ───────── #}
+{% block title %}Software ERP a medida: guía práctica, cuándo compensa y cómo hacerlo bien{% endblock %}
+{% block meta_description %}ERP a medida cuando el estándar no encaja: control en tiempo real, menos retrabajo e integraciones limpias. IA solo donde aporta, privacidad por defecto y sin lock-in.{% endblock %}
+{% block canonical %}<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}/servicios/erp-a-medida/">{% endblock %}
+
+{# OG/Twitter #}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_title %}ERP a medida: control, velocidad y retorno real{% endblock %}
+{% block og_description %}Si el ERP genérico te queda corto, diseña el tuyo por módulos, con métricas y sin lock-in. Aquí te explico cómo lo enfoco.{% endblock %}
+{% block og_image %}https://hectorherrerafullstack.com/static/img/og-default.jpg{% endblock %}
+{% block twitter_title %}Software ERP a medida · Guía práctica{% endblock %}
+{% block twitter_description %}Cuándo compensa, riesgos y mitigaciones, IA con retorno, arquitectura modular e implantación por MVP.{% endblock %}
+{% block twitter_image %}https://hectorherrerafullstack.com/static/img/og-default.jpg{% endblock %}
+
+{# ───────── JSON-LD ───────── #}
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Service",
+  "name":"ERP a medida",
+  "serviceType":"Diseño e implantación de ERP a medida",
+  "url":"{{ request.scheme }}://{{ request.get_host }}/servicios/erp-a-medida/",
+  "description":"ERP a medida cuando el estándar no encaja: módulos por dominio, integraciones limpias, métricas de impacto y privacidad por defecto.",
+  "provider":{"@type":"Person","name":"Héctor Herrera","url":"https://hectorherrerafullstack.com/"},
+  "areaServed":{"@type":"Country","name":"España"},
+  "audience":{"@type":"BusinessAudience","businessAudienceType":"PYME"},
+  "offers":{"@type":"Offer","priceCurrency":"EUR","availability":"https://schema.org/InStock"}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Cuándo merece la pena un ERP a medida frente a uno estándar?","acceptedAnswer":{"@type":"Answer","text":"Cuando tu forma de operar te diferencia y el estándar te obliga a renunciar a control, velocidad o margen. Si el 70–80% encaja en estándar, considera un enfoque híbrido."}},
+    {"@type":"Question","name":"¿Cuánto tarda y qué fases tiene?","acceptedAnswer":{"@type":"Answer","text":"Desde 8–12 semanas para un MVP por dominio y luego iteraciones. Fases: descubrimiento → diseño → desarrollo → integraciones → pruebas → despliegue → formación."}},
+    {"@type":"Question","name":"¿Cómo evito dependencia del proveedor?","acceptedAnswer":{"@type":"Answer","text":"Código documentado, repositorio propio, runbooks y contratos con plan de salida."}},
+    {"@type":"Question","name":"¿Cómo integrar IA de forma segura y con retorno?","acceptedAnswer":{"@type":"Answer","text":"Empieza por un caso con datos limpios e impacto claro (p. ej., previsión de demanda). Mide antes/después y aplica minimización y trazabilidad de datos."}},
+    {"@type":"Question","name":"¿Puedo migrar de estándar a medida (o al revés)?","acceptedAnswer":{"@type":"Answer","text":"Sí. Diseña capas de integración y modelos de datos que permitan extraer/volcar información sin rehacer todo."}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"{{ request.scheme }}://{{ request.get_host }}/"},
+    {"@type":"ListItem","position":2,"name":"Servicios","item":"{{ request.scheme }}://{{ request.get_host }}/servicios/"},
+    {"@type":"ListItem","position":3,"name":"ERP a medida","item":"{{ request.scheme }}://{{ request.get_host }}/servicios/erp-a-medida/"}
+  ]
+}
+</script>
+{% endblock %}
+
+{# ───────── CONTENIDO ───────── #}
+{% block content %}
+
+<!-- HERO (centrado, CTAs calcadas de servicios) -->
+<section class="hero-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] -mt-10">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-content w-full px-6">
+    <div class="max-w-6xl mx-auto py-10 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+        Software ERP a medida: guía práctica, cuándo compensa y cómo hacerlo bien
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-gray-300/90 max-w-3xl mx-auto">
+        Si has llegado hasta aquí es porque el ERP “para todos” no te está resolviendo lo tuyo. Te entiendo.
+        Ninguna industria es igual y, cuando creces, lo genérico se queda corto. Aquí te explico cómo enfoco
+        los ERP a medida para que den control, velocidad y retorno real.
+      </p>
+      <blockquote class="mt-4 text-white/80 max-w-2xl mx-auto">“Lo genérico te deja tirado justo cuando más creces.”</blockquote>
+      <div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href="/apps/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+          <i data-lucide="sparkles" class="mr-2 w-4 h-4"></i> Probar demos
+        </a>
+        <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+          <i data-lucide="calendar" class="mr-2 w-4 h-4"></i> Agenda 15’ — diagnóstico sin coste
+        </a>
+      </div>
+      <p class="mt-5 text-xs sm:text-sm text-white/70">Regla: si no mejora <strong>tiempo</strong>, <strong>coste</strong> o <strong>margen</strong>, no se desarrolla.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Tabla rápida de términos (centrado) -->
+<section class="apps-section py-12" id="terminos">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Tabla rápida de términos y variantes</h2>
+
+    <div class="max-w-4xl mx-auto overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] shadow-lg">
+      <div class="overflow-x-auto">
+        <table class="w-full table-auto text-left text-gray-200/90">
+          <thead class="bg-white/[0.04] text-white/90 text-xs uppercase tracking-wide">
+            <tr>
+              <th scope="col" class="py-3 pl-4 pr-3 sm:pl-6">Término principal</th>
+              <th scope="col" class="py-3 px-3">Variantes y sinónimos útiles</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/10">
+            <tr class="hover:bg-white/[0.03]">
+              <td class="py-3 pl-4 pr-3 sm:pl-6 font-semibold text-white">Software ERP a medida</td>
+              <td class="py-3 px-3 leading-relaxed">ERP personalizado, custom ERP, desarrollo ERP a medida, ERP vertical, ERP modular, ERP híbrido</td>
+            </tr>
+            <tr class="hover:bg-white/[0.03]">
+              <td class="py-3 pl-4 pr-3 sm:pl-6 font-semibold text-white">ERP estándar</td>
+              <td class="py-3 px-3 leading-relaxed">ERP empaquetado, off-the-shelf, ERP comercial</td>
+            </tr>
+            <tr class="hover:bg-white/[0.03]">
+              <td class="py-3 pl-4 pr-3 sm:pl-6 font-semibold text-white">Implementación</td>
+              <td class="py-3 px-3 leading-relaxed">Implantación, despliegue, puesta en marcha</td>
+            </tr>
+            <tr class="hover:bg-white/[0.03]">
+              <td class="py-3 pl-4 pr-3 sm:pl-6 font-semibold text-white">Integraciones</td>
+              <td class="py-3 px-3 leading-relaxed">Conectores, APIs, ETL, middleware</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 1) Qué es un ERP a medida -->
+<section class="services-section py-14" id="que-es">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">1) Qué es un ERP a medida (y qué no es)</h2>
+    <p class="text-gray-300/90 max-w-4xl mx-auto">
+      Un ERP a medida es un sistema de gestión diseñado específicamente alrededor de tus procesos, tus reglas y tus métricas.
+      No es “ponerle cuatro campos” a un ERP empaquetado; eso es parametrización. Aquí hablamos de diseñar el flujo desde compras
+      hasta facturación, pasando por planificación, almacén, RR. HH. y BI, con lo que tu negocio realmente necesita.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 mt-6 text-left">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Qué sí es</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Procesos modelados tal cual operas (no al revés).</li>
+          <li>Datos y KPIs que te importan, visibles en tiempo real.</li>
+          <li>Integraciones a tus herramientas sin fricciones.</li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Qué no es</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Un “Frankenstein” de hojas de cálculo pegadas.</li>
+          <li>Un estándar al que te adaptas “como puedas”.</li>
+          <li>Un proyecto sin gobierno que escala sin control.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 mt-6 text-left">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">ERP a medida vs. estándar</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Ajuste al proceso: el estándar te pide adaptarte; el a medida se adapta a ti.</li>
+          <li>Time-to-value: el estándar arranca antes, el a medida escala mejor cuando el proceso es diferencial.</li>
+          <li>Coste total (TCO): inversión inicial mayor, pero evita atajos caros.</li>
+          <li>Ventaja competitiva: codificar tu forma de operar la hace repetible.</li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Señales de que el genérico se queda corto</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>KPIs críticos que no ves a diario sin Excel.</li>
+          <li>Procesos “dobles” fuera del ERP y luego “volcar”.</li>
+          <li>Costes que no reflejan cambios de precio/mermas.</li>
+          <li>Integraciones a CRM/tienda/BI frágiles o con latencia.</li>
+          <li>“El ERP manda” en lugar de mandar tú sobre el proceso.</li>
+        </ul>
+      </article>
+    </div>
+    <blockquote class="mt-6 text-white/80 max-w-2xl mx-auto">“Si no sientes control, tu ERP no está a tu medida.”</blockquote>
+  </div>
+</section>
+
+<!-- 2) Ventajas y límites -->
+<section class="apps-section py-14" id="ventajas-limites">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">2) Ventajas y límites del ERP a medida</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 text-left">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Personalización, control y ventaja</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Control en tiempo real de lo que más impacta el margen.</li>
+          <li>Menos retrabajo y trazabilidad completa.</li>
+          <li>Automatización donde aporta (aprobaciones, avisos, previsiones).</li>
+          <li>UX alineada al día a día del equipo.</li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Costes, plazos y riesgos (con mitigación)</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Coste inicial: mitigar con MVP por áreas.</li>
+          <li>Plazo: hitos de 2–4 semanas y demos operativas.</li>
+          <li>Cambios de alcance: backlog priorizado y change log.</li>
+          <li>Dependencia: código documentado, repo propio y playbooks.</li>
+          <li>Mantenimiento: métricas de salud y SLA claros.</li>
+        </ul>
+      </article>
+    </div>
+    <blockquote class="mt-6 text-white/80 max-w-2xl mx-auto">“Los datos son de la empresa: punto.”</blockquote>
+  </div>
+</section>
+
+<!-- 3) IA en el ERP a medida -->
+<section class="services-section py-14" id="ia-en-erp">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">3) IA en el ERP a medida: dónde sí aporta valor</h2>
+    <p class="text-gray-300/90 max-w-3xl mx-auto">Implemento IA solo donde mueve la aguja. Primero medimos el cuello de botella y luego decidimos.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 mt-6 text-left">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Casos rápidos por proceso</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Demand planning, inventario y reaprovisionamiento.</li>
+          <li>Rutas/partes de trabajo priorizando SLA.</li>
+          <li>Compras: anomalías de precios/plazos.</li>
+          <li>Calidad: clasificación de incidencias y acciones.</li>
+          <li>Finanzas: previsión de caja y alertas de riesgo.</li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Privacidad y cumplimiento (RGPD)</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Minimización de datos y trazabilidad.</li>
+          <li>Cifrado y segregación en tránsito y reposo.</li>
+          <li>Auditoría de prompts/datasets y retención limitada.</li>
+          <li>Desacoplar IA del core: si falla IA, el ERP sigue.</li>
+        </ul>
+      </article>
+    </div>
+    <blockquote class="mt-6 text-white/80 max-w-2xl mx-auto">“Yo meto IA en la pieza del proceso que de verdad mueve la aguja.”</blockquote>
+  </div>
+</section>
+
+<!-- 4) Arquitectura y módulos -->
+<section class="apps-section py-14" id="arquitectura">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">4) Arquitectura y módulos: diseñando tu ERP sin morir en el intento</h2>
+    <p class="text-gray-300/90 max-w-3xl mx-auto">Módulos por dominio conectados por APIs. Evolucionas cada pieza sin romper todo.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 mt-6 text-left">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Integraciones críticas</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Contabilidad: asientos automáticos y conciliación.</li>
+          <li>CRM: oportunidades → pedidos sin reentrar datos.</li>
+          <li>BI: data marts por área y dashboards con baja latencia.</li>
+          <li>E-commerce/TPV: stock, precios y promos sincronizados.</li>
+          <li>Herramientas: SAP/Dynamics/Odoo/Tryton, BI, pagos, logística…</li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Checklist anti lock-in</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Repositorio propio y documentación completa.</li>
+          <li>Infra/pipelines como código (IaC).</li>
+          <li>Tests automáticos y linting.</li>
+          <li>Métricas de rendimiento y error budgets.</li>
+          <li>Derechos de uso/propiedad y plan de salida.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5) Metodología de implantación -->
+<section class="services-section py-14" id="metodologia">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">5) Metodología de implantación</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 text-left">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Del descubrimiento al MVP</h3>
+<ol class="text-left text-gray-300/90 list-decimal list-inside space-y-1">
+          <li>Descubrimiento: mapa de procesos, reglas y KPIs.</li>
+          <li>MVP por dominio (p.ej., Ventas + Stock) que ya quita Excel.</li>
+          <li>Iteraciones quincenales: demos, backlog y deuda controlada.</li>
+          <li>Medición antes/después: ciclos, errores, reclamaciones, roturas.</li>
+        </ol>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Formación, adopción y cambio</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Formación por rol (no por módulo).</li>
+          <li>Campeones internos por área.</li>
+          <li>Playbooks y soporte de primer nivel.</li>
+          <li>Feedback loop con SLA visibles.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 6) Casos reales -->
+<section class="apps-section py-14" id="casos-reales">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">6) Casos reales en sectores nicho</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 text-left">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">Limpieza (H-Clean): operativa y control diario</h3>
+        <p class="text-gray-300/90">Planificación de equipos y partes, panel diario de asignaciones, consumos y cumplimiento. Menos desplazamientos vacíos y mejor control de costes por servicio.</p>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">Restauración (Scandallo): cocina y sala en sincronía</h3>
+        <p class="text-gray-300/90">Coordinación de tickets, stock de ingredientes y ventas por franja. Flujo recepción → mise en place → venta → merma y alertas de stock mínimo.</p>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">Instalación (Easy Fence): presupuestos, obra y postventa</h3>
+        <p class="text-gray-300/90">Modelado de mediciones, fases y certificaciones con fotos/partes móviles. Menos retrabajo y ciclo presupuesto → instalación → cobro más corto.</p>
+      </article>
+    </div>
+    <blockquote class="mt-6 text-white/80 max-w-2xl mx-auto">“Un ERP a medida te devuelve el control en tiempo real de la empresa, el equipo y el proceso.”</blockquote>
+  </div>
+</section>
+
+<!-- 7) Checklist proveedor -->
+<section class="services-section py-14" id="checklist-proveedor">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">7) Checklist para elegir proveedor y evitar sorpresas</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 text-left">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Preguntas clave</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>¿Cuál es el MVP y qué entregables trae (demo, código, docs)?</li>
+          <li>¿Cómo medirá el ROI (métricas y horizonte)?</li>
+          <li>¿Qué integraciones son críticas y quién se encarga?</li>
+          <li>¿Cómo gestionará cambios de alcance y prioridades?</li>
+          <li>¿Qué pasa si no llegamos a una fecha (contingencia)?</li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">SLA y seguridad de datos</h3>
+<ul class="text-left text-gray-300/90 list-disc list-inside space-y-1">
+          <li>Tiempos de respuesta, uptime y ventanas de mantenimiento.</li>
+          <li>Propiedad del código y de los datos.</li>
+          <li>Auditorías, logging, segregación y control de accesos.</li>
+          <li>Plan de continuidad y traspaso si cambia el proveedor.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 8) FAQs rápidas -->
+<section id="faq" class="apps-section py-14">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white">8) FAQs rápidas sobre ERP a medida</h2>
+    <div class="faq-accordion max-w-3xl mx-auto mt-6 text-left">
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Cuándo merece la pena un ERP a medida frente a uno estándar?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Cuando tu forma de operar te diferencia y el estándar te obliga a renunciar a control, velocidad o margen. Si el 70–80% encaja en estándar, considera híbrido.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Cuánto tarda y qué fases tiene?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Desde 8–12 semanas para un MVP útil por dominio; luego iteraciones. Fases: descubrimiento, diseño, desarrollo, integraciones, pruebas, despliegue y formación.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Cómo evito dependencia del proveedor?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Repositorio propio, documentación técnica completa, runbooks y plan de salida contractual.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Cómo integrar IA de forma segura y con retorno?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Empieza por un caso con datos limpios e impacto claro (p. ej., previsión de demanda). Minimización, trazabilidad y retención limitada.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Puedo migrar de estándar a medida (o al revés)?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Sí, con capas de integración y modelos de datos portables para extraer/volcar sin rehacer todo.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Conclusión + CTA FINAL (centrado, calcado) -->
+<section class="services-section py-12" id="cta-final">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="text-gray-300/90 max-w-3xl mx-auto mb-4">
+      Un ERP a medida compensa cuando tu proceso es tu ventaja. Construye por MVPs, itera con métricas y evita el lock-in desde el día uno.
+      ¿Te suena esto? Vemos juntos si estándar, híbrido o a medida.
+    </p>
+    <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+      <i data-lucide="calendar" class="mr-2 w-4 h-4" aria-hidden="true"></i> Agenda 15’ — diagnóstico sin coste
+    </a>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# ───────── Metadatos (HUB /servicios/) ───────── #}
+{% block title %}Servicios de software e IA | Software a medida · Integraciones · Automatización IA · ERP/CRM · Mantenimiento · Consultoría MVP{% endblock %}
+{% block meta_description %}Hub de servicios: Software a medida, Integraciones API, Automatización de procesos con IA, ERP/CRM a medida, Mantenimiento y soporte, y Consultoría para MVP. Sprints con entregables, CI/CD, RGPD y ROI medible.{% endblock %}
+{% block canonical %}<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}/servicios/">{% endblock %}
+
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_title %}Servicios · Software a medida e IA para PYMEs{% endblock %}
+{% block og_description %}Elige el servicio que más retorno te da: software a medida, integraciones API, IA para procesos, ERP/CRM, mantenimiento y consultoría MVP.{% endblock %}
+{% block og_image %}https://hectorherrerafullstack.com/static/img/og-default.jpg{% endblock %}
+{% block twitter_title %}Servicios · Software a medida e IA{% endblock %}
+{% block twitter_description %}Software a medida, Integraciones API, Automatización IA, ERP/CRM, Mantenimiento y Consultoría MVP. MVP útil en semanas.{% endblock %}
+{% block twitter_image %}https://hectorherrerafullstack.com/static/img/og-default.jpg{% endblock %}
+
+{# ───────── Datos estructurados (CollectionPage + ItemList + FAQ + Breadcrumbs) ───────── #}
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"CollectionPage",
+  "name":"Servicios",
+  "url":"{{ request.scheme }}://{{ request.get_host }}/servicios/",
+  "description":"Hub de servicios: Software a medida, Integraciones API, Automatización de procesos con IA, ERP/CRM a medida, Mantenimiento y soporte, Consultoría para MVP.",
+  "mainEntity":{
+    "@type":"ItemList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"item":{"@type":"Service","name":"Software a medida","url":"{{ request.scheme }}://{{ request.get_host }}/software-a-medida/","serviceType":"Desarrollo a medida","areaServed":"ES"}},
+      {"@type":"ListItem","position":2,"item":{"@type":"Service","name":"Integraciones API","url":"{{ request.scheme }}://{{ request.get_host }}/integraciones-api/","serviceType":"Integraciones y conectores","areaServed":"ES"}},
+      {"@type":"ListItem","position":3,"item":{"@type":"Service","name":"Automatización procesos IA","url":"{{ request.scheme }}://{{ request.get_host }}/automatizacion-procesos-ia/","serviceType":"Automatización con IA","areaServed":"ES"}},
+      {"@type":"ListItem","position":4,"item":{"@type":"Service","name":"ERP/CRM a medida","url":"{{ request.scheme }}://{{ request.get_host }}/erp-crm-medida/","serviceType":"ERP/CRM personalizado","areaServed":"ES"}},
+      {"@type":"ListItem","position":5,"item":{"@type":"Service","name":"Mantenimiento y soporte","url":"{{ request.scheme }}://{{ request.get_host }}/mantenimiento-soporte/","serviceType":"Soporte y evolución","areaServed":"ES"}},
+      {"@type":"ListItem","position":6,"item":{"@type":"Service","name":"Consultoría MVP","url":"{{ request.scheme }}://{{ request.get_host }}/consultoria-mvp/","serviceType":"Validación y alcance MVP","areaServed":"ES"}}
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿La IA es imprescindible?","acceptedAnswer":{"@type":"Answer","text":"No. Solo se usa cuando aporta. A veces lo mejor es una buena base de datos y procesos claros."}},
+    {"@type":"Question","name":"¿Cómo protegéis los datos y el RGPD?","acceptedAnswer":{"@type":"Answer","text":"Regiones UE cuando corresponde, anonimización y registros de auditoría. Los datos de tu empresa no se usan para entrenar servicios públicos."}},
+    {"@type":"Question","name":"¿Qué pasa si el modelo alucina?","acceptedAnswer":{"@type":"Answer","text":"Aplicamos recuperación de contexto (RAG), límites de confianza y revisión humana cuando es crítico. Evaluamos prompts y cambios antes de desplegar."}},
+    {"@type":"Question","name":"¿Se integra con mi programa actual?","acceptedAnswer":{"@type":"Answer","text":"Sí. Por API, importaciones programadas o conectores estándar; el objetivo es convivir, no romper lo que ya funciona."}},
+    {"@type":"Question","name":"¿Tendré que cambiarlo todo de golpe?","acceptedAnswer":{"@type":"Answer","text":"No. Empezamos por una pieza de alto impacto y vamos iterando."}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"{{ request.scheme }}://{{ request.get_host }}/"},
+    {"@type":"ListItem","position":2,"name":"Servicios","item":"{{ request.scheme }}://{{ request.get_host }}/servicios/"}
+  ]
+}
+</script>
+{% endblock %}
+
+{# ───────── Contenido on-page ───────── #}
+{% block content %}
+
+{# HERO (hub) #}
+<section class="hero-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] -mt-10">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-content w-full px-6">
+    <div class="max-w-6xl mx-auto py-10 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+        Servicios para <span class="text-indigo-300">convertir tus datos en decisiones</span>
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-gray-300/90 max-w-3xl mx-auto">
+        Implemento <strong>IA en tus procesos</strong> con <strong>apps web a medida</strong>, integraciones limpias y
+        automatizaciones que quitan horas y reducen errores. MVP útil en semanas.
+        <br /> Regla: si no mejora <em>tiempo</em>, <em>coste</em> o <em>margen</em>, no se desarrolla.
+      </p>
+      <div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href="/apps/" class="inline-flex items-center justify-center h-11 px-6 rounded-full font-semibold text-sm cta-btn cta-primary" aria-label="Probar demos">
+          <i data-lucide="sparkles" class="mr-2 w-4 h-4" aria-hidden="true"></i> Probar demos
+        </a>
+        <a href="/contacto/" class="inline-flex items-center justify-center h-11 px-6 rounded-full font-semibold text-sm cta-btn cta-primary" aria-label="Agenda diagnóstico">
+          <i data-lucide="calendar" class="mr-2 w-4 h-4" aria-hidden="true"></i> Agenda 15’
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# RESULTADOS (pains → beneficios) #}
+<section class="apps-section py-14">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Resultados que importan</h2>
+    <ul class="inline-block text-left list-disc list-inside text-gray-300/90 space-y-2 max-w-3xl">
+      <li>Menos tareas repetitivas y menos “copiar y pegar” entre herramientas.</li>
+      <li>Menos errores de transcripción con OCR y formularios validados.</li>
+      <li>Más visibilidad con paneles claros y datos unificados.</li>
+      <li>Presupuestos o pedidos en minutos —no en días— gracias a las automatizaciones.</li>
+    </ul>
+    <p class="text-gray-300/85 mt-4 max-w-3xl mx-auto">Medimos horas, costes y margen desde el primer sprint.</p>
+  </div>
+</section>
+
+<section class="services-section py-14">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center mb-8">Servicios núcleo</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
+      <!-- Software a medida -->
+      <a href="/software-a-medida/" aria-label="Software a medida — Saber más" class="svc-card p-6 pb-14 block group relative">
+        <div class="svc-icon mb-3"><i data-lucide="code"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Software a medida</h3>
+        <p class="text-gray-300/90">Aplicaciones internas y herramientas para tu operación real: pedidos, partes, rutas, stock o facturación.</p>
+        <span class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
+          Saber más
+          <i data-lucide="arrow-right" class="w-4 h-4 translate-x-0 group-hover:translate-x-0.5"></i>
+        </span>
+      </a>
+
+      <!-- Integraciones API -->
+      <a href="/integraciones-api/" aria-label="Integraciones API — Saber más" class="svc-card p-6 pb-14 block group relative">
+        <div class="svc-icon mb-3"><i data-lucide="plug-zap"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Integraciones API</h3>
+        <p class="text-gray-300/90">Conecta ERP/CRM, WhatsApp Business, Stripe, Google Sheets y más. APIs estables (OpenAPI) y webhooks para que todo fluya.</p>
+        <span class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
+          Saber más
+          <i data-lucide="arrow-right" class="w-4 h-4 translate-x-0 group-hover:translate-x-0.5"></i>
+        </span>
+      </a>
+
+      <!-- Automatización procesos IA -->
+      <a href="/automatizacion-procesos-ia/" aria-label="Automatización procesos IA — Saber más" class="svc-card p-6 pb-14 block group relative">
+        <div class="svc-icon mb-3"><i data-lucide="bot"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Automatización procesos IA</h3>
+        <p class="text-gray-300/90">Asistentes, OCR y clasificación de documentos o imágenes. Menos tiempo tecleando, más consistencia en los datos.</p>
+        <span class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
+          Saber más
+          <i data-lucide="arrow-right" class="w-4 h-4 translate-x-0 group-hover:translate-x-0.5"></i>
+        </span>
+      </a>
+
+      <!-- ERP/CRM a medida -->
+      <a href="/erp-crm-medida/" aria-label="ERP/CRM a medida — Saber más" class="svc-card p-6 pb-14 block group relative">
+        <div class="svc-icon mb-3"><i data-lucide="grid"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">ERP/CRM a medida</h3>
+        <p class="text-gray-300/90">Procesos comerciales, inventario y finanzas con automatizaciones: recordatorios, validaciones y paneles claros.</p>
+        <span class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
+          Saber más
+          <i data-lucide="arrow-right" class="w-4 h-4 translate-x-0 group-hover:translate-x-0.5"></i>
+        </span>
+      </a>
+
+      <!-- Mantenimiento y soporte (sin enlace) -->
+<div class="svc-card p-6 block relative">
+  <div class="svc-icon mb-3"><i data-lucide="activity"></i></div>
+  <h3 class="text-lg font-semibold text-white mb-1">Mantenimiento y soporte</h3>
+  <p class="text-gray-300/90">
+    Monitorización, parches y mejoras evolutivas. Observabilidad para detectar incidencias antes de que impacten.
+  </p>
+</div>
+
+<!-- Consultoría MVP (sin enlace) -->
+<div class="svc-card p-6 block relative">
+  <div class="svc-icon mb-3"><i data-lucide="timer"></i></div>
+  <h3 class="text-lg font-semibold text-white mb-1">Consultoría MVP</h3>
+  <p class="text-gray-300/90">
+    De la idea al primer producto útil en semanas. Alcance mínimo que ya entrega valor y prepara el terreno para crecer.
+  </p>
+</div>
+
+    </div>
+  </div>
+</section>
+
+{# PRECIOS Y PLAZOS (orientativo) #}
+<section class="services-section py-14">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Precios y plazos orientativos — España</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 mt-6">
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">MVP específico (2–6 semanas)</h3>
+        <p class="text-gray-300/90 mb-1">2.000–6.000 €</p>
+        <p class="text-gray-300/80 text-sm">Una pieza concreta para resolver el mayor cuello de botella.</p>
+      </article>
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">App departamental (6–12 semanas)</h3>
+        <p class="text-gray-300/90 mb-1">6.000–15.000 €</p>
+        <p class="text-gray-300/80 text-sm">Digitaliza logística, ventas, producción o servicios con integraciones.</p>
+      </article>
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">Sistema integral (12+ semanas)</h3>
+        <p class="text-gray-300/90 mb-1">desde 15.000 €</p>
+        <p class="text-gray-300/80 text-sm">Varias áreas conectadas con automatizaciones y paneles.</p>
+      </article>
+    </div>
+    <p class="text-gray-300/80 text-sm mt-4">El precio final depende del alcance y de las integraciones necesarias.</p>
+  </div>
+</section>
+
+{# FAQ (hub) #}
+<section id="faq" class="services-section py-14">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">Preguntas frecuentes</h2>
+    <div class="faq-accordion max-w-3xl mx-auto mt-6">
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿La IA es imprescindible?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">No. Solo se usa cuando aporta. A veces lo mejor es una buena base de datos y procesos claros.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Cómo protegéis los datos y el RGPD?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Regiones UE cuando corresponde, anonimización y registros de auditoría. Los datos de tu empresa no se usan para entrenar servicios públicos.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Qué pasa si el modelo “alucina”?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Aplicamos recuperación de contexto (RAG), límites de confianza y revisión humana cuando es crítico. Además, evaluamos prompts y cambios antes de desplegar.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Se integra con mi programa actual?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Sí. Por API, importaciones programadas o conectores estándar; el objetivo es convivir, no romper lo que ya funciona.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Tendré que cambiarlo todo de golpe?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">No. Empezamos por una pieza de alto impacto y vamos iterando.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+{# CTA FINAL #}
+<section class="services-section py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+      <i data-lucide="calendar" class="mr-2 w-4 h-4" aria-hidden="true"></i> Agenda 15’ — diagnóstico sin coste
+    </a>
+  </div>
+</section>
+
+{% endblock %}
+
+{# ───────── JS de la página (ORDEN IMPORTA) ───────── #}
+{% block extra_js %}
+<script defer src="{% static 'js/ui.core.js' %}"></script>
+<script defer src="{% static 'js/hero.particles.js' %}"></script>
+<script defer src="{% static 'js/effects.tilt.js' %}"></script>
+<script defer src="{% static 'js/apps.gallery.js' %}"></script>
+<script defer src="{% static 'js/boot.init.js' %}"></script>
+{% endblock %}

@@ -1,51 +1,409 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Contacto | Agenda 15 minutos{% endblock %}
+{% block title %}Contacto · Hablemos de tu proyecto{% endblock %}
+{% block meta_description %}Inicia una conversación con nuestro chat guiado para definir tu proyecto o rellena el formulario clásico. Te ayudamos a encontrar la mejor solución.{% endblock %}
 
 {% block extra_head %}
-<meta name="description" content="Cuéntame tu reto y agenda una evaluación inicial de 15 minutos."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-color: #4f46e5;
+  }
+  .hero-title { font-family: 'Manrope', sans-serif; }
+  .hero-lead { font-family: 'Manrope', sans-serif; }
+  .segmented-control button.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+  }
+  .contact-view {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .contact-view.hidden {
+    opacity: 0;
+    transform: scale(0.98);
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+  }
+  .typing-indicator span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+    margin: 0 1px;
+    animation: bounce 1s infinite;
+  }
+  .typing-indicator span:nth-child(2) { animation-delay: 0.15s; }
+  .typing-indicator span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-4px); }
+  }
+  .about-card {
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .04);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, .22);
+  }
+  .cta-btn.cta-primary {
+    position: relative;
+    padding: .875rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(79, 70, 229, .35);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .cta-btn.cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(79, 70, 229, .5);
+  }
+</style>
 {% endblock %}
 
 {% block content %}
-<section class="max-w-4xl mx-auto px-4 py-12">
-  <h1 class="text-4xl font-extrabold">Contacto</h1>
-  <p class="mt-2">Cuéntame brevemente tu reto. Respondo rápido.</p>
-  <form method="post" action="{% url 'website:contacto' %}" class="mt-6 grid gap-4 rounded-2xl border bg-white p-6" id="contact-form">
-    {% csrf_token %}
-    <label class="block">
-      <span class="text-sm font-semibold">Nombre</span>
-      <input name="nombre" class="form-input" required>
-    </label>
-    <label class="block">
-      <span class="text-sm font-semibold">Email</span>
-      <input type="email" name="email" class="form-input" required>
-    </label>
-    <label class="block">
-      <span class="text-sm font-semibold">Web (opcional)</span>
-      <input name="web" class="form-input" placeholder="https://…">
-    </label>
-    <label class="block">
-      <span class="text-sm font-semibold">Reto</span>
-      <textarea name="reto" rows="5" class="form-textarea" placeholder="¿Qué quieres automatizar?" required></textarea>
-    </label>
-    <button class="btn btn-primary w-full" type="submit" data-ga4-event="contact_submit">Enviar</button>
-  </form>
+<section class="max-w-6xl mx-auto py-10 sm:py-14">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-start">
 
-  <div id="agenda" class="mt-10">
-    <h2 class="text-2xl font-bold">Agenda 15 minutos</h2>
-    <p class="opacity-80">Reserva una llamada rápida para evaluar el encaje.</p>
-    <div class="mt-4 rounded-2xl border bg-white p-4">
-      <p class="text-sm">Inserta aquí el calendario (Calendly/Cal.com).</p>
+    <!-- Izquierda -->
+    <div class="text-center md:text-left px-4 md:px-0 max-w-xl">
+      <h1 class="hero-title text-3xl sm:text-4xl font-bold text-white tracking-tight leading-[1.1]">
+        ¿Listo para empezar?
+      </h1>
+      <p class="hero-lead mt-4 text-base sm:text-lg text-gray-300/85">
+        Sea cual sea tu reto, el primer paso es entenderlo bien. Usa el <strong>chat guiado</strong> si necesitas aclarar tus ideas, o ve directo al <strong>formulario clásico</strong> si ya lo tienes definido.
+      </p>
+
+      <!-- Beneficios (desktop) -->
+      <div class="mt-8 hidden md:block space-y-6 text-left">
+        <div class="flex items-start gap-4 text-left">
+          <span class="w-9 h-9 rounded-full bg-white/5 ring-1 ring-white/15 grid place-items-center mt-0.5 shrink-0">
+            <i data-lucide="check-circle" class="w-5 h-5 text-white [stroke-width:2.4]"></i>
+          </span>
+          <div class="text-left">
+            <h3 class="font-semibold text-white text-left">Respuesta rápida</h3>
+            <p class="text-[15px] text-gray-300/95 text-left">Recibirás una contestación en menos de 24 horas hábiles.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 text-left">
+          <span class="w-9 h-9 rounded-full bg-white/5 ring-1 ring-white/15 grid place-items-center mt-0.5 shrink-0">
+            <i data-lucide="lock" class="w-5 h-5 text-white [stroke-width:2.4]"></i>
+          </span>
+          <div class="text-left">
+            <h3 class="font-semibold text-white text-left">Confidencialidad garantizada</h3>
+            <p class="text-[15px] text-gray-300/95 text-left">Tu idea y tus datos están seguros. La privacidad es prioritaria.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 text-left">
+          <span class="w-9 h-9 rounded-full bg-white/5 ring-1 ring-white/15 grid place-items-center mt-0.5 shrink-0">
+            <i data-lucide="coffee" class="w-5 h-5 text-white [stroke-width:2.4]"></i>
+          </span>
+          <div class="text-left">
+            <h3 class="font-semibold text-white text-left">Sin compromiso</h3>
+            <p class="text-[15px] text-gray-300/95 text-left">Esta primera toma de contacto es para evaluar si podemos ayudarte, sin coste ni compromiso.</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Derecha -->
+    <div class="w-full h-full">
+      <div class="about-card relative overflow-hidden bg-gray-900/60 border border-white/10 rounded-2xl p-5 sm:p-6 shadow-[0_8px_24px_rgba(0,0,0,.35)] h-full flex flex-col">
+
+        <div class="segmented-control w-full bg-gray-800/60 border border-white/10 rounded-full p-1 flex mb-4">
+          <button id="btn-chat" class="flex-1 text-center text-sm font-semibold py-2.5 px-4 rounded-full transition-all duration-300 active">
+            Usar Chat Guiado
+          </button>
+          <button id="btn-form" class="flex-1 text-center text-sm font-semibold py-2.5 px-4 rounded-full transition-all duration-300 text-gray-300">
+            Formulario Clásico
+          </button>
+        </div>
+
+        <div class="relative flex-1 flex flex-col">
+          <!-- Chat -->
+          <section id="contact-chat" class="contact-view flex-1 flex flex-col">
+            <div id="chat-stream" class="space-y-3 flex-1 min-h-[320px] max-h-none overflow-y-auto pr-2 pb-2 rounded-xl bg-gray-800/40 border border-white/10 p-3"></div>
+
+            <div id="chat-chips" class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-3">
+              <button type="button" data-chip="no_lo_tengo_claro" class="text-center px-3 py-2.5 rounded-lg bg-gray-800/70 hover:bg-gray-700/70 text-gray-200 border border-white/10 text-sm transition-colors">💭 Idea inicial</button>
+              <button type="button" data-chip="tengo_una_idea" class="text-center px-3 py-2.5 rounded-lg bg-gray-800/70 hover:bg-gray-700/70 text-gray-200 border border-white/10 text-sm transition-colors">💡 Tengo una idea</button>
+              <button type="button" data-chip="proyecto_definido" class="col-span-2 sm:col-span-1 text-center px-3 py-2.5 rounded-lg bg-gray-800/70 hover:bg-gray-700/70 text-gray-200 border border-white/10 text-sm transition-colors">🎯 Proyecto definido</button>
+            </div>
+
+            <div class="mt-3 flex items-center gap-2">
+              <input id="chat-input" type="text" placeholder="Escribe aquí tu mensaje…" class="flex-1 bg-gray-800/80 text-white placeholder-gray-400 rounded-full px-4 py-3 outline-none focus:ring-2 ring-indigo-500/70 border border-transparent focus:border-indigo-500/70 transition-all">
+              <button id="chat-send" aria-label="Enviar mensaje" class="w-11 h-11 grid place-items-center rounded-full bg-indigo-600 text-white hover:bg-indigo-500 transition-colors focus:outline-none focus:ring-2 ring-offset-2 ring-offset-gray-900 ring-indigo-500">
+                <i data-lucide="send" class="w-5 h-5"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- Form -->
+          <section id="contact-form" class="contact-view hidden">
+            <div class="flex-1 flex flex-col h-full">
+              <form method="post" action="{% url 'website:contacto' %}" novalidate class="space-y-4 flex-1 flex flex-col h-full">
+              {% csrf_token %}
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="relative">
+                  <i data-lucide="user" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 pointer-events-none [stroke-width:2.2]"></i>
+                  <input id="name" name="name" type="text" required placeholder="Nombre" class="w-full bg-gray-800/70 text-white rounded-md pl-10 pr-3 py-3 outline-none focus:ring-2 ring-indigo-500/70 border border-white/10 transition-all">
+                </div>
+                <div class="relative">
+                  <i data-lucide="phone" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 pointer-events-none [stroke-width:2.2]"></i>
+                  <input id="phone" name="phone" type="tel" required placeholder="Teléfono" class="w-full bg-gray-800/70 text-white rounded-md pl-10 pr-3 py-3 outline-none focus:ring-2 ring-indigo-500/70 border border-white/10 transition-all">
+                </div>
+                <div class="relative sm:col-span-2">
+                  <i data-lucide="building-2" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 pointer-events-none [stroke-width:2.2]"></i>
+                  <input id="company" name="company" type="text" placeholder="Empresa (Opcional)" class="w-full bg-gray-800/70 text-white rounded-md pl-10 pr-3 py-3 outline-none focus:ring-2 ring-indigo-500/70 border border-white/10 transition-all">
+                </div>
+                <div class="relative sm:col-span-2">
+                  <i data-lucide="briefcase" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 pointer-events-none [stroke-width:2.2]"></i>
+                  <input id="sector" name="sector" type="text" placeholder="Sector (Ej: Retail, Salud, Logística)" class="w-full bg-gray-800/70 text-white rounded-md pl-10 pr-3 py-3 outline-none focus:ring-2 ring-indigo-500/70 border border-white/10 transition-all">
+                </div>
+              </div>
+              <div class="flex-1">
+                <label for="message" class="sr-only">Mensaje</label>
+                <textarea id="message" name="message" rows="8" required class="w-full h-full bg-gray-800/70 text-white rounded-xl px-4 py-3 outline-none focus:ring-2 ring-indigo-500/70 border border-white/10 transition-all resize-none" placeholder="Cuéntame sobre tu proyecto..."></textarea>
+              </div>
+              <div class="flex flex-col items-stretch gap-3 pt-1 mt-auto">
+                <button type="submit" class="cta-btn cta-primary w-full py-2.5 text-base">Enviar Mensaje</button>
+                <p class="text-[11px] text-gray-400/80 text-center">Tus datos están protegidos. Reviso cada consulta personalmente.</p>
+              </div>
+            </form>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
+
+<form id="contact-hidden" class="hidden">
+  {% csrf_token %}
+  <input type="hidden" name="transcript" id="f_transcript">
+</form>
 {% endblock %}
 
-{% block extra_scripts %}
+
+{% block extra_js %}
 <script>
-  document.getElementById('contact-form')?.addEventListener('submit',()=>{
-    window.gtag && gtag('event','contact_submit');
-  });
+document.addEventListener('DOMContentLoaded', function () {
+    // --- Renderizado inicial de iconos ---
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+
+    // --- Elementos del DOM ---
+    const chatSection = document.getElementById('contact-chat');
+    const formSection = document.getElementById('contact-form');
+    const btnChat = document.getElementById('btn-chat');
+    const btnForm = document.getElementById('btn-form');
+    const stream = document.getElementById('chat-stream');
+    const inputEl = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('chat-send');
+    const chips = document.getElementById('chat-chips');
+
+    // --- Configuración ---
+    const CHAT_API_URL = "{% url 'website:api_chat_gemini' %}";
+
+    // --- Estado de la aplicación ---
+    const transcript = [];
+    let isAssistantBusy = false;
+    let hasUserInteracted = false; // Para saber si el usuario ya interactuó
+
+    // --- Funciones de UI ---
+    const scrollChatToBottom = () => { stream.scrollTop = stream.scrollHeight; };
+
+    const addBubbleToChat = (text, role = "assistant") => {
+        const wrap = document.createElement('div');
+        wrap.className = `flex items-end gap-2 max-w-[85%] ${role === "assistant" ? "justify-start" : "justify-end ml-auto"}`;
+        
+        const inner = document.createElement('div');
+        inner.className = `rounded-2xl px-3.5 py-2 text-sm leading-snug break-words ${
+            role === "assistant" 
+            ? "bg-gray-800/80 text-gray-200 rounded-bl-lg" 
+            : "bg-indigo-600 text-white rounded-br-lg"
+        }`;
+        inner.textContent = text;
+        
+        wrap.appendChild(inner);
+        stream.appendChild(wrap);
+        scrollChatToBottom();
+    };
+
+    const addTypingIndicator = () => {
+        if (stream.querySelector('.typing-indicator-wrap')) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'typing-indicator-wrap flex justify-start';
+        wrap.innerHTML = `<div class="rounded-2xl px-3.5 py-2.5 bg-gray-800/80 text-gray-400 typing-indicator"><span></span><span></span><span></span></div>`;
+        stream.appendChild(wrap);
+        scrollChatToBottom();
+    };
+
+    const removeTypingIndicator = () => {
+        stream.querySelector('.typing-indicator-wrap')?.remove();
+    };
+
+    const addCtaFormButton = () => {
+        if (stream.querySelector('[data-action="open-form"]')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'w-full text-center px-3 py-2 mt-2 rounded-lg bg-emerald-600/80 hover:bg-emerald-600 text-white border border-emerald-500/30 text-xs font-semibold transition-colors flex items-center justify-center gap-2';
+        btn.dataset.action = 'open-form';
+        btn.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5"></i> ¡Perfecto! Completemos el formulario`;
+        stream.appendChild(btn);
+        if(window.lucide) lucide.createIcons(); // Renderizar el nuevo icono
+        scrollChatToBottom();
+    };
+
+    // --- Lógica del Chat ---
+    async function sendMessageToApi(userText, isChipMessage = false) {
+        if (isAssistantBusy) return;
+        isAssistantBusy = true;
+
+        addBubbleToChat(userText, "user");
+        transcript.push({ role: "user", content: userText });
+        
+        addTypingIndicator();
+
+        try {
+            const csrfToken = document.querySelector('form[method="post"] [name=csrfmiddlewaretoken]').value;
+            
+            // Preparar el payload con contexto de chip si es necesario
+            const payload = { 
+                message: userText, 
+                history: transcript, 
+                source: 'chat',
+                is_chip_message: isChipMessage 
+            };
+            
+            const res = await fetch(CHAT_API_URL, {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json", 
+                    "X-Requested-With": "XMLHttpRequest",
+                    "X-CSRFToken": csrfToken
+                },
+                body: JSON.stringify(payload)
+            });
+            
+            removeTypingIndicator();
+
+            if (!res.ok) {
+                if (res.status === 429) {
+                    throw new Error("He recibido muchas consultas. Por favor espera un momento y vuelve a intentar.");
+                }
+                throw new Error(`Error del servidor: ${res.status}`);
+            }
+            
+            const data = await res.json();
+            
+            // Manejo especial para rate limit
+            if (data.error_type === 'rate_limit') {
+                const reply = data.reply;
+                transcript.push({ role: "assistant", content: reply });
+                addBubbleToChat(reply, "assistant");
+                return;
+            }
+            
+            if (data.error) throw new Error(data.error);
+
+            const reply = data.reply || "Disculpa, no pude procesar eso.";
+            transcript.push({ role: "assistant", content: reply });
+            addBubbleToChat(reply, "assistant");
+
+            if(data.is_complete) {
+                addCtaFormButton();
+            }
+        } catch (e) {
+            removeTypingIndicator();
+            addBubbleToChat(`Error: ${e.message || "Falló la conexión. Inténtalo de nuevo."}`, "assistant");
+        } finally {
+            isAssistantBusy = false;
+        }
+    }
+
+    const handleSendMessage = () => {
+        const text = inputEl.value.trim();
+        if (!text) return;
+        inputEl.value = "";
+        hasUserInteracted = true; // Marcar que el usuario ya interactuó
+        if (/abrir|formulario/i.test(text)) {
+            switchToFormView();
+            return;
+        }
+        sendMessageToApi(text);
+    };
+
+    // --- Control de Vistas ---
+    const switchToChatView = () => {
+        formSection.classList.add('hidden');
+        chatSection.classList.remove('hidden');
+        btnChat.classList.add('active');
+        btnForm.classList.remove('active', 'text-white');
+        btnForm.classList.add('text-gray-300');
+    };
+
+    const switchToFormView = () => {
+        chatSection.classList.add('hidden');
+        formSection.classList.remove('hidden');
+        btnForm.classList.add('active', 'text-white');
+        btnChat.classList.remove('active');
+        btnForm.classList.remove('text-gray-300');
+    };
+
+    btnChat.addEventListener('click', switchToChatView);
+    btnForm.addEventListener('click', switchToFormView);
+
+    // --- Event Listeners ---
+    stream.addEventListener('click', (e) => {
+        if (e.target.closest('[data-action="open-form"]')) {
+            const fullTranscript = transcript.map(m => `${m.role === 'user' ? 'Tú' : 'Asistente'}: ${m.content}`).join('\n\n');
+            const messageTextarea = document.getElementById('message');
+            if (messageTextarea) messageTextarea.value = `Resumen del chat:\n-----------------\n${fullTranscript}\n-----------------\n\nDetalles adicionales:`;
+            switchToFormView();
+        }
+    });
+
+    if (chips) {
+        chips.addEventListener('click', (e) => {
+            const btn = e.target.closest('button[data-chip]');
+            if (!btn) return;
+            const map = {
+                "no_lo_tengo_claro": "Tengo una idea pero no sé muy bien cómo enfocarla. ¿Podrías ayudarme a definirla mejor?",
+                "tengo_una_idea": "Quiero crear una aplicación web para mi negocio. Tengo algunos requisitos en mente.",
+                "proyecto_definido": "Necesito desarrollar un sistema específico. Te explico exactamente qué necesito."
+            };
+            const text = map[btn.dataset.chip] || "Quiero ayuda.";
+            hasUserInteracted = true; // Marcar que el usuario ya interactuó
+            
+            sendMessageToApi(text, true); // true indica que es un mensaje de chip
+            chips.style.display = 'none';
+        });
+    }
+
+    sendBtn.addEventListener('click', handleSendMessage);
+    inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSendMessage(); } });
+
+    // --- Estado Inicial ---
+    // Solo mostrar mensaje inicial si el usuario no interactúa después de unos segundos
+    setTimeout(() => {
+        if (!hasUserInteracted && transcript.length === 0) {
+            addBubbleToChat("¡Hola! 👋 Estoy aquí para ayudarte a definir tu idea. Soy el asistente virtual de Héctor. ¿Cómo te llamas?");
+            transcript.push({ role: "assistant", content: "¡Hola! 👋 Estoy aquí para ayudarte a definir tu idea. Soy el asistente virtual de Héctor. ¿Cómo te llamas?" });
+        }
+    }, 2000); // Esperar 2 segundos
+});
 </script>
 {% endblock %}

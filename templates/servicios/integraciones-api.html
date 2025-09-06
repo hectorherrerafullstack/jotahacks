@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# ───────── Metadatos (hardcodeados) ───────── #}
+{% block title %}Integraciones API a medida para PYMEs — rápidas, seguras y sin líos{% endblock %}
+{% block meta_description %}Conecto tus herramientas para que trabajen solas: web, tienda, CRM, pagos y Google. Menos tareas manuales, menos errores y todo bajo control.{% endblock %}
+{% block canonical %}<link rel="canonical" href="https://hectorherrerafullstack.com/integraciones-api/">{% endblock %}
+
+{% block og_url %}https://hectorherrerafullstack.com/integraciones-api/{% endblock %}
+{% block og_title %}Integraciones API a medida para PYMEs (rápidas, seguras y sin líos){% endblock %}
+{% block og_description %}Conecto tus herramientas para que trabajen solas: tu web, tu tienda, tu CRM, tus pagos y tus cuentas de Google.{% endblock %}
+{% block og_image %}https://hectorherrerafullstack.com/static/img/og-integraciones-api.jpg{% endblock %}
+{% block twitter_title %}Integraciones API para PYMEs — rápidas, seguras y sin líos{% endblock %}
+{% block twitter_description %}Menos tareas manuales, menos errores y todo bajo control. Login con Google, pagos fiables, CRM/ERP ↔ Sheets, IA útil y audio si lo necesitas.{% endblock %}
+{% block twitter_image %}https://hectorherrerafullstack.com/static/img/og-integraciones-api.jpg{% endblock %}
+
+{# ───────── JSON-LD ───────── #}
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Integraciones API",
+  "provider": {"@type":"Person","name":"Héctor Herrera","url":"https://hectorherrerafullstack.com/"},
+  "areaServed": {"@type":"Country","name":"España"},
+  "url": "https://hectorherrerafullstack.com/integraciones-api/",
+  "description": "Integraciones API a medida para pymes: web, tienda, CRM, pagos y Google. Menos tareas manuales, menos errores y todo bajo control."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Necesito un equipo técnico propio?","acceptedAnswer":{"@type":"Answer","text":"No. Te acompaño en todo y hablo con tus proveedores si hace falta."}},
+    {"@type":"Question","name":"¿Qué pasa si mi negocio crece?","acceptedAnswer":{"@type":"Answer","text":"La integración está pensada para crecer: no hay que rehacerla si sube el volumen."}},
+    {"@type":"Question","name":"¿Podemos empezar "en pequeño"?","acceptedAnswer":{"@type":"Answer","text":"Sí. Arrancamos con lo mínimo útil (por ejemplo, Google Sheets) y luego lo escalamos."}},
+    {"@type":"Question","name":"¿Y si ya tengo algo medio hecho?","acceptedAnswer":{"@type":"Answer","text":"Lo reviso, arreglo lo que falle y lo dejo estable. No empezamos de cero si no hace falta."}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://hectorherrerafullstack.com/"},
+    {"@type":"ListItem","position":2,"name":"Integraciones API","item":"https://hectorherrerafullstack.com/integraciones-api/"}
+  ]
+}
+</script>
+{% endblock %}
+
+{# ───────── Contenido ───────── #}
+{% block content %}
+
+<!-- HERO con partículas -->
+<section class="hero-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] -mt-10">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-content w-full px-6">
+    <div class="max-w-6xl mx-auto pt-8 sm:pt-10 md:pt-12 text-center">
+      <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-3">
+        Integraciones API a medida para pymes (rápidas, seguras y sin líos)
+      </h1>
+      <p class="hero-lead text-base sm:text-lg text-gray-300/90 max-w-3xl mx-auto mb-6">
+        Conecto tus herramientas para que trabajen solas: tu web, tu tienda, tu CRM, tus pasarelas de pago y tus cuentas de Google. Menos tareas manuales, menos errores y todo bajo control.
+      </p>
+      <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center justify-center h-12 px-5 rounded-full font-semibold text-base">
+        <i data-lucide="calendar" class="mr-2 w-5 h-5" aria-hidden="true"></i>
+        Agenda 15' — diagnóstico sin coste
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="services-section py-12">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Lo que resolvemos (en cristiano)</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
+      <article class="svc-card p-6">
+        <h3 class="text-white font-semibold mb-1">Inicio de sesión sencillo: botón "Entrar con Google" u otros proveedores.</h3>
+        <p class="text-gray-300/90">En proyectos similares combino el login con Google con "tokens" seguros para que el acceso sea rápido y no te dé problemas cuando crezcas.</p>
+      </article>
+
+      <article class="svc-card p-6">
+        <h3 class="text-white font-semibold mb-1">Pagos sin sustos: cobros que no se duplican y notificaciones fiables.</h3>
+        <p class="text-gray-300/90">Trabajo con reglas para evitar cargos repetidos y verifico las notificaciones de pago para que cuadres caja sin sorpresas.</p>
+      </article>
+
+      <article class="svc-card p-6">
+        <h3 class="text-white font-semibold mb-1">CRM/ERP y Google Sheets sincronizados: datos al día sin copiar/pegar.</h3>
+        <p class="text-gray-300/90">Suelo montar primeros prototipos con Google Sheets para darte valor en días; si funciona, lo pasamos a una integración estable.</p>
+      </article>
+
+      <article class="svc-card p-6">
+        <h3 class="text-white font-semibold mb-1">IA que aporta (no que complica)</h3>
+        <p class="text-gray-300/90">Conecta tu sistema con OpenAI o Gemini para ahorrar tiempo (resúmenes, respuestas, redacción). Cuando integro IA, mido coste y velocidad por cada llamada para que el gasto esté controlado.</p>
+      </article>
+
+      <article class="svc-card p-6 md:col-span-2">
+        <h3 class="text-white font-semibold mb-1">Audio (si lo necesitas)</h3>
+        <p class="text-gray-300/90">Transcribir notas, convertir texto a voz, etc.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="apps-section py-12">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Casos típicos y tiempos</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
+      <article class="app-card p-6">
+        <p class="text-gray-300/90">Entrar con Google (u otros) → listo para producción en <strong>10–15 días hábiles</strong>.</p>
+        <p class="text-gray-300/90 mt-2">Pagos (Stripe/TPV/PayPal) con avisos fiables → <strong>2–4 semanas</strong>.</p>
+        <p class="text-gray-300/90 mt-2">IA (OpenAI/Gemini/Gemma) para tu app → <strong>3–6 semanas</strong> con métricas de uso.</p>
+        <p class="text-gray-300/90 mt-2">CRM/ERP ↔ Google Sheets → <strong>primer MVP en días</strong>, y evolución a "industrial" después.</p>
+      </article>
+      <article class="app-card p-6">
+        <p class="text-gray-300/80">Los tiempos dependen de las aprobaciones de tus proveedores. Te doy calendario y entregables por escrito.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="metodo" class="apps-section py-12">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Cómo trabajamos (3 pasos claros)</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      <article class="step-card p-6">
+        <span class="badge">1</span>
+        <h3 class="text-white font-semibold mt-6 mb-1">Entender y planificar (kick-off)</h3>
+        <p class="text-gray-300/90">Definimos qué sistemas conectamos, qué campos viajan y con qué reglas. Te entrego un esquema sencillo y un plan de riesgos con plazos.</p>
+      </article>
+      <article class="step-card p-6">
+        <span class="badge">2</span>
+        <h3 class="text-white font-semibold mt-6 mb-1">Construir y probar</h3>
+        <p class="text-gray-300/90">Hacemos la integración por partes, probamos los casos reales (incluidos "¿y si falla…?") y te enseño el avance en un entorno de pruebas.</p>
+      </article>
+      <article class="step-card p-6">
+        <span class="badge">3</span>
+        <h3 class="text-white font-semibold mt-6 mb-1">Poner en marcha y cuidar</h3>
+        <p class="text-gray-300/90">Despliegue, monitorización, alertas y un documento "qué hacer si…". Si creces o cambias de proveedor, ajustamos sin romper nada.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="services-section py-12">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Qué te llevas exactamente</h2>
+    <ul class="text-gray-300/90 space-y-2 list-disc list-inside">
+      <li>Integración funcionando y documentada.</li>
+      <li>Panel de control básico con lo importante (operaciones, errores, tiempos).</li>
+      <li>Guía de uso para tu equipo.</li>
+      <li>Soporte durante el arranque y opciones de mantenimiento.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="precios" class="apps-section py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Paquetes (elige el nivel, sin tecnicismos)</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 mt-6">
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">Estándar</h3>
+        <p class="text-gray-300/90">1 conexión con un tercero, pruebas funcionales, puesta en marcha y soporte inicial.</p>
+      </article>
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">Avanzado</h3>
+        <p class="text-gray-300/90">2–3 conexiones, inicio de sesión con Google u otros, avisos de pago fiables, primeras métricas y panel.</p>
+      </article>
+      <article class="price-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-1">Enterprise ligero</h3>
+        <p class="text-gray-300/90">≥3 conexiones, colas para pico de trabajo, alertas, auditoría y plan de continuidad.</p>
+      </article>
+    </div>
+    <p class="text-gray-300/75 mt-4">(Te paso presupuesto tras una breve llamada — respuesta en 24–48 h.)</p>
+  </div>
+</section>
+
+<section class="services-section py-12">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Garantías y tranquilidad</h2>
+    <ul class="text-gray-300/90 space-y-2 list-disc list-inside">
+      <li>Accesos seguros (lo necesario para que "Entrar con Google" sea estable y rápido).</li>
+      <li>Cobros sin duplicados (reglas para que un fallo no cobre dos veces).</li>
+      <li>Datos bajo control (quién cambió qué y cuándo).</li>
+      <li>Plan B si un proveedor se cae (reintentos y avisos, sin bloquear tu negocio).</li>
+    </ul>
+  </div>
+</section>
+
+<section id="faq" class="services-section py-12">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">Preguntas rápidas (FAQ)</h2>
+    <div class="faq-accordion max-w-3xl mx-auto mt-6">
+      <details class="faq-item"><summary class="faq-q"><span class="qtext">¿Necesito un equipo técnico propio?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary><div class="faq-a">No. Te acompaño en todo y hablo con tus proveedores si hace falta.</div></details>
+      <details class="faq-item"><summary class="faq-q"><span class="qtext">¿Qué pasa si mi negocio crece?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary><div class="faq-a">La integración está pensada para crecer: no hay que rehacerla si sube el volumen.</div></details>
+      <details class="faq-item"><summary class="faq-q"><span class="qtext">¿Podemos empezar "en pequeño"?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary><div class="faq-a">Sí. Arrancamos con lo mínimo útil (por ejemplo, Google Sheets) y luego lo escalamos.</div></details>
+      <details class="faq-item"><summary class="faq-q"><span class="qtext">¿Y si ya tengo algo medio hecho?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary><div class="faq-a">Lo reviso, arreglo lo que falle y lo dejo estable. No empezamos de cero si no hace falta.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="services-section py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Próximo paso</h2>
+    <p class="text-gray-300/90 mb-4">
+      Cuéntame qué herramienta A quieres conectar con herramienta B y qué tarea quieres automatizar. Te envío una propuesta clara con plazos y precio.
+    </p>
+    <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+      <i data-lucide="calendar" class="mr-2 w-4 h-4" aria-hidden="true"></i> Agenda 15' — diagnóstico sin coste
+    </a>
+    <p class="text-gray-300/75 text-sm mt-4">
+      ¿Buscas la visión completa? <a href="/desarrollo-software-ia/" class="underline hover:text-white">Desarrollo de software con IA</a>.
+    </p>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script defer src="{% static 'js/ui.core.js' %}"></script>
+<script defer src="{% static 'js/hero.particles.js' %}"></script>
+<script defer src="{% static 'js/effects.tilt.js' %}"></script>
+<script defer src="{% static 'js/apps.gallery.js' %}"></script>
+<script defer src="{% static 'js/boot.init.js' %}"></script>
+{% endblock %}
