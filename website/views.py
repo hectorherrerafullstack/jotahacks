@@ -13,11 +13,47 @@ import json
 import re
 import os
 
+# Importaciones para Gemini SDK
+import google.generativeai as genai
+from google.generativeai.types import HarmCategory, HarmBlockThreshold
+
 # --- CONFIGURACIÓN ---
 DEBUG = getattr(settings, "DEBUG", False)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={GEMINI_API_KEY}"
 LEAD_TO_EMAIL = os.getenv("LEAD_TO_EMAIL", "")
+
+# Configurar Gemini SDK
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
+    
+    # Configurar modelo con parámetros optimizados
+    generation_config = {
+        "temperature": 0.65,
+        "max_output_tokens": 380,
+        "top_p": 0.9,
+        "top_k": 40,
+    }
+    
+    # Configuración de seguridad (permitir contenido moderado para conversaciones comerciales)
+    safety_settings = {
+        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+    }
+    
+    try:
+        # Inicializar modelo
+        model = genai.GenerativeModel(
+            model_name="gemini-2.0-flash",
+            generation_config=generation_config,
+            safety_settings=safety_settings,
+        )
+    except Exception as e:
+        model = None
+        print(f"Error inicializando Gemini: {e}")
+else:
+    model = None
 
 # Campos requeridos para enviar lead (solo teléfono)
 def get_required_fields_for_lead(lead: Dict[str, Any]) -> List[str]:
@@ -214,15 +250,12 @@ def api_chat_gemini(request):
         return JsonResponse({"reply": SASQA_MSG})
 
     # Comprobaciones de config (con fallbacks en DEBUG)
-    if not GEMINI_API_KEY:
+    if not GEMINI_API_KEY or not model:
         if DEBUG:
             # Respuesta amable para seguir probando el flujo sin API real
             return JsonResponse({"reply": "Estoy en modo demo (falta GEMINI_API_KEY). Cuéntame objetivo, público y 3 funcionalidades clave."})
-        return JsonResponse({"error": "Falta GEMINI_API_KEY"}, status=500)
+        return JsonResponse({"error": "Falta GEMINI_API_KEY o error en configuración"}, status=500)
 
-    # A Gemini
-    contents = _history_to_contents(history)
-    
     # Construir el prompt base
     base_prompt = ROLE_LOCK
     
@@ -236,47 +269,29 @@ def api_chat_gemini(request):
         )
         base_prompt += chip_context
     
-    contents.append({"role": "user", "parts": [{"text": user_msg}]})
-    body = {
-        "contents": [
-            {"role": "user", "parts": [{"text": base_prompt}]},
-            *contents,
-        ],
-        "generationConfig": {
-            "temperature": 0.65,
-            "maxOutputTokens": 380
-        }
-    }
-
+    # Preparar historial para Gemini SDK
     try:
-        r = requests.post(GEMINI_API_URL, json=body, timeout=20)
-        # Si la clave en URL está vacía, Google responderá 400; capturamos abajo
-        data = {}
-        try:
-            data = r.json()
-        except Exception:
-            pass
-
-        if not r.ok:
-            # Manejo específico para error 429 (Too Many Requests)
-            if r.status_code == 429:
-                fallback_reply = "Disculpa, he recibido muchas consultas. Por favor espera un momento y vuelve a intentar, o puedes llenar el formulario directamente."
-                return JsonResponse({
-                    "reply": fallback_reply,
-                    "error_type": "rate_limit",
-                    "is_complete": False
-                })
-            
-            # Otros errores
-            msg = (data.get("error", {}) or {}).get("message") or f"HTTP {r.status_code}"
-            return JsonResponse({"error": f"Gemini devolvió un error: {msg}"}, status=r.status_code)
-
-        reply = (
-            data.get("candidates", [{}])[0]
-                .get("content", {})
-                .get("parts", [{}])[0]
-                .get("text", "")
-        ).strip()
+        # Crear nueva conversación
+        chat = model.start_chat(history=[])
+        
+        # Enviar el prompt base como primer mensaje del sistema
+        chat.send_message(base_prompt)
+        
+        # Procesar historial de la conversación
+        for turn in history:
+            role = turn.get("role")
+            content = _clean_user_text(turn.get("content") or "")
+            if content:
+                if role == "user":
+                    chat.send_message(content)
+                elif role == "assistant":
+                    # Para mantener el contexto, necesitamos simular la respuesta del asistente
+                    # El SDK no permite agregar mensajes del modelo directamente al historial
+                    pass
+        
+        # Enviar el mensaje actual del usuario
+        response = chat.send_message(user_msg)
+        reply = response.text.strip()
 
         # Defensa en salida
         if is_prompt_attack(reply):
@@ -339,8 +354,34 @@ def api_chat_gemini(request):
         # Aún faltan datos o ya se envió - pero indicamos si está completo para mostrar el botón
         return JsonResponse({"reply": reply_clean, "is_complete": is_complete})
 
-    except requests.RequestException as e:
-        return JsonResponse({"error": f"Fallo de red: {e}"}, status=502)
+    except Exception as e:
+        # Manejo mejorado de errores del SDK
+        error_msg = str(e).lower()
+        
+        # Error de quota/rate limit
+        if "quota" in error_msg or "rate" in error_msg or "429" in error_msg:
+            fallback_reply = "Disculpa, he recibido muchas consultas. Por favor espera un momento y vuelve a intentar, o puedes llenar el formulario directamente."
+            return JsonResponse({
+                "reply": fallback_reply,
+                "error_type": "rate_limit",
+                "is_complete": False
+            })
+        
+        # Error de API key
+        if "api" in error_msg and "key" in error_msg:
+            if DEBUG:
+                return JsonResponse({"reply": "Error de configuración de API key. Revisa la configuración."})
+            return JsonResponse({"error": "Error de configuración"}, status=500)
+        
+        # Error de contenido bloqueado por seguridad
+        if "safety" in error_msg or "blocked" in error_msg:
+            return JsonResponse({"reply": "Disculpa, reformula tu mensaje de manera más específica sobre tu proyecto."})
+        
+        # Error genérico
+        if DEBUG:
+            return JsonResponse({"error": f"Error de Gemini: {e}"}, status=500)
+        else:
+            return JsonResponse({"reply": "Disculpa, hubo un problema técnico. Por favor inténtalo de nuevo."})
 
 # --- VISTAS ORIGINALES ---
 
