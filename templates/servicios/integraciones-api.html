@@ -77,34 +77,69 @@
 
 <section class="services-section py-12">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Lo que resolvemos (en cristiano)</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
-      <article class="svc-card p-6">
-        <h3 class="text-white font-semibold mb-1">Inicio de sesión sencillo: botón "Entrar con Google" u otros proveedores.</h3>
-        <p class="text-gray-300/90">En proyectos similares combino el login con Google con "tokens" seguros para que el acceso sea rápido y no te dé problemas cuando crezcas.</p>
-      </article>
-
-      <article class="svc-card p-6">
-        <h3 class="text-white font-semibold mb-1">Pagos sin sustos: cobros que no se duplican y notificaciones fiables.</h3>
-        <p class="text-gray-300/90">Trabajo con reglas para evitar cargos repetidos y verifico las notificaciones de pago para que cuadres caja sin sorpresas.</p>
-      </article>
-
-      <article class="svc-card p-6">
-        <h3 class="text-white font-semibold mb-1">CRM/ERP y Google Sheets sincronizados: datos al día sin copiar/pegar.</h3>
-        <p class="text-gray-300/90">Suelo montar primeros prototipos con Google Sheets para darte valor en días; si funciona, lo pasamos a una integración estable.</p>
-      </article>
-
-      <article class="svc-card p-6">
-        <h3 class="text-white font-semibold mb-1">IA que aporta (no que complica)</h3>
-        <p class="text-gray-300/90">Conecta tu sistema con OpenAI o Gemini para ahorrar tiempo (resúmenes, respuestas, redacción). Cuando integro IA, mido coste y velocidad por cada llamada para que el gasto esté controlado.</p>
-      </article>
-
-      <article class="svc-card p-6 md:col-span-2">
-        <h3 class="text-white font-semibold mb-1">Audio (si lo necesitas)</h3>
-        <p class="text-gray-300/90">Transcribir notas, convertir texto a voz, etc.</p>
-      </article>
+    <!-- Título centrado + subrayado -->
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Lo que resolvemos (en cristiano)</h2>
+      <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
     </div>
+
+    <!-- Lista rica: QUÉ (dt) + CÓMO (dd) -->
+    <dl class="grid gap-y-7 gap-x-10 md:grid-cols-2">
+      <!-- Inicio de sesión -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="key-round" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          Inicio de sesión sencillo: botón <strong class="text-indigo-300">“Entrar con Google”</strong> u otros proveedores.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Cómo:</span> OAuth bien configurado + <strong class="text-indigo-300">tokens seguros</strong> para acceso rápido y escalable.
+        </dd>
+      </div>
+
+      <!-- Pagos sin sustos -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="credit-card" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          Pagos sin sustos: cobros que no se duplican y <strong class="text-indigo-300">notificaciones fiables</strong>.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Cómo:</span> reglas anti-doble cargo + verificación de webhooks → caja que <strong class="text-indigo-300">cuadra a la primera</strong>.
+        </dd>
+      </div>
+
+      <!-- Sheets + ERP/CRM -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="table" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          CRM/ERP y <strong class="text-indigo-300">Google Sheets sincronizados</strong>: datos al día sin copiar/pegar.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Cómo:</span> prototipos rápidos en Sheets y luego integración estable → valor en días y <strong class="text-indigo-300">sin retrabajo</strong>.
+        </dd>
+      </div>
+
+      <!-- IA que aporta -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="bot" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          IA que aporta (no que complica).
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Cómo:</span> conexión a OpenAI/Gemini para resúmenes, respuestas y redacción, midiendo <strong class="text-indigo-300">coste y velocidad por llamada</strong>.
+        </dd>
+      </div>
+
+      <!-- Audio (colspan) -->
+      <div class="relative pl-9 md:col-span-2">
+        <i aria-hidden="true" data-lucide="mic" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Audio</strong> (si lo necesitas).
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Cómo:</span> transcripción de notas y texto a voz para flujos donde hablar es más rápido que escribir.
+        </dd>
+      </div>
+    </dl>
   </div>
 </section>
 
@@ -222,10 +257,4 @@
 
 {% endblock %}
 
-{% block extra_js %}
-<script defer src="{% static 'js/ui.core.js' %}"></script>
-<script defer src="{% static 'js/hero.particles.js' %}"></script>
-<script defer src="{% static 'js/effects.tilt.js' %}"></script>
-<script defer src="{% static 'js/apps.gallery.js' %}"></script>
-<script defer src="{% static 'js/boot.init.js' %}"></script>
-{% endblock %}
+

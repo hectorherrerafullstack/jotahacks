@@ -25,15 +25,15 @@ LEAD_TO_EMAIL = os.getenv("LEAD_TO_EMAIL", "")
 # Configurar Gemini SDK
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
-    
+
     # Configurar modelo con parámetros optimizados
     generation_config = {
-        "temperature": 0.65,
-        "max_output_tokens": 380,
+        "temperature": 0.7,
+        "max_output_tokens": 400,
         "top_p": 0.9,
         "top_k": 40,
     }
-    
+
     # Configuración de seguridad (permitir contenido moderado para conversaciones comerciales)
     safety_settings = {
         HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
@@ -41,11 +41,11 @@ if GEMINI_API_KEY:
         HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
         HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
     }
-    
+
     try:
         # Inicializar modelo
         model = genai.GenerativeModel(
-            model_name="gemini-2.0-flash",
+            model_name="gemini-1.5-flash",
             generation_config=generation_config,
             safety_settings=safety_settings,
         )
@@ -116,49 +116,49 @@ def _history_to_contents(history: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
 # --- Role lock (humano, breve, copy amable) ---
 ROLE_LOCK = (
-    "Eres el asistente virtual de Héctor, desarrollador especializado en IA y aplicaciones web. "
-    "Ayudas a potenciales clientes a definir su idea y conectarlos con Héctor. "
-    
-    "PRESENTACIÓN: "
-    "- NO digas 'Soy Héctor' "
-    "- Di 'Hola! Estoy aquí para ayudarte a definir tu idea. Soy el asistente virtual de Héctor' "
-    
-    "FLUJO CONVERSACIONAL INTELIGENTE: "
-    "IMPORTANTE: Eres el asistente virtual de Héctor. NO te presentes en cada mensaje. "
+    "Eres el asistente virtual de Héctor, un desarrollador especializado en IA y aplicaciones web. "
+    "Tu objetivo es ayudar a potenciales clientes a definir su idea y conectarlos con Héctor. "
+
+    "PRESENTACIÓN INICIAL: "
+    "- Al principio de la conversación, preséntate como el asistente virtual de Héctor y pregunta el nombre del usuario. "
+    "- NO digas 'Soy Héctor'. Di 'Hola! Soy el asistente virtual de Héctor. Estoy aquí para ayudarte a definir tu idea. ¿Cómo te llamas?'. "
+
+    "FLUJO DE CONVERSACIÓN INTELIGENTE: "
+    "IMPORTANTE: Una vez que te hayas presentado, NO vuelvas a hacerlo en los siguientes mensajes. "
     "Analiza lo que el usuario ya te ha dicho y responde de forma natural y directa. "
-    "Si el usuario ya te explicó su situación o proyecto, NO pidas información que ya dio. "
-    
+    "Si el usuario ya te ha proporcionado información, como su nombre o los detalles de su proyecto, NO vuelvas a pedírsela. "
+
     "REGLAS BÁSICAS: "
-    "1. NO digas 'Hola, soy el asistente virtual de Héctor' si ya estás en conversación "
-    "2. Responde directamente al contenido del mensaje del usuario "
-    "3. Si no sabes su nombre: pregúntalo "
-    "4. Si no sabes su proyecto: pregunta qué tiene en mente "
-    "5. Si ya sabes nombre y proyecto: pide teléfono para que Héctor le llame "
-    
+    "1. Preséntate como el asistente virtual de Héctor SOLO en el primer mensaje. "
+    "2. Responde directamente al contenido del mensaje del usuario. "
+    "3. Si no sabes su nombre, pregúntalo. "
+    "4. Si no sabes en qué servicio está interesado, pregúntale qué tiene en mente. "
+    "5. Si ya conoces su nombre y el servicio de interés, pide su número de teléfono para que Héctor pueda llamarle. "
+
     "PERSONALIDAD: "
-    "- Habla como una persona real, amigable y profesional "
-    "- Una pregunta por vez, clara pero natural "
-    "- Respuestas cortas (máximo 2-3 líneas) "
-    "- Usa palabras como 'suena', 'me parece', 'genial' para ser más humano "
-    "- SOLO contacto por teléfono, no menciones email "
-    
+    "- Habla como una persona real, amigable y profesional. "
+    "- Haz una pregunta por vez, de forma clara pero natural. "
+    "- Tus respuestas deben ser cortas (máximo 2-3 líneas). "
+    "- Utiliza un lenguaje cercano y humano, con palabras como 'genial', 'perfecto' o 'entiendo'. "
+    "- El único método de contacto que debes mencionar es el teléfono; no ofrezcas contacto por email. "
+
     "EJEMPLOS DE RESPUESTAS DIRECTAS: "
-    "- Si dice 'no tengo claro mi proyecto': 'Perfecto, te ayudo a definirlo. ¿Cómo te llamas?' "
-    "- Si dice 'quiero crear una app/aplicación para mi negocio': '¡Genial! ¿Cómo te llamas?' "
-    "- Si dice 'necesito desarrollar un sistema específico': '¡Perfecto! ¿Cómo te llamas?' "
-    "- Si ya dijo su nombre: 'Genial, [nombre]! Cuéntame más detalles sobre tu proyecto.' "
-    "- Si ya explicó proyecto: 'Suena muy bien, [nombre]! ¿Cuál es tu teléfono para que Héctor te llame?' "
-    "- 'Listo, Luis! Héctor te llamará mañana para explorar tu proyecto 📞' "
-    
-    "IMPORTANTE: Incluye SIEMPRE este JSON al final (el usuario no lo ve): "
+    "- Si el usuario dice 'no tengo claro mi proyecto': 'Perfecto, te ayudo a definirlo. ¿Cómo te llamas?'. "
+    "- Si dice 'quiero crear una app para mi negocio': '¡Genial! ¿Cómo te llamas?'. "
+    "- Si ya te ha dicho su nombre: '¡Genial, [nombre]! Cuéntame un poco más sobre tu proyecto.' "
+    "- Si ya te ha explicado su proyecto: 'Suena muy interesante, [nombre]. ¿Cuál es tu número de teléfono para que Héctor pueda llamarte?'. "
+    "- Si te da su número de teléfono: 'Perfecto, [nombre]. Héctor te llamará para explorar tu proyecto. ¡Gracias! 📞'. "
+
+    "IMPORTANTE: Incluye SIEMPRE este JSON al final de cada respuesta (el usuario no lo verá): "
     "```json lead\n"
     "{\n"
     '  "name": "", "phone": "", "message": "", "contact_preference": "phone", \n'
     '  "missing": []\n'
     "}\n"
     "```\n"
-    "En contact_preference siempre pon 'phone'. En missing lista solo name, phone, message si faltan."
+    "En 'contact_preference', siempre pon 'phone'. En 'missing', lista únicamente los campos 'name', 'phone' o 'message' que todavía no tengas."
 )
+
 
 SASQA_MSG = (
     "sasqa 🛡️: Mantengo la conversación centrada en tu proyecto. "
@@ -199,7 +199,7 @@ def aggregate_lead_from_history(history: List[Dict[str, Any]]) -> Dict[str, Any]
         for k, v in (d or {}).items():
             if k in lead and isinstance(v, str) and v and not lead[k]:
                 lead[k] = v
-    
+
     # Siempre por teléfono - solo verificar name, phone, message
     lead["contact_preference"] = "phone"
     lead["missing"] = [k for k in ["name","phone","message"] if not lead.get(k)]
@@ -240,7 +240,7 @@ def api_chat_gemini(request):
     user_msg = _clean_user_text(payload.get("message") or "")
     history  = payload.get("history") or []  # [{role, content}]
     is_chip_message = payload.get("is_chip_message", False)  # Nuevo: detectar mensajes de chip
-    
+
     if not user_msg:
         return JsonResponse({"error": "Mensaje vacío"}, status=400)
 
@@ -256,9 +256,19 @@ def api_chat_gemini(request):
             return JsonResponse({"reply": "Estoy en modo demo (falta GEMINI_API_KEY). Cuéntame objetivo, público y 3 funcionalidades clave."})
         return JsonResponse({"error": "Falta GEMINI_API_KEY o error en configuración"}, status=500)
 
-    # Construir el prompt base
-    base_prompt = ROLE_LOCK
-    
+    # Construir el prompt base (solo para primer mensaje)
+    if not history and not is_chip_message:
+        # Solo incluir el prompt completo si es el primer mensaje
+        base_prompt = ROLE_LOCK
+    else:
+        # Para mensajes subsiguientes, usar un recordatorio más breve
+        base_prompt = (
+            "Continúa siendo el asistente virtual de Héctor. "
+            "Mantén el tono amigable y natural. "
+            "Responde directamente sin repetir presentaciones. "
+            "Sigue recopilando: nombre, detalles del proyecto, y teléfono para contacto."
+        )
+
     # Si es un mensaje de chip, añadir contexto especial
     if is_chip_message:
         chip_context = (
@@ -268,27 +278,45 @@ def api_chat_gemini(request):
             "Ya estás en conversación, actúa naturalmente."
         )
         base_prompt += chip_context
-    
+
     # Preparar historial para Gemini SDK
     try:
-        # Crear nueva conversación
-        chat = model.start_chat(history=[])
-        
-        # Enviar el prompt base como primer mensaje del sistema
-        chat.send_message(base_prompt)
-        
-        # Procesar historial de la conversación
+        # Convertir historial al formato de Gemini SDK
+        gemini_history = []
+
+        # Si no hay historial, es el primer mensaje - añadir el prompt del sistema
+        if not history:
+            gemini_history.append({
+                "role": "user",
+                "parts": [{"text": base_prompt}]
+            })
+            gemini_history.append({
+                "role": "model",
+                "parts": [{"text": "Entendido. Estoy listo para ayudar a definir proyectos y conectar con Héctor."}]
+            })
+
+        # Procesar historial existente
         for turn in history:
             role = turn.get("role")
             content = _clean_user_text(turn.get("content") or "")
             if content:
                 if role == "user":
-                    chat.send_message(content)
+                    gemini_history.append({
+                        "role": "user",
+                        "parts": [{"text": content}]
+                    })
                 elif role == "assistant":
-                    # Para mantener el contexto, necesitamos simular la respuesta del asistente
-                    # El SDK no permite agregar mensajes del modelo directamente al historial
-                    pass
-        
+                    # Limpiar el contenido del asistente de cualquier JSON oculto
+                    clean_content = JSON_BLOCK_RX.sub("", content).strip()
+                    if clean_content:
+                        gemini_history.append({
+                            "role": "model",
+                            "parts": [{"text": clean_content}]
+                        })
+
+        # Crear chat con historial completo
+        chat = model.start_chat(history=gemini_history)
+
         # Enviar el mensaje actual del usuario
         response = chat.send_message(user_msg)
         reply = response.text.strip()
@@ -309,7 +337,7 @@ def api_chat_gemini(request):
 
         # Limpiamos el bloque JSON antes de devolver al usuario
         reply_clean = JSON_BLOCK_RX.sub("", reply).strip()
-        
+
         # Limpieza adicional para eliminar cualquier fragmento de JSON que pueda quedar
         reply_clean = re.sub(r'```json.*?```', '', reply_clean, flags=re.DOTALL | re.IGNORECASE)
         reply_clean = re.sub(r'\{[^}]*"name"[^}]*\}', '', reply_clean)
@@ -319,7 +347,7 @@ def api_chat_gemini(request):
         required_fields = get_required_fields_for_lead(agg)
         missing_required = [k for k in required_fields if not agg.get(k)]
         is_complete = not missing_required
-        
+
         if is_complete and not has_already_sent(history):
             recipient = _lead_recipient()
             if not recipient and DEBUG:
@@ -336,7 +364,7 @@ def api_chat_gemini(request):
             try:
                 # Siempre es llamada
                 subject = "🔥 LLAMAR - " + (agg.get("name") or "Sin nombre") + " (chat)"
-                
+
                 body_mail = build_mail_body(agg, history + [{"role": "user", "content": user_msg}])
                 send_mail(
                     subject=subject,
@@ -357,7 +385,7 @@ def api_chat_gemini(request):
     except Exception as e:
         # Manejo mejorado de errores del SDK
         error_msg = str(e).lower()
-        
+
         # Error de quota/rate limit
         if "quota" in error_msg or "rate" in error_msg or "429" in error_msg:
             fallback_reply = "Disculpa, he recibido muchas consultas. Por favor espera un momento y vuelve a intentar, o puedes llenar el formulario directamente."
@@ -366,17 +394,17 @@ def api_chat_gemini(request):
                 "error_type": "rate_limit",
                 "is_complete": False
             })
-        
+
         # Error de API key
         if "api" in error_msg and "key" in error_msg:
             if DEBUG:
                 return JsonResponse({"reply": "Error de configuración de API key. Revisa la configuración."})
             return JsonResponse({"error": "Error de configuración"}, status=500)
-        
+
         # Error de contenido bloqueado por seguridad
         if "safety" in error_msg or "blocked" in error_msg:
             return JsonResponse({"reply": "Disculpa, reformula tu mensaje de manera más específica sobre tu proyecto."})
-        
+
         # Error genérico
         if DEBUG:
             return JsonResponse({"error": f"Error de Gemini: {e}"}, status=500)
@@ -392,45 +420,69 @@ def acerca_view(request):
     return render(request, 'website/acerca.html')
 
 def contacto_view(request):
+    def wants_json(r):
+        return (r.headers.get("x-requested-with") == "XMLHttpRequest" or
+                "application/json" in (r.headers.get("accept") or ""))
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
-        if form.is_valid():
-            try:
-                # Enviar email
-                name = form.cleaned_data['name']
-                email = form.cleaned_data['email']
-                message = form.cleaned_data['message']
-                
-                subject = f"Nuevo mensaje de contacto - {name}"
-                body = f"""
-Nuevo mensaje de contacto desde el formulario web:
 
-Nombre: {name}
-Email: {email}
-Mensaje:
-{message}
-                """
-                
-                recipient = _lead_recipient()
-                if recipient:
-                    send_mail(
-                        subject=subject,
-                        message=body,
-                        from_email=getattr(settings, "DEFAULT_FROM_EMAIL", "noreply@localhost"),
-                        recipient_list=[recipient],
-                        fail_silently=False,
-                    )
-                    messages.success(request, '¡Mensaje enviado correctamente! Te contactaré pronto.')
-                else:
-                    messages.error(request, 'Error en la configuración del email. Inténtalo más tarde.')
-                
-                return redirect('contacto')
-            except Exception as e:
-                messages.error(request, 'Error al enviar el mensaje. Inténtalo más tarde.')
-                return redirect('contacto')
-    else:
-        form = ContactForm()
-    
+        if not form.is_valid():
+            if wants_json(request):
+                # Devuelve errores de validación por campo
+                return JsonResponse({"ok": False, "errors": form.errors}, status=400)
+            # Flujo clásico (no-AJAX)
+            return render(request, 'website/contacto.html', {'form': form})
+
+        # Datos limpios
+        name    = form.cleaned_data['name']
+        phone   = form.cleaned_data['phone']       # obligatorio
+        company = form.cleaned_data.get('company') or '—'
+        sector  = form.cleaned_data.get('sector')  or '—'
+        message = form.cleaned_data['message']
+
+        # Destinatario
+        to_addr = (getattr(settings, "LEAD_TO_EMAIL", "") or
+                   getattr(settings, "DEFAULT_TO_EMAIL", ""))
+        if not to_addr:
+            msg = "No hay destinatario configurado."
+            if wants_json(request):
+                return JsonResponse({"ok": False, "errors": {"__all__": [msg]}}, status=500)
+            messages.error(request, msg)
+            return render(request, 'website/contacto.html', {'form': form})
+
+        # Email
+        subject = f"Nuevo contacto — {name}"
+        body = (
+            f"Nombre: {name}\n"
+            f"Teléfono: {phone}\n"
+            f"Empresa: {company}\n"
+            f"Sector: {sector}\n"
+            f"Mensaje:\n{message}\n"
+        )
+        try:
+            send_mail(
+                subject=subject,
+                message=body,
+                from_email=getattr(settings, "DEFAULT_FROM_EMAIL", "noreply@localhost"),
+                recipient_list=[to_addr],
+                fail_silently=False,
+            )
+        except Exception as e:
+            err = "No pude enviar el email ahora mismo. Inténtalo más tarde."
+            if wants_json(request):
+                return JsonResponse({"ok": False, "errors": {"__all__": [err]}}, status=502)
+            messages.error(request, err)
+            return render(request, 'website/contacto.html', {'form': form})
+
+        # OK
+        if wants_json(request):
+            return JsonResponse({"ok": True, "message": "¡Mensaje enviado! Te contactaré pronto."})
+        messages.success(request, "¡Mensaje enviado! Te contactaré pronto.")
+        return redirect('website:contacto')
+
+    # GET
+    form = ContactForm()
     return render(request, 'website/contacto.html', {'form': form})
 
 def privacidad_view(request):

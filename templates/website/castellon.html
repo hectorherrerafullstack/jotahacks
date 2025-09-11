@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# ==================== HEAD SEO ==================== #}
+{% block title %}Desarrollo de software a medida en Castellón | Aplicaciones con IA e integraciones API{% endblock %}
+{% block meta_description %}Desarrollo de software a medida en Castellón para PYMEs: aplicaciones a medida, integraciones API, automatizaciones con IA, mantenimiento web y consultoría MVP. Trato presencial y soporte cercano.{% endblock %}
+
+{% block canonical %}<link rel="canonical" href="https://hectorherrerafullstack.com/castellon-desarrollador-full-stack/">{% endblock %}
+
+{% block og_url %}https://hectorherrerafullstack.com/castellon-desarrollador-full-stack/{% endblock %}
+{% block og_title %}Castellón · Desarrollo de software a medida y aplicaciones con IA{% endblock %}
+{% block og_description %}Aplicaciones a medida, integraciones API y automatizaciones con IA para PYMEs de Castellón y La Plana. MVP en semanas y soporte cercano.{% endblock %}
+{% block og_image %}https://hectorherrerafullstack.com/static/img/og-ia-castellon.jpg{% endblock %}
+
+{% block twitter_title %}Castellón: software a medida, IA e integraciones{% endblock %}
+{% block twitter_description %}Desarrollo y mantenimiento para PYMEs en Castellón: apps a medida, integraciones API, automatizaciones IA y consultoría MVP.{% endblock %}
+{% block twitter_image %}https://hectorherrerafullstack.com/static/img/og-ia-castellon.jpg{% endblock %}
+
+{% block extra_head %}
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>document.addEventListener('DOMContentLoaded',()=>{ if(window.lucide&&lucide.createIcons) lucide.createIcons(); });</script>
+
+{# ======== SCHEMA: Local + Service + FAQ + Breadcrumb ======== #}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "@id":"https://hectorherrerafullstack.com/#business-castellon",
+  "name":"Héctor Herrera — Desarrollador full stack en Castellón",
+  "url":"https://hectorherrerafullstack.com/castellon-desarrollador-full-stack/",
+  "image":"https://hectorherrerafullstack.com/static/img/og-ia-castellon.jpg",
+  "logo":"https://hectorherrerafullstack.com/static/img/logo.svg",
+  "description":"Desarrollo de software a medida en Castellón para PYMEs: aplicaciones a medida, integraciones API, automatizaciones con IA, mantenimiento web y consultoría MVP.",
+  "telephone":"+34 600 000 000",
+  "priceRange":"€€",
+  "knowsLanguage":["es-ES","ca-ES"],
+  "address":{"@type":"PostalAddress","addressLocality":"Castellón de la Plana","addressRegion":"Castellón","postalCode":"12001","addressCountry":"ES"},
+  "geo":{"@type":"GeoCoordinates","latitude":39.986,"longitude":-0.051},
+  "areaServed":[
+    {"@type":"City","name":"Castellón de la Plana"},
+    {"@type":"City","name":"Almassora"},
+    {"@type":"City","name":"Vila-real"},
+    {"@type":"City","name":"Burriana"}
+  ],
+  "sameAs":["https://www.linkedin.com/in/tu-perfil/","https://github.com/tu-usuario"],
+  "knowsAbout":["desarrollo de software a medida Castellón","aplicaciones a medida Castellón","integraciones API Castellón","automatizaciones IA Castellón","mantenimiento web Castellón","consultoría MVP Castellón"]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Service",
+  "serviceType":"Desarrollo de software a medida y automatizaciones con IA",
+  "provider":{"@id":"https://hectorherrerafullstack.com/#business-castellon"},
+  "areaServed":{"@type":"City","name":"Castellón de la Plana"},
+  "offers":[
+    {"@type":"Offer","name":"Aplicaciones a medida en Castellón"},
+    {"@type":"Offer","name":"Integraciones API en Castellón"},
+    {"@type":"Offer","name":"Automatizaciones con IA en Castellón"},
+    {"@type":"Offer","name":"Mantenimiento web en Castellón"},
+    {"@type":"Offer","name":"Consultoría MVP en Castellón"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Trabajas de forma presencial en Castellón?","acceptedAnswer":{"@type":"Answer","text":"Sí. Hacemos diagnóstico en tu sede y reuniones clave presenciales en Castellón. El desarrollo y soporte combinan presencial y remoto sin fricción."}},
+    {"@type":"Question","name":"¿Puedes integrar mi TPV/ERP/CRM?","acceptedAnswer":{"@type":"Answer","text":"Sí. Integro por API o procesos programados (WhatsApp, Stripe, Sheets, correo). Empezamos por lo que más retorno aporta y medimos."}},
+    {"@type":"Question","name":"¿Cuánto tarda un MVP típico?","acceptedAnswer":{"@type":"Answer","text":"Entre 2 y 6 semanas según alcance. Priorizo una versión útil que ahorre horas y reduzca errores, y luego iteramos."}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://hectorherrerafullstack.com/"},
+    {"@type":"ListItem","position":2,"name":"Castellón — Desarrollador full stack","item":"https://hectorherrerafullstack.com/castellon-desarrollador-full-stack/"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+{# ==================== HERO ==================== #}
+<section class="hero-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] -mt-10">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-content w-full px-6">
+    <div class="max-w-5xl mx-auto pt-8 sm:pt-10 md:pt-12 text-center">
+      <p class="hero-kicker text-xs sm:text-sm md:text-base text-gray-300/90 mb-2">
+        Castellón · Desarrollo de software a medida · Aplicaciones con IA e integraciones API
+      </p>
+      <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.1] mb-3">
+        Aplicaciones a medida en Castellón que te devuelven horas y margen
+      </h1>
+      <p class="hero-lead text-base sm:text-lg text-gray-300/90 mb-6">
+        Si tu día depende de <strong>Excels, WhatsApp</strong> y tareas repetitivas, te ayudo con
+        <strong>software a medida</strong>, <strong>integraciones API</strong> y <strong>automatizaciones con IA</strong>.
+        Menos errores, más control. <strong>MVP útil en semanas</strong>.
+      </p>
+      <div class="flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-center">
+        <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center justify-center h-12 px-5 rounded-full font-semibold text-base">
+          <i data-lucide="calendar" class="mr-2 w-5 h-5" aria-hidden="true"></i> Agenda 15’ en Castellón
+        </a>
+        <a href="#servicios-castellon" class="cta-btn cta-primary inline-flex items-center justify-center h-12 px-5 rounded-full font-semibold text-base">
+          <i data-lucide="map-pin" class="mr-2 w-5 h-5" aria-hidden="true"></i> Ver servicios locales
+        </a>
+      </div>
+      <p class="mt-5 text-xs sm:text-sm text-white/70">Proximidad real: <strong>trato presencial</strong> cuando hace falta y soporte cercano día a día.</p>
+    </div>
+  </div>
+</section>
+
+{# ==================== DOLOR → SOLUCIÓN ==================== #}
+<section class="services-section py-10">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">De la improvisación al control (sin rehacerlo todo)</h2>
+    <ul class="mt-5 space-y-3 text-gray-300/90">
+      <li>• Partes y albaranes en papel/WhatsApp → <em>cierres que no cuadran</em>. Con una <strong>aplicación a medida</strong> todo vive en el mismo sitio.</li>
+      <li>• Facturas a mano y stock desactualizado → <em>márgenes que se evaporan</em>. El <strong>OCR con IA</strong> elimina el tecleo y los errores.</li>
+      <li>• Rutas que cambian cada día → <em>más kilómetros y clientes molestos</em>. La <strong>automatización</strong> ajusta turnos y prioriza paradas.</li>
+      <li>• Sistemas que no hablan → <em>doble trabajo</em>. Las <strong>integraciones API</strong> conectan TPV/ERP/CRM, WhatsApp, Stripe y Sheets.</li>
+    </ul>
+    <p class="mt-4 text-center text-gray-300/80">Empezamos por el cuello de botella y entrego un <strong>MVP</strong> que ya ahorra horas. Luego, iteramos con métricas.</p>
+  </div>
+</section>
+
+{# ==================== SERVICIOS LOCALES ==================== #}
+<section id="servicios-castellon" class="services-section py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Servicios en Castellón</h2>
+      <p class="mt-3 text-gray-300/85">Pensados para PYMEs locales con impacto medible.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
+      <a href="/software-a-medida/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="app-window" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Desarrollo de software a medida (Castellón)</h3>
+        <p class="text-gray-300/90">Herramientas que encajan con tu operación real. Nada de moldes rígidos.</p>
+      </a>
+      <a href="/integraciones-api/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="plug-zap" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Integraciones API en Castellón</h3>
+        <p class="text-gray-300/90">Conecta TPV/ERP/CRM, WhatsApp, Stripe y Sheets. Datos fiables y sin dobles entradas.</p>
+      </a>
+      <a href="/automatizacion-procesos-ia/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="bot" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Automatizaciones con IA</h3>
+        <p class="text-gray-300/90">Chatbots, OCR de facturas y rutas inteligentes para quitar trabajo repetitivo.</p>
+      </a>
+      <a href="/mantenimiento-soporte/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="wrench" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Mantenimiento web</h3>
+        <p class="text-gray-300/90">Actualizaciones, copias y soporte técnico cercano para que todo siga estable.</p>
+      </a>
+      <a href="/consultoria-mvp/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="lightbulb" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Consultoría MVP</h3>
+        <p class="text-gray-300/90">Definimos un piloto medible (horas ahorradas, errores, margen) antes de escalar.</p>
+      </a>
+      <a href="/vinaros-desarrollador-full-stack/" class="svc-card p-6 block">
+        <div class="svc-icon mb-3"><i data-lucide="map-pin" aria-hidden="true"></i></div>
+        <h3 class="text-lg font-semibold text-white mb-1">Proyectos en Vinaròs</h3>
+        <p class="text-gray-300/90">Si operas entre Castellón y Vinaròs, combinamos presencial y remoto.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ==================== KPIs/PRUEBAS ==================== #}
+<section class="apps-section py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Resultados que importan</h2>
+      <p class="mt-3 text-gray-300/85">Casos reales sin nombres (impacto medido en semanas):</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Rutas optimizadas</h3>
+        <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
+          <li>-18% tiempo por turno</li>
+          <li>-12% combustible</li>
+          <li>Módulo: <a href="/software-a-medida/" class="underline">Software a medida</a></li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Facturas por foto</h3>
+        <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
+          <li>Entrada 3× más rápida</li>
+          <li>-25% errores manuales</li>
+          <li>Módulo: <a href="/automatizacion-procesos-ia/" class="underline">IA (OCR)</a></li>
+        </ul>
+      </article>
+      <article class="app-card p-6">
+        <h3 class="text-lg font-semibold text-white mb-2">Leads filtrados</h3>
+        <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
+          <li>-40% llamadas improductivas</li>
+          <li>+22% cierres</li>
+          <li>Módulo: <a href="/integraciones-api/" class="underline">Chatbot/API</a></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# ==================== SOBRE MÍ (E-E-A-T) ==================== #}
+<section id="sobre-mi" class="services-section py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Tu socio tecnológico en Castellón</h2>
+      <p class="mt-3 text-gray-300/85 max-w-2xl mx-auto">Trabajo cerca para entender procesos y priorizar lo que <strong>ahorra horas</strong>. Si no aporta, no se desarrolla.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-7 items-stretch">
+      <article class="about-card p-5 lg:col-span-5">
+        <div class="rounded-2xl overflow-hidden border border-white/10 about-photo">
+          <picture>
+            <source srcset="{% static 'img/hector.webp' %}" type="image/webp">
+            <img src="{% static 'img/hector.jpg' %}" alt="Héctor Herrera, desarrollador de software a medida en Castellón"
+                 width="960" height="640" class="w-full object-cover" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </article>
+      <article class="about-card p-6 lg:col-span-7 flex flex-col items-center text-center">
+        <h3 class="text-xl font-semibold text-white mb-3">Lo que priorizo</h3>
+        <ul class="text-gray-300/90 space-y-2 mb-6 text-left">
+          <li class="flex gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i><span>Proximidad y <strong>trato presencial</strong> cuando toca.</span></li>
+          <li class="flex gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i><span>Integraciones con lo que ya usas (TPV/ERP/CRM, WhatsApp, Stripe, Sheets).</span></li>
+          <li class="flex gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i><span><strong>MVP en semanas</strong> y mejoras por iteración con métricas.</span></li>
+        </ul>
+        <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-5 rounded-full font-semibold text-sm">
+          <i data-lucide="calendar" class="mr-2 w-4 h-4"></i> ¿Tomamos un café en Castellón?
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# ==================== FAQ LOCAL ==================== #}
+<section class="services-section py-12">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-4">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Preguntas frecuentes — Castellón</h2>
+    </div>
+    <div class="faq-accordion max-w-3xl mx-auto">
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Cómo es el arranque del proyecto?</span><span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Diagnóstico express (30’), prototipo navegable y <strong>MVP</strong> con alcance claro. Entregas quincenales y métricas (horas ahorradas, errores, margen).</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Necesito cambiar mi software actual?</span><span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">No. Integro por API o con importaciones programadas para convivir con lo que ya usas sin parar la operación.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="qtext">¿Ofreces mantenimiento web continuo?</span><span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span></summary>
+        <div class="faq-a">Sí. Actualizaciones, copias, monitorización y soporte directo. Estabilidad y seguridad como base.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+{# ==================== ZONA Y ENLACES ==================== #}
+<section id="zona" class="apps-section py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Zona de servicio</h2>
+    <p class="text-gray-300/85">
+      Servicios de <strong>aplicaciones a medida</strong> en Castellón, Almassora y Vila-real.
+      ¿También operas hacia el norte? Mira la <a href="/vinaros-desarrollador-full-stack/" class="underline">landing de Vinaròs</a>.
+    </p>
+  </div>
+</section>
+
+{# ==================== CTA FINAL ==================== #}
+<section class="services-section py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">¿Empezamos con un piloto en Castellón?</h2>
+    <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-6 rounded-full font-semibold text-sm">
+      <i data-lucide="calendar" class="mr-2 w-4 h-4" aria-hidden="true"></i> Agenda 15’ — diagnóstico sin coste
+    </a>
+    <p class="mt-3 text-gray-300/75 text-sm">Trae un caso real (ruta, parte, factura) y te digo qué automatizar primero.</p>
+  </div>
+</section>
+
+{% endblock %}
+
+

@@ -92,17 +92,67 @@
 
 <!-- PROBLEMA (centrado) -->
 <section class="apps-section py-14" id="problema">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">El problema que suelo ver</h2>
-    <ul class="mx-auto max-w-3xl text-gray-300/90 space-y-2 list-disc list-inside">
-      <li>Procesos críticos repartidos entre hojas, correos y apps que no se hablan.</li>
-      <li>Datos duplicados y errores de transcripción al pasar información entre sistemas.</li>
-      <li>Reportes tardíos; las decisiones llegan cuando el problema ya pasó.</li>
-      <li>Limitaciones de SaaS genéricos: pagan por funciones que no usan y falta lo que sí necesitan.</li>
-    </ul>
-    <p class="text-gray-300/85 mt-4 max-w-3xl mx-auto">Si te suena, probablemente necesitas un módulo o app propia que se adapte a tu flujo y no al revés.</p>
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Título centrado + subrayado sutil -->
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">El problema que suelo ver</h2>
+      <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
+    </div>
+
+    <!-- Lista rica: problema + impacto (sin cards) -->
+    <dl class="grid gap-y-6 gap-x-10 md:grid-cols-2">
+      <!-- 1 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="alert-triangle" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          Procesos críticos repartidos entre <strong class="text-indigo-300">hojas, correos y apps</strong> que no se hablan.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Impacto:</span> retrabajo y pérdida de <strong class="text-indigo-300">trazabilidad</strong>.
+        </dd>
+      </div>
+
+      <!-- 2 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="alert-triangle" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Datos duplicados</strong> y errores de transcripción al pasar info entre sistemas.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Impacto:</span> márgenes que se <strong class="text-indigo-300">erosionan</strong> y más devoluciones.
+        </dd>
+      </div>
+
+      <!-- 3 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="alert-triangle" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          Reportes <strong class="text-indigo-300">tardíos</strong>; las decisiones llegan cuando el problema ya pasó.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Impacto:</span> decisiones <strong class="text-indigo-300">reactivas</strong> y oportunidades perdidas.
+        </dd>
+      </div>
+
+      <!-- 4 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="alert-triangle" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          Limitaciones de <strong class="text-indigo-300">SaaS genéricos</strong>: pagan por funciones que no usan y falta lo que sí necesitan.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Impacto:</span> coste fijo alto y procesos <strong class="text-indigo-300">encorsetados</strong>.
+        </dd>
+      </div>
+    </dl>
+
+    <!-- Remate -->
+    <p class="text-gray-300/85 mt-6 max-w-3xl mx-auto text-center">
+      Si te suena, probablemente necesitas un <strong class="text-indigo-300">módulo propio</strong> que se adapte a tu flujo y no al revés.
+    </p>
   </div>
 </section>
+
 
 <!-- SOLUCIÓN (centrado) -->
 <section class="services-section py-14" id="solucion">
@@ -298,11 +348,3 @@
 
 {% endblock %}
 
-{# ───────── JS ───────── #}
-{% block extra_js %}
-<script defer src="{% static 'js/ui.core.js' %}"></script>
-<script defer src="{% static 'js/hero.particles.js' %}"></script>
-<script defer src="{% static 'js/effects.tilt.js' %}"></script>
-<script defer src="{% static 'js/apps.gallery.js' %}"></script>
-<script defer src="{% static 'js/boot.init.js' %}"></script>
-{% endblock %}

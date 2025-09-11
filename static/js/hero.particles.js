@@ -1,105 +1,181 @@
-// ===== Canvas Particles (versión fluida y simple) =====
-const canvas = document.getElementById('hero-canvas');
-let ctx = null;
-let animationId = null;
+// hero.particles.js — tamaños variados + más velocidad (2025-09-10)
+(() => {
+  // ===== Config =====
+  const HERO_SELECTOR = '.hero-section';   // cambia si usas otro contenedor
+  const CANVAS_ID = 'hero-canvas';
 
-const DPR = Math.min(window.devicePixelRatio || 1, 2);
-const state = {
-  w: 0, h: 0,
-  particles: [],
-  linkDistance: 140,
-  baseSpeed: .4,
-  density: 24000,
-  mouse: { x: -9999, y: -9999, radius: 110, breakRadius: 52 },
-  repel: true
-};
-
-function initCanvasSize() {
-  if (!canvas) return;
-  const hero = document.querySelector('.hero-section');
-  const w = hero?.clientWidth || window.innerWidth;
-  const h = hero?.clientHeight || Math.max(480, Math.floor(window.innerHeight * 0.86));
-  state.w = w; state.h = h;
-  canvas.style.width = w + 'px';
-  canvas.style.height = h + 'px';
-  canvas.width = Math.floor(w * DPR);
-  canvas.height = Math.floor(h * DPR);
-  if (!ctx) { ctx = canvas.getContext('2d'); }
-  if (!ctx) return;
-  ctx.setTransform(1, 0, 0, 1, 0, 0);
-  ctx.scale(DPR, DPR);
-  const target = Math.max(56, Math.min(180, Math.floor((w * h) / state.density)));
-  const cur = state.particles.length;
-  if (cur < target) { for (let i = 0; i < target - cur; i++) state.particles.push(makeParticle()); }
-  else if (cur > target) { state.particles.length = target; }
-}
-
-function rand(min, max) { return Math.random() * (max - min) + min; }
-function makeParticle() {
-  const angle = Math.random() * Math.PI * 2;
-  return {
-    x: Math.random() * state.w, y: Math.random() * state.h,
-    vx: Math.cos(angle) * state.baseSpeed + rand(-.1, .1),
-    vy: Math.sin(angle) * state.baseSpeed + rand(-.1, .1), r: rand(1.2, 3.4), a: rand(.38, .9)
+  const CONFIG = {
+    linkDistance: 140,                // distancia de líneas (px CSS)
+    mouseRadius: 140,                 // radio de repulsión (px CSS)
+    densityDivisor: 18000,            // menos => más partículas
+    sizeRange: [0.9, 2.4],            // radio mínimo/máximo (px CSS)
+    speedBase: 0.6,                   // velocidad base (px/frame)
+    speedMultiplier: 1.35,            // <= súbelo para ir más rápido
+    smallIsFaster: true               // las partículas pequeñas se mueven más
   };
-}
 
-function update() {
-  for (const p of state.particles) {
-    if (state.repel) {
-      const dx = state.mouse.x - p.x;
-      const dy = state.mouse.y - p.y;
-      const dist = Math.hypot(dx, dy);
-      if (dist < state.mouse.radius) {
-        const f = (state.mouse.radius - dist) / state.mouse.radius;
-        p.x -= (dx / dist) * f * 1.8;
-        p.y -= (dy / dist) * f * 1.8;
+  // ===== Estado =====
+  let heroRoot, canvas, ctx, animationId = null;
+  const state = {
+    w: 0, h: 0,
+    particles: [],
+    linkDistance: CONFIG.linkDistance,
+    mouse: { x: -9999, y: -9999, radius: CONFIG.mouseRadius },
+    repel: true
+  };
+
+  // ===== Canvas =====
+  function ensureCanvas() {
+    heroRoot = document.querySelector(HERO_SELECTOR);
+    if (!heroRoot) return false;
+
+    canvas = heroRoot.querySelector('#' + CANVAS_ID);
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.id = CANVAS_ID;
+      Object.assign(canvas.style, {
+        position: 'absolute',
+        inset: '0',
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        display: 'block'
+      });
+      heroRoot.prepend(canvas);
+    }
+    ctx = canvas.getContext('2d');
+    const cs = getComputedStyle(heroRoot);
+    if (cs.position === 'static') heroRoot.style.position = 'relative';
+    return true;
+  }
+
+  // ===== Tamaño y DPR =====
+  function initCanvasSize() {
+    if (!heroRoot || !canvas) return;
+    const r = heroRoot.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+
+    // Mundo en px CSS
+    state.w = Math.max(1, Math.floor(r.width));
+    state.h = Math.max(1, Math.floor(r.height));
+
+    // Buffer físico
+    canvas.width  = Math.max(1, Math.floor(r.width  * dpr));
+    canvas.height = Math.max(1, Math.floor(r.height * dpr));
+
+    // Estilo CSS
+    canvas.style.width  = state.w + 'px';
+    canvas.style.height = state.h + 'px';
+
+    // Todo lo que dibujemos a partir de aquí es en px CSS
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // Densidad por área
+    const target = Math.round((state.w * state.h) / CONFIG.densityDivisor);
+    if (state.particles.length === 0) {
+      createParticles(target);
+    } else if (state.particles.length !== target) {
+      resizeParticles(target);
+    }
+
+    cacheRect();
+  }
+
+  // ===== Utils =====
+  function rand(min, max) { return min + Math.random() * (max - min); }
+
+  function spawnParticle() {
+    // Radio aleatorio dentro del rango
+    const r = rand(CONFIG.sizeRange[0], CONFIG.sizeRange[1]);
+
+    // Velocidad: base * multiplicador * (opcional: inversa del tamaño)
+    // Partículas pequeñas se mueven más rápido si smallIsFaster = true
+    const speedScale = CONFIG.smallIsFaster
+      ? (CONFIG.sizeRange[1] / r) // r pequeño => factor alto
+      : 1;
+
+    const vx = (Math.random() - 0.5) * CONFIG.speedBase * CONFIG.speedMultiplier * speedScale;
+    const vy = (Math.random() - 0.5) * CONFIG.speedBase * CONFIG.speedMultiplier * speedScale;
+
+    return {
+      x: Math.random() * state.w,
+      y: Math.random() * state.h,
+      vx, vy,
+      r
+    };
+  }
+
+  function createParticles(n) {
+    state.particles = [];
+    for (let i = 0; i < n; i++) {
+      state.particles.push(spawnParticle());
+    }
+  }
+
+  function resizeParticles(n) {
+    const cur = state.particles.length;
+    if (n > cur) {
+      for (let i = 0; i < n - cur; i++) state.particles.push(spawnParticle());
+    } else if (n < cur) {
+      state.particles.length = n;
+    }
+  }
+
+  // ===== Física =====
+  function update() {
+    const { x: mx, y: my, radius: mr } = state.mouse;
+
+    for (const p of state.particles) {
+      // Repulsión del cursor
+      if (state.repel && mx >= 0 && my >= 0) {
+        const dx = mx - p.x, dy = my - p.y;
+        const d = Math.hypot(dx, dy);
+        if (d > 0 && d < mr) {
+          const f = (mr - d) / mr;           // 0..1
+          const inv = 1 / d;
+          // ligerísima reducción por tamaño para que las grandes “pesen” más
+          const mass = 0.7 + (p.r - CONFIG.sizeRange[0]) / (CONFIG.sizeRange[1] - CONFIG.sizeRange[0]) * 0.6;
+          p.x -= dx * inv * 1.6 * f / mass;
+          p.y -= dy * inv * 1.6 * f / mass;
+        }
       }
-    }
-    
-    p.x += p.vx;
-    p.y += p.vy;
-    
-    if (p.x <= 0 || p.x >= state.w) {
-      p.vx *= -1;
-      p.x = Math.max(0, Math.min(state.w, p.x));
-    }
-    if (p.y <= 0 || p.y >= state.h) {
-      p.vy *= -1;
-      p.y = Math.max(0, Math.min(state.h, p.y));
-    }
-  }
-}
 
-function draw() {
-  if (!ctx) return;
-  
-  ctx.clearRect(0, 0, state.w, state.h);
-  
-  // Dibujar partículas
-  for (const p of state.particles) {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${p.a})`;
-    ctx.fill();
+      // Movimiento base
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Rebotes en bordes (el radio cuenta para no “cortar” el punto)
+      if (p.x < p.r || p.x > state.w - p.r) { p.vx *= -1; p.x = Math.max(p.r, Math.min(state.w - p.r, p.x)); }
+      if (p.y < p.r || p.y > state.h - p.r) { p.vy *= -1; p.y = Math.max(p.r, Math.min(state.h - p.r, p.y)); }
+    }
   }
-  
-  // Dibujar líneas
-  const particles = state.particles;
-  for (let i = 0; i < particles.length - 1; i++) {
-    const a = particles[i];
-    for (let j = i + 1; j < particles.length; j++) {
-      const b = particles[j];
-      const dx = a.x - b.x;
-      const dy = a.y - b.y;
-      const d = Math.hypot(dx, dy);
-      
-      if (d < state.linkDistance) {
-        // Check si el mouse interrumpe la línea
-        if (!segmentCircleIntersects(a.x, a.y, b.x, b.y, state.mouse.x, state.mouse.y, state.mouse.breakRadius)) {
-          const alpha = (1 - (d / state.linkDistance)) * 0.5;
-          ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-          ctx.lineWidth = 1;
+
+  // ===== Dibujo =====
+  function draw() {
+    ctx.clearRect(0, 0, state.w, state.h);
+
+    // Puntos (usamos el radio de cada partícula)
+    ctx.fillStyle = 'rgba(255,255,255,0.92)';
+    for (const p of state.particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Líneas
+    const L2 = state.linkDistance * state.linkDistance;
+    for (let i = 0; i < state.particles.length; i++) {
+      const a = state.particles[i];
+      for (let j = i + 1; j < state.particles.length; j++) {
+        const b = state.particles[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < L2) {
+          const t = 1 - (Math.sqrt(d2) / state.linkDistance);
+          // opacidad suave; influida un pelín por el tamaño
+          const sizeMix = (a.r + b.r) / (CONFIG.sizeRange[0] + CONFIG.sizeRange[1]);
+          ctx.globalAlpha = 0.10 + t * (0.20 + sizeMix * 0.05);
+          ctx.strokeStyle = 'rgba(255,255,255,0.85)';
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
@@ -107,59 +183,67 @@ function draw() {
         }
       }
     }
+    ctx.globalAlpha = 1;
   }
-}
 
-function segmentCircleIntersects(ax, ay, bx, by, cx, cy, r) {
-  const dX = bx - ax, dY = by - ay; const fX = ax - cx, fY = ay - cy;
-  const A = dX * dX + dY * dY; const B = 2 * (fX * dX + fY * dY); const C = (fX * fX + fY * fY) - r * r;
-  let disc = B * B - 4 * A * C; if (disc < 0) return false; disc = Math.sqrt(disc);
-  const t1 = (-B - disc) / (2 * A); const t2 = (-B + disc) / (2 * A);
-  return (t1 >= 0 && t1 <= 1) || (t2 >= 0 && t2 <= 1);
-}
-
-function loop() {
-  update();
-  draw();
-  animationId = requestAnimationFrame(loop);
-}
-
-function handleVisibilityChange() {
-  if (document.hidden) {
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-      animationId = null;
-    }
-  } else {
-    if (!animationId) {
-      animationId = requestAnimationFrame(loop);
-    }
+  function loop() {
+    update();
+    draw();
+    animationId = requestAnimationFrame(loop);
   }
-}
 
-function startParticles() {
-  initCanvasSize();
-  
-  const hero = document.querySelector('.hero-section');
-  if (hero && 'ResizeObserver' in window) {
-    const ro = new ResizeObserver(() => initCanvasSize());
-    ro.observe(hero);
+  // ===== Puntero (anti-jank) =====
+  let heroRect = null;
+  let pmRAF = null, lastEvt = null;
+
+  function cacheRect() {
+    if (!heroRoot) return;
+    heroRect = heroRoot.getBoundingClientRect(); // px CSS
   }
-  
-  window.addEventListener('resize', initCanvasSize);
-  
-  window.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    state.mouse.x = e.clientX - rect.left;
-    state.mouse.y = e.clientY - rect.top;
-  });
-  
-  window.addEventListener('mouseleave', () => {
+
+  function onPointerMove(e) {
+    lastEvt = e;
+    if (pmRAF) return;
+    pmRAF = requestAnimationFrame(() => {
+      pmRAF = null;
+      if (!heroRect) cacheRect();
+      state.mouse.x = lastEvt.clientX - heroRect.left;
+      state.mouse.y = lastEvt.clientY - heroRect.top;
+    });
+  }
+
+  function onPointerLeave() {
     state.mouse.x = -9999;
     state.mouse.y = -9999;
-  });
-  
-  document.addEventListener('visibilitychange', handleVisibilityChange);
-  
-  animationId = requestAnimationFrame(loop);
-}
+  }
+
+  // ===== Ciclo de vida =====
+  function start() {
+    if (!ensureCanvas()) return;
+
+    initCanvasSize();
+
+    heroRoot.addEventListener('pointermove', onPointerMove, { passive: true });
+    heroRoot.addEventListener('pointerleave', onPointerLeave);
+
+    window.addEventListener('resize', () => { initCanvasSize(); }, { passive: true });
+    window.addEventListener('scroll', () => { requestAnimationFrame(cacheRect); }, { passive: true });
+    window.addEventListener('pageshow', () => { cacheRect(); });
+
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver(() => { initCanvasSize(); });
+      ro.observe(heroRoot);
+    }
+
+    if (!animationId) animationId = requestAnimationFrame(loop);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+
+  // Debug en consola
+  window.__heroParticles = { state, config: CONFIG };
+})();

@@ -63,16 +63,62 @@
 
 <!-- BENEFICIOS (centrado, sin emojis) -->
 <section class="apps-section py-14" id="beneficios">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Beneficios que verás</h2>
-    <ul class="mx-auto max-w-3xl text-gray-300/90 space-y-2 list-disc list-inside">
-      <li>Menos tiempo en tareas repetitivas (back-office, documentos, conciliaciones).</li>
-      <li>Coste por operación más bajo y con menos errores.</li>
-      <li>Prioridad en lo que importa: leads y tareas con impacto.</li>
-      <li>Datos bajo control: trazabilidad, anonimización y RGPD.</li>
-    </ul>
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Título centrado + subrayado -->
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Beneficios que verás</h2>
+      <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
+    </div>
+
+    <!-- Lista rica: beneficio (dt) + aclaración (dd) -->
+    <dl class="grid gap-y-7 gap-x-10 md:grid-cols-2">
+      <!-- 1 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="clock" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Menos tiempo</strong> en tareas repetitivas (back-office, documentos, conciliaciones).
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Más foco en lo importante y <strong class="text-indigo-300">ciclos más cortos</strong>.
+        </dd>
+      </div>
+
+      <!-- 2 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="coins" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Coste por operación</strong> más bajo y con menos errores.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Validaciones y automatizaciones → <strong class="text-indigo-300">menos retrabajo</strong>.
+        </dd>
+      </div>
+
+      <!-- 3 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="target" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Prioridad</strong> en lo que importa: leads y tareas con impacto.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Vistas por estado y alertas → <strong class="text-indigo-300">acciones a tiempo</strong>.
+        </dd>
+      </div>
+
+      <!-- 4 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="shield-check" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Datos bajo control</strong>: trazabilidad, anonimización y RGPD.
+        </dt>
+        <dd class="mt-1.5 text：[15px] text-gray-300/90 leading-relaxed">
+          Roles, registros y políticas de retención → <strong class="text-indigo-300">riesgo reducido</strong>.
+        </dd>
+      </div>
+    </dl>
   </div>
 </section>
+
 
 <!-- 1) Resultados en 60″ -->
 <section class="services-section py-14" id="resultados">
@@ -115,12 +161,11 @@
           <li><strong>Privacidad por diseño</strong>: trazabilidad y anonimización para que ningún dato sensible termine en terceros sin control.</li>
           <li><strong>Anti-“delirios”</strong>: la IA se valida; si un output no es fiable, el robot no sigue y salta a revisión.</li>
         </ul>
-      </article>
-      <article class="app-card p-6">
         <p class="text-gray-300/90">
           Esta mezcla de <strong>personalización + gobernanza de datos</strong> hace que el robot trabaje y el negocio avance más rápido.
         </p>
       </article>
+     
     </div>
   </div>
 </section>
@@ -267,11 +312,3 @@
 
 {% endblock %}
 
-{# ───────── JS ───────── #}
-{% block extra_js %}
-<script defer src="{% static 'js/ui.core.js' %}"></script>
-<script defer src="{% static 'js/hero.particles.js' %}"></script>
-<script defer src="{% static 'js/effects.tilt.js' %}"></script>
-<script defer src="{% static 'js/apps.gallery.js' %}"></script>
-<script defer src="{% static 'js/boot.init.js' %}"></script>
-{% endblock %}

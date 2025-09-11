@@ -539,3 +539,57 @@ html, body { overflow-x: clip; }
   padding-bottom: 1px;      /* recorta 1px por abajo       */
   background-origin: content-box; /* la retícula no se pinta en ese padding */
 }
+
+/* Asegura el stacking del hero y “click through” del canvas */
+.hero-section { position: relative; }
+#hero-canvas   { pointer-events: none; display: block; }
+
+/* CTA performance-friendly */
+.cta-btn {
+  will-change: transform;
+  transform: translateZ(0);
+  contain: paint;             /* aísla repintados del botón */
+}
+
+.cta-primary {
+  position: relative;
+  overflow: visible;
+  /* sombra base estática (no animada) */
+  box-shadow: 0 8px 18px rgba(79, 70, 229, .20);
+}
+
+/* Glow animado sin animar box-shadow */
+.cta-primary::before {
+  content: "";
+  position: absolute;
+  inset: -8px;                      /* margen para el halo */
+  border-radius: 9999px;
+  background:
+    radial-gradient(120% 120% at 50% 10%,
+      rgba(99, 102, 241, .45) 0%,
+      rgba(99, 102, 241, 0) 60%);
+  opacity: 0;
+  transform: scale(.96);
+  transition: opacity .22s ease, transform .22s ease;
+  pointer-events: none;
+  z-index: -1;                      /* detrás del botón */
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+}
+
+.cta-primary:hover::before {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+/* (Opcional) accesibilidad: también al enfocar con teclado */
+.cta-primary:focus-visible {
+  outline: none;
+  transform: translateY(-2px);
+}
+.cta-primary:focus-visible::before {
+  opacity: 1;
+  transform: scale(1.06);
+}

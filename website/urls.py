@@ -1,17 +1,22 @@
+# project/apps/website/urls.py
 from django.urls import path
-from . import views
+from .views import (
+    api_chat_gemini,
+    home_view, acerca_view, contacto_view,
+    privacidad_view, terminos_view, cookies_view,
+    vinaros_view, castellon_view,
+)
 
 app_name = "website"
 
 urlpatterns = [
-    path('', views.home_view, name='home'),  # Home con hero + 2 CTAs
-    path('sobre-mi/', views.acerca_view, name='sobre_mi'),  # Página Sobre mí
-    path('contacto/', views.contacto_view, name='contacto'),  # Contacto (form + calendario 15 min)
-    path('vinaros-desarrollador-full-stack/', views.vinaros_view, name='vinaros'),  # Página landing Vinaròs
-    path('api/chat-gemini/', views.api_chat_gemini, name='api_chat_gemini'),
-    
-    # Legal (bajo /legal/)
-    path('legal/privacidad/', views.privacidad_view, name='privacidad'),  # Política de privacidad
-    path('legal/terminos/', views.terminos_view, name='terminos'),        # Términos y condiciones
-    path('legal/cookies/', views.cookies_view, name='cookies'),           # Política de cookies
+    path("", home_view, name="home"),
+    path("acerca/", acerca_view, name="acerca"),
+    path("contacto/", contacto_view, name="contacto"),
+    path("legal/privacidad/", privacidad_view, name="privacidad"),
+    path("legal/terminos/", terminos_view, name="terminos"),
+    path("legal/cookies/", cookies_view, name="cookies"),
+    path("vinaros/", vinaros_view, name="vinaros"),
+    path("castellon/", castellon_view, name="castellon"),
+    path("api/chat-gemini/", api_chat_gemini, name="api_chat_gemini"),
 ]
