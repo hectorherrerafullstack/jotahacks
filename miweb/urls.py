@@ -10,6 +10,9 @@ urlpatterns = [
     # Sitio público (home, acerca, contacto, legal...). Namespace: website
     path('', include(('website.urls', 'website'), namespace='website')),
 
+    # API endpoints seguros
+    path('api/auth/', include('website.api.urls')),  # Endpoints de autenticación
+
     # Rutas directas para servicios (sin prefijo servicios)
     path('software-a-medida/', software_a_medida_view, name='software_a_medida_direct'),
     path('integraciones-api/', integraciones_api_view, name='integraciones_api_direct'),

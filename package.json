@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "build": "npx @tailwindcss/cli -i ./static/css/styles.css -o ./static/css/styles.min.css --minify",
-    "watch": "npx @tailwindcss/cli -i ./static/css/styles.css -o ./static/css/styles.min.css --watch"
+    "watch": "npx @tailwindcss/cli -i ./static/css/styles.css -o ./static/css/styles.min.css --watch",
+    "obfuscate": "npx javascript-obfuscator ./static/js --output ./static/js/obfuscated --compact true --self-defending true --disable-console-output true",
+    "build:prod": "npm run build && npm run obfuscate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.19",
+    "javascript-obfuscator": "^4.1.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4"
   }

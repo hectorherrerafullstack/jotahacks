@@ -119,61 +119,279 @@
   </div>
 </section>
 
+{# ==================== SOBRE MÍ (E-E-A-T) ==================== #}
+<section id="sobre-mi" class="services-section py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Tu aliado tecnológico en Vinaròs</h2>
+      <p class="mt-3 text-gray-300/85 max-w-2xl mx-auto">
+        Me meto en tu día a día, hablo con quien hace el trabajo y priorizo lo que <strong class="text-indigo-300">quita fricción</strong> y baja el error.
+        Aquí no hay revoluciones innecesarias: arrancamos <strong class="text-indigo-300">pequeño y medible</strong>, y ampliamos solo cuando aporta.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-7 items-stretch">
+      <article class="about-card p-5 lg:col-span-5">
+        <div class="rounded-2xl overflow-hidden border border-white/10 about-photo">
+          <picture>
+            <source srcset="{% static 'img/hector.png' %}" type="image/webp">
+            <img src="{% static 'img/hector.png' %}" alt="Héctor Herrera, desarrollador de software a medida en Vinaròs"
+                 width="960" height="640" class="w-full object-cover" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </article>
+
+      <article class="about-card p-6 lg:col-span-7 flex flex-col items-center text-center">
+        <h3 class="text-xl font-semibold text-indigo-300 mb-3">Cómo colaboro contigo</h3>
+
+        <ul class="text-gray-300/90 space-y-2 mb-6 text-left">
+          <li class="flex gap-2">
+            <i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i>
+            <span>
+              Cercanía y <strong class="text-indigo-300">presencial</strong> cuando suma:
+              toma de requisitos en 30’ y mapa de proceso claro.
+            </span>
+          </li>
+          <li class="flex gap-2">
+            <i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i>
+            <span>
+              Integraciones con lo que ya usas (TPV/ERP/CRM, WhatsApp, Stripe, Sheets) <strong class="text-indigo-300">sin parar la operativa</strong>.
+            </span>
+          </li>
+          <li class="flex gap-2">
+            <i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i>
+            <span>
+              <strong class="text-indigo-300">MVP en semanas</strong>, demos quincenales y métricas visibles
+              (tiempo, errores, margen) desde el primer sprint.
+            </span>
+          </li>
+          <li class="flex gap-2">
+            <i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i>
+            <span>
+              Privacidad y RGPD desde el diseño: roles, auditoría y <strong class="text-indigo-300">anonimización selectiva</strong>.
+            </span>
+          </li>
+          <li class="flex gap-2">
+            <i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i>
+            <span>
+              Soporte directo y sin rodeos: <strong class="text-indigo-300">respuestas ágiles</strong> y mantenimiento preventivo.
+            </span>
+          </li>
+        </ul>
+
+        
+      </article>
+    </div>
+  </div>
+</section>
+
+
 {# ==================== DOLOR → SOLUCIÓN ==================== #}
 <section class="services-section py-10">
   <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">De la improvisación al control (sin rehacerlo todo)</h2>
-    <ul class="mt-5 space-y-3 text-gray-300/90">
-      <li>• Partes y albaranes en papel/WhatsApp → <em>cierres que no cuadran</em>. Con una <strong>aplicación a medida</strong> todo vive en el mismo sitio.</li>
-      <li>• Facturas a mano y stock desactualizado → <em>márgenes que se evaporan</em>. El <strong>OCR con IA</strong> elimina el tecleo y los errores.</li>
-      <li>• Rutas que cambian cada día → <em>más kilómetros y clientes molestos</em>. La <strong>automatización</strong> ajusta turnos y prioriza paradas.</li>
-      <li>• Sistemas que no hablan → <em>doble trabajo</em>. Las <strong>integraciones API</strong> conectan TPV/ERP/CRM, WhatsApp, Stripe y Sheets.</li>
-    </ul>
-    <p class="mt-4 text-center text-gray-300/80">Empezamos por el cuello de botella y entrego un <strong>MVP</strong> que ya ahorra horas. Luego, iteramos con métricas.</p>
+    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">
+      De la improvisación al control (sin rehacerlo todo)
+    </h2>
+    <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
+
+    <!-- Lista rica: problema (dt) + solución (dd) -->
+    <dl class="mt-6 grid gap-y-6 gap-x-10 md:grid-cols-2 max-w-5xl mx-auto text-left">
+      <!-- 1 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="file-text" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          Partes y albaranes en <strong class="text-indigo-300">papel/WhatsApp</strong> → <em>cierres que no cuadran</em>.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Solución:</span> <strong class="text-indigo-300">aplicación a medida</strong> que unifica entradas y estados → trazabilidad real.
+        </dd>
+      </div>
+
+      <!-- 2 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="scan-text" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Facturas a mano</strong> y stock desactualizado → <em>márgenes que se evaporan</em>.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Solución:</span> <strong class="text-indigo-300">OCR con IA</strong> + validaciones → menos tecleo y menos errores.
+        </dd>
+      </div>
+
+      <!-- 3 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="route" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Rutas</strong> que cambian cada día → <em>más kilómetros y clientes molestos</em>.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Solución:</span> automatización que ajusta turnos y prioriza paradas → menos km, más puntualidad.
+        </dd>
+      </div>
+
+      <!-- 4 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="plug-zap" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Sistemas que no hablan</strong> → <em>doble trabajo</em>.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          <span class="text-gray-200">Solución:</span> <strong class="text-indigo-300">integraciones API</strong> (TPV/ERP/CRM, WhatsApp, Stripe, Sheets) → datos consistentes, adiós copiar/pegar.
+        </dd>
+      </div>
+    </dl>
+
+    <p class="mt-5 text-center text-gray-300/80 max-w-3xl mx-auto">
+      Empezamos por el cuello de botella y entrego un <strong class="text-indigo-300">MVP</strong> que ya ahorra horas. Luego, iteramos con métricas.
+    </p>
   </div>
 </section>
+
+<section id="proyectos" class="apps-section py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Apps en producción, usadas cada día</h2>
+      <p class="mt-3 text-gray-300/85 max-w-2xl mx-auto">
+        No son demos: son <strong>implantaciones reales</strong>. Tu proyecto se ajustará a tus procesos y a lo que de verdad retorna.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      <!-- Chclean -->
+      <article class="app-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="svc-icon"><i data-lucide="route" aria-hidden="true"></i></div>
+          <h3 class="text-lg font-semibold text-indigo-300">Chclean — gestión de limpieza</h3>
+        </div>
+        <p class="text-gray-300/90">
+          Ruta, tareas y material en el móvil. Menos dudas y menos llamadas de última hora.
+        </p>
+        <ul class="text-gray-300/85 mt-3 space-y-1 list-disc list-inside">
+          <li><strong>Optimización de rutas con IA</strong> → menos kilómetros y combustible.</li>
+          <li><strong>Rendimiento por equipo</strong> y seguimiento de incidencias.</li>
+          <li><strong>Parte con foto</strong> tras cada servicio.</li>
+          <li>Leads prefiltrados por asistente e integración con CRM.</li>
+        </ul>
+        <p class="text-xs text-gray-400 mt-4">Tecnología: Django · IA para rutas y productividad.</p>
+      </article>
+
+      <!-- Scandallo -->
+      <article class="app-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="svc-icon"><i data-lucide="utensils" aria-hidden="true"></i></div>
+          <h3 class="text-lg font-semibold text-indigo-300">Scandallo — restauración</h3>
+        </div>
+        <p class="text-gray-300/90">
+          Fotografía la factura y la IA captura precios y actualiza escandallos al instante. Margen real por plato, sin excels frágiles.
+        </p>
+        <ul class="text-gray-300/85 mt-3 space-y-1 list-disc list-inside">
+          <li><strong>Panel diario</strong> de gastos, ventas y beneficio.</li>
+          <li><strong>Control de mermas</strong> y sugerencias de rentabilidad.</li>
+          <li>Stock y coste por ración en tiempo real.</li>
+        </ul>
+        <p class="text-xs text-gray-400 mt-4">Tecnología: Django · IA (OCR/Visión) · Dashboards.</p>
+      </article>
+
+      <!-- EasyFence -->
+      <article class="app-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="svc-icon"><i data-lucide="ruler" aria-hidden="true"></i></div>
+          <h3 class="text-lg font-semibold text-indigo-300">EasyFence — presupuestos al instante</h3>
+        </div>
+        <p class="text-gray-300/90">
+          Conectado a tarifas de proveedores: calcula materiales y mano de obra y emite presupuestos profesionales en minutos.
+        </p>
+        <ul class="text-gray-300/85 mt-3 space-y-1 list-disc list-inside">
+          <li>Cumplimiento automático de normativa local.</li>
+          <li>Presupuestos claros que se entienden y se aceptan.</li>
+          <li><strong>Menos fallos y cierres más ágiles</strong>.</li>
+        </ul>
+        <p class="text-xs text-gray-400 mt-4">Tecnología: Django · Integraciones API · Cálculo en tiempo real.</p>
+      </article>
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center justify-center h-11 px-6 rounded-full font-semibold text-sm">
+        <i data-lucide="calendar" class="mr-2 w-5 h-5" aria-hidden="true"></i> ¿Te ves reflejado? Hablemos
+      </a>
+    </div>
+  </div>
+</section>
+
 
 {# ==================== SERVICIOS LOCALES ==================== #}
 <section id="servicios-castellon" class="services-section py-16">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-8">
       <h2 class="text-3xl sm:text-4xl font-bold text-white">Servicios en Castellón</h2>
-      <p class="mt-3 text-gray-300/85">Pensados para PYMEs locales con impacto medible.</p>
+      <p class="mt-3 text-gray-300/85">Pensados para PYMEs de la provincia, con impacto medible y entregas por fases.</p>
+      <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
     </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
-      <a href="/software-a-medida/" class="svc-card p-6 block">
+      <!-- Software a medida -->
+      <a href="/software-a-medida/" aria-label="Software a medida en Castellón — Saber más" class="svc-card p-6 pb-14 block group relative">
         <div class="svc-icon mb-3"><i data-lucide="app-window" aria-hidden="true"></i></div>
-        <h3 class="text-lg font-semibold text-white mb-1">Desarrollo de software a medida (Castellón)</h3>
-        <p class="text-gray-300/90">Herramientas que encajan con tu operación real. Nada de moldes rígidos.</p>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Desarrollo de software a medida (Castellón)</h3>
+        <p class="text-gray-300/90">Apps que se amoldan a tus procesos, no al revés. Operativa sin fricciones y trazabilidad real.</p>
+        <span aria-hidden="true" class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
+          Saber más <i data-lucide="arrow-right" class="w-4 h-4 translate-x-0 group-hover:translate-x-0.5"></i>
+        </span>
       </a>
-      <a href="/integraciones-api/" class="svc-card p-6 block">
+
+      <!-- Integraciones API -->
+      <a href="/integraciones-api/" aria-label="Integraciones API en Castellón — Saber más" class="svc-card p-6 pb-14 block group relative">
         <div class="svc-icon mb-3"><i data-lucide="plug-zap" aria-hidden="true"></i></div>
-        <h3 class="text-lg font-semibold text-white mb-1">Integraciones API en Castellón</h3>
-        <p class="text-gray-300/90">Conecta TPV/ERP/CRM, WhatsApp, Stripe y Sheets. Datos fiables y sin dobles entradas.</p>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Integraciones API en Castellón</h3>
+        <p class="text-gray-300/90">TPV/ERP/CRM, WhatsApp, Stripe y Sheets conectados. Datos consistentes y cero dobles entradas.</p>
+        <span aria-hidden="true" class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
+          Saber más <i data-lucide="arrow-right" class="w-4 h-4 translate-x-0 group-hover:translate-x-0.5"></i>
+        </span>
       </a>
-      <a href="/automatizacion-procesos-ia/" class="svc-card p-6 block">
+
+      <!-- Automatizaciones con IA -->
+      <a href="/automatizacion-procesos-ia/" aria-label="Automatizaciones con IA — Saber más" class="svc-card p-6 pb-14 block group relative">
         <div class="svc-icon mb-3"><i data-lucide="bot" aria-hidden="true"></i></div>
-        <h3 class="text-lg font-semibold text-white mb-1">Automatizaciones con IA</h3>
-        <p class="text-gray-300/90">Chatbots, OCR de facturas y rutas inteligentes para quitar trabajo repetitivo.</p>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Automatizaciones con IA</h3>
+        <p class="text-gray-300/90">Chatbots, OCR de facturas y clasificación automática. Horas ahorradas cada semana y menos errores.</p>
+        <span aria-hidden="true" class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
+          Saber más <i data-lucide="arrow-right" class="w-4 h-4 translate-x-0 group-hover:translate-x-0.5"></i>
+        </span>
       </a>
-      <a href="/mantenimiento-soporte/" class="svc-card p-6 block">
+
+      <!-- Mantenimiento -->
+      <a href="/mantenimiento-soporte/" aria-label="Mantenimiento web — Saber más" class="svc-card p-6 pb-14 block group relative">
         <div class="svc-icon mb-3"><i data-lucide="wrench" aria-hidden="true"></i></div>
-        <h3 class="text-lg font-semibold text-white mb-1">Mantenimiento web</h3>
-        <p class="text-gray-300/90">Actualizaciones, copias y soporte técnico cercano para que todo siga estable.</p>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Mantenimiento web</h3>
+        <p class="text-gray-300/90">Actualizaciones, copias y monitorización. Estabilidad y soporte cercano sin sobresaltos.</p>
+        <span aria-hidden="true" class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
+          Saber más <i data-lucide="arrow-right" class="w-4 h-4 translate-x-0 group-hover:translate-x-0.5"></i>
+        </span>
       </a>
-      <a href="/consultoria-mvp/" class="svc-card p-6 block">
+
+      <!-- Consultoría MVP -->
+      <a href="/consultoria-mvp/" aria-label="Consultoría MVP — Saber más" class="svc-card p-6 pb-14 block group relative">
         <div class="svc-icon mb-3"><i data-lucide="lightbulb" aria-hidden="true"></i></div>
-        <h3 class="text-lg font-semibold text-white mb-1">Consultoría MVP</h3>
-        <p class="text-gray-300/90">Definimos un piloto medible (horas ahorradas, errores, margen) antes de escalar.</p>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Consultoría MVP</h3>
+        <p class="text-gray-300/90">Piloto en semanas y métricas claras (tiempo, errores, margen) para decidir con datos.</p>
+        <span aria-hidden="true" class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
+          Saber más <i data-lucide="arrow-right" class="w-4 h-4 translate-x-0 group-hover:translate-x-0.5"></i>
+        </span>
       </a>
-      <a href="/vinaros-desarrollador-full-stack/" class="svc-card p-6 block">
+
+      <!-- Enlace a Vinaròs -->
+      <a href="/vinaros-desarrollador-full-stack/" aria-label="Proyectos en Vinaròs — Saber más" class="svc-card p-6 pb-14 block group relative">
         <div class="svc-icon mb-3"><i data-lucide="map-pin" aria-hidden="true"></i></div>
-        <h3 class="text-lg font-semibold text-white mb-1">Proyectos en Vinaròs</h3>
-        <p class="text-gray-300/90">Si operas entre Castellón y Vinaròs, combinamos presencial y remoto.</p>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Proyectos en Vinaròs</h3>
+        <p class="text-gray-300/90">Si te mueves entre Castellón y Vinaròs, combinamos presencial y remoto sin fricción.</p>
+        <span aria-hidden="true" class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
+          Saber más <i data-lucide="arrow-right" class="w-4 h-4 translate-x-0 group-hover:translate-x-0.5"></i>
+        </span>
       </a>
     </div>
   </div>
 </section>
+
 
 {# ==================== KPIs/PRUEBAS ==================== #}
 <section class="apps-section py-16">
@@ -184,7 +402,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
       <article class="app-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-2">Rutas optimizadas</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-2">Rutas optimizadas</h3>
         <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
           <li>-18% tiempo por turno</li>
           <li>-12% combustible</li>
@@ -192,7 +410,7 @@
         </ul>
       </article>
       <article class="app-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-2">Facturas por foto</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-2">Facturas por foto</h3>
         <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
           <li>Entrada 3× más rápida</li>
           <li>-25% errores manuales</li>
@@ -200,44 +418,12 @@
         </ul>
       </article>
       <article class="app-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-2">Leads filtrados</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-2">Leads filtrados</h3>
         <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
           <li>-40% llamadas improductivas</li>
           <li>+22% cierres</li>
           <li>Módulo: <a href="/integraciones-api/" class="underline">Chatbot/API</a></li>
         </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-{# ==================== SOBRE MÍ (E-E-A-T) ==================== #}
-<section id="sobre-mi" class="services-section py-20">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-8">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white">Tu socio tecnológico en Castellón</h2>
-      <p class="mt-3 text-gray-300/85 max-w-2xl mx-auto">Trabajo cerca para entender procesos y priorizar lo que <strong>ahorra horas</strong>. Si no aporta, no se desarrolla.</p>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-7 items-stretch">
-      <article class="about-card p-5 lg:col-span-5">
-        <div class="rounded-2xl overflow-hidden border border-white/10 about-photo">
-          <picture>
-            <source srcset="{% static 'img/hector.webp' %}" type="image/webp">
-            <img src="{% static 'img/hector.jpg' %}" alt="Héctor Herrera, desarrollador de software a medida en Castellón"
-                 width="960" height="640" class="w-full object-cover" loading="lazy" decoding="async">
-          </picture>
-        </div>
-      </article>
-      <article class="about-card p-6 lg:col-span-7 flex flex-col items-center text-center">
-        <h3 class="text-xl font-semibold text-white mb-3">Lo que priorizo</h3>
-        <ul class="text-gray-300/90 space-y-2 mb-6 text-left">
-          <li class="flex gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i><span>Proximidad y <strong>trato presencial</strong> cuando toca.</span></li>
-          <li class="flex gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i><span>Integraciones con lo que ya usas (TPV/ERP/CRM, WhatsApp, Stripe, Sheets).</span></li>
-          <li class="flex gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-indigo-300 shrink-0"></i><span><strong>MVP en semanas</strong> y mejoras por iteración con métricas.</span></li>
-        </ul>
-        <a href="/contacto/" class="cta-btn cta-primary inline-flex items-center h-11 px-5 rounded-full font-semibold text-sm">
-          <i data-lucide="calendar" class="mr-2 w-4 h-4"></i> ¿Tomamos un café en Castellón?
-        </a>
       </article>
     </div>
   </div>
@@ -266,16 +452,6 @@
   </div>
 </section>
 
-{# ==================== ZONA Y ENLACES ==================== #}
-<section id="zona" class="apps-section py-12">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Zona de servicio</h2>
-    <p class="text-gray-300/85">
-      Servicios de <strong>aplicaciones a medida</strong> en Castellón, Almassora y Vila-real.
-      ¿También operas hacia el norte? Mira la <a href="/vinaros-desarrollador-full-stack/" class="underline">landing de Vinaròs</a>.
-    </p>
-  </div>
-</section>
 
 {# ==================== CTA FINAL ==================== #}
 <section class="services-section py-12">

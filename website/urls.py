@@ -11,7 +11,7 @@ app_name = "website"
 
 urlpatterns = [
     path("", home_view, name="home"),
-    path("acerca/", acerca_view, name="acerca"),
+    path("sobre-mi/", acerca_view, name="acerca"),
     path("contacto/", contacto_view, name="contacto"),
     path("legal/privacidad/", privacidad_view, name="privacidad"),
     path("legal/terminos/", terminos_view, name="terminos"),

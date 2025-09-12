@@ -155,42 +155,140 @@
 
 
 <!-- SOLUCIÓN (centrado) -->
+<!-- ==================== SOLUCIÓN (con cards, H3 centrado, resto a la izquierda) ==================== -->
 <section class="services-section py-14" id="solucion">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">La solución: app a medida, integrada y medible</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
-      <article class="app-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-2">Qué entrego</h3>
-        <ul class="mx-auto max-w-3xl text-gray-300/90 list-disc list-inside space-y-1">
-          <li>Aplicación interna o módulo con autenticación y roles.</li>
-          <li>Integraciones REST/GraphQL y webhooks con tu ERP/CRM.</li>
-          <li>Paneles de control con KPIs de negocio.</li>
-          <li>Automatizaciones puntuales (OCR, clasificación, recordatorios) cuando aportan.</li>
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Título centrado -->
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">La solución: app a medida, integrada y medible</h2>
+      <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 auto-rows-fr">
+      <!-- Card: Qué entrego -->
+      <article class="app-card p-6 !text-left">
+        <h3 class="text-lg font-semibold text-indigo-300 mb-3 text-center">Qué entrego</h3>
+        <ul class="space-y-3">
+          <li class="grid grid-cols-[22px_1fr] gap-3 items-start">
+            <i data-lucide="key-round" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+            <span class="text-gray-300/90 leading-snug">
+              <strong class="text-indigo-300">Aplicación interna o módulo</strong> con autenticación y roles.
+            </span>
+          </li>
+          <li class="grid grid-cols-[22px_1fr] gap-3 items-start">
+            <i data-lucide="plug-zap" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+            <span class="text-gray-300/90 leading-snug">
+              <strong class="text-indigo-300">Integraciones</strong> REST/GraphQL y webhooks con tu ERP/CRM.
+            </span>
+          </li>
+          <li class="grid grid-cols-[22px_1fr] gap-3 items-start">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+            <span class="text-gray-300/90 leading-snug">
+              <strong class="text-indigo-300">Paneles de control</strong> con KPIs de negocio.
+            </span>
+          </li>
+          <li class="grid grid-cols-[22px_1fr] gap-3 items-start">
+            <i data-lucide="bot" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+            <span class="text-gray-300/90 leading-snug">
+              <strong class="text-indigo-300">Automatizaciones puntuales</strong> (OCR, clasificación, recordatorios) donde aportan.
+            </span>
+          </li>
         </ul>
       </article>
-      <article class="app-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-2">Cómo se justifica</h3>
-        <ul class="mx-auto max-w-3xl text-gray-300/90 list-disc list-inside space-y-1">
-          <li>Métricas desde el Sprint 0: horas ahorradas, % error, lead-time, margen.</li>
-          <li>CI/CD y demos quincenales: sabes qué llega y cuándo.</li>
-          <li>RGPD y seguridad: mínimos privilegios, logs y proveedores en la UE cuando aplica.</li>
-          <li>Propiedad del stack y sin lock-in de licencias innecesarias.</li>
+
+      <!-- Card: Cómo se justifica -->
+      <article class="app-card p-6 !text-left">
+        <h3 class="text-lg font-semibold text-indigo-300 mb-3 text-center">Cómo se justifica</h3>
+        <ul class="space-y-3">
+          <li class="grid grid-cols-[22px_1fr] gap-3 items-start">
+            <i data-lucide="gauge" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+            <span class="text-gray-300/90 leading-snug">
+              <strong class="text-indigo-300">Métricas desde el Sprint 0</strong>: horas, % error, lead-time, margen.
+            </span>
+          </li>
+          <li class="grid grid-cols-[22px_1fr] gap-3 items-start">
+            <i data-lucide="rocket" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+            <span class="text-gray-300/90 leading-snug">
+              <strong class="text-indigo-300">CI/CD y demos quincenales</strong>: sabes qué llega y cuándo.
+            </span>
+          </li>
+          <li class="grid grid-cols-[22px_1fr] gap-3 items-start">
+            <i data-lucide="shield-check" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+            <span class="text-gray-300/90 leading-snug">
+              <strong class="text-indigo-300">RGPD y seguridad</strong>: mínimo privilegio, logs y proveedores en la UE cuando aplica.
+            </span>
+          </li>
+          <li class="grid grid-cols-[22px_1fr] gap-3 items-start">
+            <i data-lucide="badge-check" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+            <span class="text-gray-300/90 leading-snug">
+              <strong class="text-indigo-300">Propiedad del stack</strong> y sin <em>lock-in</em> de licencias innecesarias.
+            </span>
+          </li>
         </ul>
       </article>
     </div>
+
+    <p class="text-gray-300/85 mt-8 max-w-3xl mx-auto text-center">
+      Todo queda <strong class="text-indigo-300">conectado y medido</strong>. Si no aporta, se ajusta o se quita.
+    </p>
   </div>
 </section>
 
-<!-- BENEFICIOS (centrado) -->
+<!-- BENEFICIOS (centrado, sin bullets) -->
 <section class="apps-section py-14" id="beneficios">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Beneficios esperables</h2>
-    <ul class="mx-auto max-w-3xl text-gray-300/90 space-y-2 list-disc list-inside">
-      <li>Menos tiempo en tareas repetitivas y traspasos manuales.</li>
-      <li>Datos consistentes y trazables entre sistemas.</li>
-      <li>Paneles claros para decidir a tiempo.</li>
-      <li>Ahorro en licencias y menos dependencias de terceros.</li>
-    </ul>
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Título centrado + subrayado -->
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Beneficios esperables</h2>
+      <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
+    </div>
+
+    <!-- Lista rica en 2 columnas (md+) -->
+    <dl class="mx-auto text-left grid gap-y-7 gap-x-10 md:grid-cols-2 max-w-5xl">
+      <!-- 1 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="repeat" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Menos tiempo</strong> en tareas repetitivas y traspasos manuales.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Impacto: más foco en lo que aporta valor y <strong class="text-indigo-300">ciclos más cortos</strong>.
+        </dd>
+      </div>
+
+      <!-- 2 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="link-2" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Datos consistentes y trazables</strong> entre sistemas.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Impacto: menos retrabajo y <strong class="text-indigo-300">auditoría sencilla</strong>.
+        </dd>
+      </div>
+
+      <!-- 3 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="layout-dashboard" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Paneles claros</strong> para decidir a tiempo.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Impacto: decisiones <strong class="text-indigo-300">proactivas</strong>, no post-mortem.
+        </dd>
+      </div>
+
+      <!-- 4 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="badge-euro" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Ahorro en licencias</strong> y menos dependencias de terceros.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Impacto: coste más predecible y <strong class="text-indigo-300">control del roadmap</strong>.
+        </dd>
+      </div>
+    </dl>
   </div>
 </section>
 
@@ -202,16 +300,16 @@
       <p class="mt-3 text-gray-300/85">Sprints con entregables visibles y métricas desde el día uno.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-7">
-      <article class="step-card p-5"><span class="badge">1</span><h3 class="text-base font-semibold text-white mt-6">Diagnóstico</h3><p class="text-gray-300/90">Elegimos el atasco con más retorno (30–60 días).</p></article>
-      <article class="step-card p-5"><span class="badge">2</span><h3 class="text-base font-semibold text-white mt-6">Prototipo</h3><p class="text-gray-300/90">Validación con el equipo antes de programar.</p></article>
-      <article class="step-card p-5"><span class="badge">3</span><h3 class="text-base font-semibold text-white mt-6">MVP</h3><p class="text-gray-300/90">Versión que ya ahorra tiempo/coste.</p></article>
-      <article class="step-card p-5"><span class="badge">4</span><h3 class="text-base font-semibold text-white mt-6">Integración</h3><p class="text-gray-300/90">TPV/ERP/CRM o hojas. Sin parar la operación.</p></article>
-      <article class="step-card p-5"><span class="badge">5</span><h3 class="text-base font-semibold text-white mt-6">Mejora</h3><p class="text-gray-300/90">Añadimos solo si el impacto es real.</p></article>
+      <article class="step-card p-5"><span class="badge">1</span><h3 class="text-base font-semibold text-indigo-300 mt-6">Diagnóstico</h3><p class="text-gray-300/90">Elegimos el atasco con más retorno (30–60 días).</p></article>
+      <article class="step-card p-5"><span class="badge">2</span><h3 class="text-base font-semibold text-indigo-300 mt-6">Prototipo</h3><p class="text-gray-300/90">Validación con el equipo antes de programar.</p></article>
+      <article class="step-card p-5"><span class="badge">3</span><h3 class="text-base font-semibold text-indigo-300 mt-6">MVP</h3><p class="text-gray-300/90">Versión que ya ahorra tiempo/coste.</p></article>
+      <article class="step-card p-5"><span class="badge">4</span><h3 class="text-base font-semibold text-indigo-300 mt-6">Integración</h3><p class="text-gray-300/90">TPV/ERP/CRM o hojas. Sin parar la operación.</p></article>
+      <article class="step-card p-5"><span class="badge">5</span><h3 class="text-base font-semibold text-indigo-300 mt-6">Mejora</h3><p class="text-gray-300/90">Añadimos solo si el impacto es real.</p></article>
     </div>
   </div>
 </section>
 
-<!-- DEMOS RELACIONADAS (centrado) -->
+<!-- DEMOS RELACIONADAS (centrado) 
 <section class="apps-section py-16" id="demos">
   <div class="max-w-7xl mx-auto px-6 text-center">
     <div class="text-center mb-6">
@@ -223,7 +321,7 @@
       <a href="/apps/extractor-facturas/" class="app-card p-6 block"
          data-title="Extractor de campos de factura" data-tags="ocr,erp" data-rating="4.6" data-popularity="97"
          data-quote="Entrada de facturas 3× más rápida y menos errores.">
-        <h3 class="text-lg font-semibold text-white mb-1">Extractor de campos de factura</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Extractor de campos de factura</h3>
         <p class="text-gray-300/90">PDF → JSON/CSV en segundos. Ideal para compras y contabilidad.</p>
         <span class="inline-block text-xs mt-3 px-2 py-0.5 rounded-full bg-white/10">Límite: 5 usos/día</span>
       </a>
@@ -231,7 +329,7 @@
       <a href="/apps/normalizador-skus/" class="app-card p-6 block"
          data-title="Normalizador de SKUs" data-tags="erp" data-rating="4.5" data-popularity="81"
          data-quote="Catálogo limpio y deduplicado, sin dolores.">
-        <h3 class="text-lg font-semibold text-white mb-1">Normalizador de SKUs</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Normalizador de SKUs</h3>
         <p class="text-gray-300/90">Deduplica y mapea referencias para un inventario consistente.</p>
         <span class="inline-block text-xs mt-3 px-2 py-0.5 rounded-full bg-white/10">Límite: 5 usos/día</span>
       </a>
@@ -239,7 +337,7 @@
       <a href="/apps/clasificador-tickets/" class="app-card p-6 block"
          data-title="Clasificador de tickets" data-tags="tickets,chatbot" data-rating="4.5" data-popularity="83"
          data-quote="Menos ruido en soporte y SLA más corto.">
-        <h3 class="text-lg font-semibold text-white mb-1">Clasificador de tickets</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Clasificador de tickets</h3>
         <p class="text-gray-300/90">Texto → categoría/prioridad. Encamina y mide con claridad.</p>
         <span class="inline-block text-xs mt-3 px-2 py-0.5 rounded-full bg-white/10">Límite: 5 usos/día</span>
       </a>
@@ -251,7 +349,7 @@
       </a>
     </div>
   </div>
-</section>
+</section>-->
 
 <!-- PROYECTOS RELACIONADOS (centrado) -->
 <section class="services-section py-16" id="proyectos">
@@ -262,19 +360,19 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
       <a class="app-card p-6 block" href="/proyectos/">
-        <h3 class="text-lg font-semibold text-white mb-2">Pedidos y stock unificados</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-2">Pedidos y stock unificados</h3>
         <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
           <li>-35% errores de inventario</li><li>-22% roturas</li><li>Stack: Django + API ERP</li>
         </ul>
       </a>
       <a class="app-card p-6 block" href="/proyectos/">
-        <h3 class="text-lg font-semibold text-white mb-2">Rutas y partes en móvil</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-2">Rutas y partes en móvil</h3>
         <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
           <li>-18% tiempo/turno</li><li>+100% trazabilidad</li><li>Stack: Web app + Maps</li>
         </ul>
       </a>
       <a class="app-card p-6 block" href="/proyectos/">
-        <h3 class="text-lg font-semibold text-white mb-2">Reporting de gerencia</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-2">Reporting de gerencia</h3>
         <ul class="text-gray-300/85 space-y-1 list-disc list-inside">
           <li>Paneles diarios</li><li>Decisiones a tiempo</li><li>Stack: ETL + Dashboards</li>
         </ul>
@@ -289,17 +387,17 @@
     <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Precios y plazos orientativos — España</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 mt-6">
       <article class="price-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-1">MVP específico (2–6 semanas)</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">MVP específico (2–6 semanas)</h3>
         <p class="text-gray-300/90 mb-1">2.000–6.000 €</p>
         <p class="text-gray-300/80 text-sm">Una pieza concreta para resolver el mayor cuello de botella.</p>
       </article>
       <article class="price-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-1">App departamental (6–12 semanas)</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">App departamental (6–12 semanas)</h3>
         <p class="text-gray-300/90 mb-1">6.000–15.000 €</p>
         <p class="text-gray-300/80 text-sm">Digitaliza logística, ventas, producción o servicios con integraciones.</p>
       </article>
       <article class="price-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-1">Sistema integral (12+ semanas)</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Sistema integral (12+ semanas)</h3>
         <p class="text-gray-300/90 mb-1">desde 15.000 €</p>
         <p class="text-gray-300/80 text-sm">Varias áreas conectadas con automatizaciones y paneles.</p>
       </article>
@@ -309,26 +407,42 @@
 </section>
 
 <!-- FAQ (centrado) -->
-<section id="faq" class="services-section py-14">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">Preguntas frecuentes</h2>
-    <div class="faq-accordion max-w-3xl mx-auto mt-6">
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qtext">¿Cuándo conviene software a medida?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
-        <div class="faq-a">Cuando el SaaS genérico te encorseta, hay pasos manuales que cuestan horas o necesitas propiedad sobre procesos y datos.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qtext">¿Cómo controláis la calidad?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
-        <div class="faq-a">Pruebas, CI/CD, demos quincenales y métricas de impacto definidas desde el Sprint 0.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qtext">¿Y el RGPD?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
-        <div class="faq-a">Proveedores en la UE cuando aplica, cifrado, mínimos privilegios y logs de auditoría.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qtext">¿Puedo integrar mi ERP/CRM?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
-        <div class="faq-a">Sí: REST/GraphQL, webhooks o importaciones programadas. Convivimos con lo que ya funciona.</div>
-      </details>
+<section id="faq" class="services-section py-16">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="faq-title text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Preguntas frecuentes</h2>
+    </div>
+    <div class="faq-wrap mt-6">
+      <div class="faq-accordion max-w-3xl mx-auto">
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Cuándo conviene software a medida?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Cuando el SaaS genérico te encorseta, hay pasos manuales que cuestan horas o necesitas propiedad sobre procesos y datos.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Cómo controláis la calidad?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Pruebas, CI/CD, demos quincenales y métricas de impacto definidas desde el Sprint 0.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Y el RGPD?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Proveedores en la UE cuando aplica, cifrado, mínimos privilegios y logs de auditoría.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Puedo integrar mi ERP/CRM?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Sí: REST/GraphQL, webhooks o importaciones programadas. Convivimos con lo que ya funciona.</div>
+        </details>
+      </div>
     </div>
   </div>
 </section>

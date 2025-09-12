@@ -145,20 +145,73 @@
 
 <section class="apps-section py-12">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Casos típicos y tiempos</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
-      <article class="app-card p-6">
-        <p class="text-gray-300/90">Entrar con Google (u otros) → listo para producción en <strong>10–15 días hábiles</strong>.</p>
-        <p class="text-gray-300/90 mt-2">Pagos (Stripe/TPV/PayPal) con avisos fiables → <strong>2–4 semanas</strong>.</p>
-        <p class="text-gray-300/90 mt-2">IA (OpenAI/Gemini/Gemma) para tu app → <strong>3–6 semanas</strong> con métricas de uso.</p>
-        <p class="text-gray-300/90 mt-2">CRM/ERP ↔ Google Sheets → <strong>primer MVP en días</strong>, y evolución a "industrial" después.</p>
-      </article>
-      <article class="app-card p-6">
-        <p class="text-gray-300/80">Los tiempos dependen de las aprobaciones de tus proveedores. Te doy calendario y entregables por escrito.</p>
-      </article>
+    <!-- título centrado + línea -->
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Casos típicos</h2>
+      <p class="mt-2 text-gray-300/80">Lo que más me piden, sin rodeos.</p>
+      <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
     </div>
+
+    <!-- Única card, UNA COLUMNA, ancho legible -->
+    <article class="app-card p-6 md:p-7 text-left w-full max-w-[62ch] mx-auto">
+      <ul class="divide-y divide-white/10">
+        <li class="flex gap-3 py-2.5 items-start">
+          <i data-lucide="log-in" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+          <p class="text-gray-300/90 leading-snug">
+            <strong class="text-indigo-300">SSO Google/Microsoft</strong> — acceso con un clic y altas limpias.
+          </p>
+        </li>
+        <li class="flex gap-3 py-2.5 items-start">
+          <i data-lucide="key-round" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+          <p class="text-gray-300/90 leading-snug">
+            <strong class="text-indigo-300">Roles y permisos</strong> por área (mínimo privilegio y trazabilidad).
+          </p>
+        </li>
+        <li class="flex gap-3 py-2.5 items-start">
+          <i data-lucide="credit-card" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+          <p class="text-gray-300/90 leading-snug">
+            <strong class="text-indigo-300">Pagos Stripe/TPV</strong> con webhooks fiables y conciliación sencilla.
+          </p>
+        </li>
+        <li class="flex gap-3 py-2.5 items-start">
+          <i data-lucide="plug-zap" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+          <p class="text-gray-300/90 leading-snug">
+            <strong class="text-indigo-300">ERP/CRM ↔ Sheets/CSV</strong> sin copiar/pegar y con validaciones.
+          </p>
+        </li>
+        <li class="flex gap-3 py-2.5 items-start">
+          <i data-lucide="message-square" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+          <p class="text-gray-300/90 leading-snug">
+            <strong class="text-indigo-300">WhatsApp Business</strong> para avisos y bots sencillos.
+          </p>
+        </li>
+        <li class="flex gap-3 py-2.5 items-start">
+          <i data-lucide="scan-text" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+          <p class="text-gray-300/90 leading-snug">
+            <strong class="text-indigo-300">OCR de facturas/albaranes</strong> con revisión y reglas anti-error.
+          </p>
+        </li>
+        <li class="flex gap-3 py-2.5 items-start">
+          <i data-lucide="bot" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+          <p class="text-gray-300/90 leading-snug">
+            <strong class="text-indigo-300">Clasificador de tickets/leads</strong> para priorizar lo que importa.
+          </p>
+        </li>
+        <li class="flex gap-3 py-2.5 items-start">
+          <i data-lucide="route" class="w-5 h-5 text-indigo-300 mt-0.5" aria-hidden="true"></i>
+          <p class="text-gray-300/90 leading-snug">
+            <strong class="text-indigo-300">Rutas y asignaciones</strong> con reglas/IA y partes con foto.
+          </p>
+        </li>
+      </ul>
+
+      <p class="text-gray-300/75 mt-5 text-sm">
+        ¿No ves tu caso? Lo diseñamos a medida y lo integramos con lo que ya usas.
+      </p>
+    </article>
   </div>
 </section>
+
 
 <section id="metodo" class="apps-section py-12">
   <div class="max-w-6xl mx-auto px-6">
@@ -166,32 +219,82 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
       <article class="step-card p-6">
         <span class="badge">1</span>
-        <h3 class="text-white font-semibold mt-6 mb-1">Entender y planificar (kick-off)</h3>
+        <h3 class="text-indigo-300 font-semibold mt-6 mb-1">Entender y planificar (kick-off)</h3>
         <p class="text-gray-300/90">Definimos qué sistemas conectamos, qué campos viajan y con qué reglas. Te entrego un esquema sencillo y un plan de riesgos con plazos.</p>
       </article>
       <article class="step-card p-6">
         <span class="badge">2</span>
-        <h3 class="text-white font-semibold mt-6 mb-1">Construir y probar</h3>
+        <h3 class="text-indigo-300 font-semibold mt-6 mb-1">Construir y probar</h3>
         <p class="text-gray-300/90">Hacemos la integración por partes, probamos los casos reales (incluidos "¿y si falla…?") y te enseño el avance en un entorno de pruebas.</p>
       </article>
       <article class="step-card p-6">
         <span class="badge">3</span>
-        <h3 class="text-white font-semibold mt-6 mb-1">Poner en marcha y cuidar</h3>
+        <h3 class="text-indigo-300 font-semibold mt-6 mb-1">Poner en marcha y cuidar</h3>
         <p class="text-gray-300/90">Despliegue, monitorización, alertas y un documento "qué hacer si…". Si creces o cambias de proveedor, ajustamos sin romper nada.</p>
       </article>
     </div>
   </div>
 </section>
 
-<section class="services-section py-12">
+<section class="services-section py-12" id="entregables">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Qué te llevas exactamente</h2>
-    <ul class="text-gray-300/90 space-y-2 list-disc list-inside">
-      <li>Integración funcionando y documentada.</li>
-      <li>Panel de control básico con lo importante (operaciones, errores, tiempos).</li>
-      <li>Guía de uso para tu equipo.</li>
-      <li>Soporte durante el arranque y opciones de mantenimiento.</li>
-    </ul>
+    <!-- Título centrado + subrayado -->
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Qué te llevas exactamente</h2>
+      <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
+    </div>
+
+    <!-- Lista sin cards, con icono + texto -->
+    <dl class="max-w-4xl mx-auto space-y-6 text-left">
+      <!-- Integración -->
+      <div class="relative pl-9">
+        <i data-lucide="plug-zap" class="w-5 h-5 text-indigo-300 absolute left-0 top-1" aria-hidden="true"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Integración funcionando</strong> y documentada.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Endpoints, claves y <span class="text-indigo-300">webhooks</span> probados en staging/producción, con README y ejemplos.
+        </dd>
+      </div>
+
+      <!-- Panel -->
+      <div class="relative pl-9">
+        <i data-lucide="layout-dashboard" class="w-5 h-5 text-indigo-300 absolute left-0 top-1" aria-hidden="true"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Panel de control</strong> con lo importante.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Operaciones, errores y tiempos clave en un vistazo. Filtros y exportación si la necesitas.
+        </dd>
+      </div>
+
+      <!-- Guía de uso -->
+      <div class="relative pl-9">
+        <i data-lucide="book-open" class="w-5 h-5 text-indigo-300 absolute left-0 top-1" aria-hidden="true"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Guía de uso</strong> para tu equipo.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Pasos de operación, roles y buenas prácticas (PDF y vídeo corto de handover).
+        </dd>
+      </div>
+
+      <!-- Soporte -->
+      <div class="relative pl-9">
+        <i data-lucide="life-buoy" class="w-5 h-5 text-indigo-300 absolute left-0 top-1" aria-hidden="true"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Soporte de arranque</strong> y opciones de mantenimiento.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Acompañamiento los primeros días, correcciones rápidas y planes opcionales de actualización/monitorización.
+        </dd>
+      </div>
+    </dl>
+
+    <!-- Nota final -->
+    <p class="text-gray-300/80 mt-6 text-sm text-center max-w-3xl mx-auto">
+      Todo queda <strong class="text-indigo-300">versionado</strong> (Git) y con acceso seguro. Si algo no aporta, se simplifica o se elimina.
+    </p>
   </div>
 </section>
 
@@ -200,15 +303,15 @@
     <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Paquetes (elige el nivel, sin tecnicismos)</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 mt-6">
       <article class="price-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-1">Estándar</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Estándar</h3>
         <p class="text-gray-300/90">1 conexión con un tercero, pruebas funcionales, puesta en marcha y soporte inicial.</p>
       </article>
       <article class="price-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-1">Avanzado</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Avanzado</h3>
         <p class="text-gray-300/90">2–3 conexiones, inicio de sesión con Google u otros, avisos de pago fiables, primeras métricas y panel.</p>
       </article>
       <article class="price-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-1">Enterprise ligero</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Enterprise ligero</h3>
         <p class="text-gray-300/90">≥3 conexiones, colas para pico de trabajo, alertas, auditoría y plan de continuidad.</p>
       </article>
     </div>
@@ -216,26 +319,127 @@
   </div>
 </section>
 
-<section class="services-section py-12">
+<section class="services-section py-12" id="garantias">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Garantías y tranquilidad</h2>
-    <ul class="text-gray-300/90 space-y-2 list-disc list-inside">
-      <li>Accesos seguros (lo necesario para que "Entrar con Google" sea estable y rápido).</li>
-      <li>Cobros sin duplicados (reglas para que un fallo no cobre dos veces).</li>
-      <li>Datos bajo control (quién cambió qué y cuándo).</li>
-      <li>Plan B si un proveedor se cae (reintentos y avisos, sin bloquear tu negocio).</li>
-    </ul>
+    <!-- Título centrado + subrayado -->
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Garantías y tranquilidad</h2>
+      <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
+    </div>
+
+    <!-- Lista sin cards: icono + dt/dd -->
+    <dl class="max-w-4xl mx-auto space-y-6 text-left">
+      <!-- Accesos seguros -->
+      <div class="relative pl-9">
+        <i data-lucide="shield-check" class="w-5 h-5 text-indigo-300 absolute left-0 top-1" aria-hidden="true"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Accesos seguros</strong> y estables.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          SSO (Entrar con Google/Microsoft), <span class="text-indigo-300">2FA opcional</span>, caducidad de tokens y revocación inmediata.
+        </dd>
+      </div>
+
+      <!-- Cobros sin duplicados -->
+      <div class="relative pl-9">
+        <i data-lucide="credit-card" class="w-5 h-5 text-indigo-300 absolute left-0 top-1" aria-hidden="true"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Cobros sin duplicados</strong>.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Idempotencia en pagos, <span class="text-indigo-300">webhooks firmados</span> y conciliación automática para detectar incidencias.
+        </dd>
+      </div>
+
+      <!-- Datos bajo control -->
+      <div class="relative pl-9">
+        <i data-lucide="file-check" class="w-5 h-5 text-indigo-300 absolute left-0 top-1" aria-hidden="true"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Datos bajo control</strong>.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Trazabilidad completa (<em>quién</em> cambió <em>qué</em> y <em>cuándo</em>), <span class="text-indigo-300">roles de mínimo privilegio</span> y auditoría sencilla.
+        </dd>
+      </div>
+
+      <!-- Plan B proveedor -->
+      <div class="relative pl-9">
+        <i data-lucide="refresh-ccw" class="w-5 h-5 text-indigo-300 absolute left-0 top-1" aria-hidden="true"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Plan B si un proveedor falla</strong>.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Reintentos exponenciales, <span class="text-indigo-300">colas</span> para no perder operaciones, avisos automáticos y modo degradado sin bloquear la operación.
+        </dd>
+      </div>
+
+      <!-- Privacidad / RGPD -->
+      <div class="relative pl-9">
+        <i data-lucide="lock" class="w-5 h-5 text-indigo-300 absolute left-0 top-1" aria-hidden="true"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Privacidad y RGPD por diseño</strong>.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Minimización de datos, políticas de retención, <span class="text-indigo-300">DPA</span> con proveedores y anonimización donde procede.
+        </dd>
+      </div>
+
+      <!-- Observabilidad -->
+      <div class="relative pl-9">
+        <i data-lucide="activity" class="w-5 h-5 text-indigo-300 absolute left-0 top-1" aria-hidden="true"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Observabilidad</strong> desde el día uno.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Logs estructurados, métricas de salud y <span class="text-indigo-300">alertas</span> por email/WhatsApp cuando algo requiere atención.
+        </dd>
+      </div>
+    </dl>
+
+    <!-- Nota final -->
+    <p class="text-gray-300/80 mt-6 text-sm text-center max-w-3xl mx-auto">
+      El objetivo: <strong class="text-indigo-300">operativa predecible</strong> y sin sustos. Si algo no aporta estabilidad, se ajusta o se elimina.
+    </p>
   </div>
 </section>
 
-<section id="faq" class="services-section py-12">
+
+<section id="faq" class="services-section py-16">
   <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">Preguntas rápidas (FAQ)</h2>
-    <div class="faq-accordion max-w-3xl mx-auto mt-6">
-      <details class="faq-item"><summary class="faq-q"><span class="qtext">¿Necesito un equipo técnico propio?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary><div class="faq-a">No. Te acompaño en todo y hablo con tus proveedores si hace falta.</div></details>
-      <details class="faq-item"><summary class="faq-q"><span class="qtext">¿Qué pasa si mi negocio crece?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary><div class="faq-a">La integración está pensada para crecer: no hay que rehacerla si sube el volumen.</div></details>
-      <details class="faq-item"><summary class="faq-q"><span class="qtext">¿Podemos empezar "en pequeño"?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary><div class="faq-a">Sí. Arrancamos con lo mínimo útil (por ejemplo, Google Sheets) y luego lo escalamos.</div></details>
-      <details class="faq-item"><summary class="faq-q"><span class="qtext">¿Y si ya tengo algo medio hecho?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary><div class="faq-a">Lo reviso, arreglo lo que falle y lo dejo estable. No empezamos de cero si no hace falta.</div></details>
+    <div class="faq-title text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Preguntas rápidas (FAQ)</h2>
+    </div>
+    <div class="faq-wrap mt-6">
+      <div class="faq-accordion max-w-3xl mx-auto">
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Necesito un equipo técnico propio?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">No. Te acompaño en todo y hablo con tus proveedores si hace falta.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Qué pasa si mi negocio crece?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">La integración está pensada para crecer: no hay que rehacerla si sube el volumen.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Podemos empezar "en pequeño"?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Sí. Arrancamos con lo mínimo útil (por ejemplo, Google Sheets) y luego lo escalamos.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Y si ya tengo algo medio hecho?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Lo reviso, arreglo lo que falle y lo dejo estable. No empezamos de cero si no hace falta.</div>
+        </details>
+      </div>
     </div>
   </div>
 </section>

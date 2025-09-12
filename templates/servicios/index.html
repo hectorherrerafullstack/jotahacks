@@ -93,17 +93,67 @@
 
 {# RESULTADOS (pains → beneficios) #}
 <section class="apps-section py-14">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Resultados que importan</h2>
-    <ul class="inline-block text-left list-disc list-inside text-gray-300/90 space-y-2 max-w-3xl">
-      <li>Menos tareas repetitivas y menos “copiar y pegar” entre herramientas.</li>
-      <li>Menos errores de transcripción con OCR y formularios validados.</li>
-      <li>Más visibilidad con paneles claros y datos unificados.</li>
-      <li>Presupuestos o pedidos en minutos —no en días— gracias a las automatizaciones.</li>
-    </ul>
-    <p class="text-gray-300/85 mt-4 max-w-3xl mx-auto">Medimos horas, costes y margen desde el primer sprint.</p>
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Título centrado + subrayado -->
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Resultados que importan</h2>
+      <div aria-hidden="true" class="mx-auto mt-3 h-px max-w-2xl bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent"></div>
+    </div>
+
+    <!-- Lista: beneficio (dt) + impacto (dd) en 2 columnas -->
+    <dl class="mx-auto text-left grid gap-y-6 gap-x-10 md:grid-cols-2 max-w-5xl">
+      <!-- 1 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="repeat" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Menos tareas repetitivas</strong> y cero “copiar/pegar” entre herramientas.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Impacto: más tiempo para <strong class="text-indigo-300">lo que mueve la aguja</strong>.
+        </dd>
+      </div>
+
+      <!-- 2 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="scan-text" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Menos errores de transcripción</strong> con OCR y formularios validados.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Impacto: menos devoluciones y <strong class="text-indigo-300">contabilidad más limpia</strong>.
+        </dd>
+      </div>
+
+      <!-- 3 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="layout-dashboard" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Más visibilidad</strong> con paneles claros y datos unificados.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Impacto: decisiones <strong class="text-indigo-300">a tiempo</strong>, no a posteriori.
+        </dd>
+      </div>
+
+      <!-- 4 -->
+      <div class="relative pl-9">
+        <i aria-hidden="true" data-lucide="rocket" class="w-5 h-5 text-indigo-300 absolute left-0 top-1"></i>
+        <dt class="text-white font-medium leading-snug">
+          <strong class="text-indigo-300">Presupuestos o pedidos en minutos</strong> (no en días) gracias a automatizaciones.
+        </dt>
+        <dd class="mt-1.5 text-[15px] text-gray-300/90 leading-relaxed">
+          Impacto: <strong class="text-indigo-300">leads más calientes</strong> y cierre más rápido.
+        </dd>
+      </div>
+    </dl>
+
+    <!-- Nota de medición centrada -->
+    <p class="text-gray-300/85 mt-6 max-w-5xl mx-auto text-center">
+      Medimos <strong class="text-indigo-300">horas, costes y margen</strong> desde el primer sprint.
+    </p>
   </div>
 </section>
+
 
 <section class="services-section py-14">
   <div class="max-w-7xl mx-auto px-6">
@@ -113,7 +163,7 @@
       <!-- Software a medida -->
       <a href="/software-a-medida/" aria-label="Software a medida — Saber más" class="svc-card p-6 pb-14 block group relative">
         <div class="svc-icon mb-3"><i data-lucide="code"></i></div>
-        <h3 class="text-lg font-semibold text-white mb-1">Software a medida</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Software a medida</h3>
         <p class="text-gray-300/90">Aplicaciones internas y herramientas para tu operación real: pedidos, partes, rutas, stock o facturación.</p>
         <span class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
           Saber más
@@ -124,7 +174,7 @@
       <!-- Integraciones API -->
       <a href="/integraciones-api/" aria-label="Integraciones API — Saber más" class="svc-card p-6 pb-14 block group relative">
         <div class="svc-icon mb-3"><i data-lucide="plug-zap"></i></div>
-        <h3 class="text-lg font-semibold text-white mb-1">Integraciones API</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Integraciones API</h3>
         <p class="text-gray-300/90">Conecta ERP/CRM, WhatsApp Business, Stripe, Google Sheets y más. APIs estables (OpenAPI) y webhooks para que todo fluya.</p>
         <span class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
           Saber más
@@ -135,7 +185,7 @@
       <!-- Automatización procesos IA -->
       <a href="/automatizacion-procesos-ia/" aria-label="Automatización procesos IA — Saber más" class="svc-card p-6 pb-14 block group relative">
         <div class="svc-icon mb-3"><i data-lucide="bot"></i></div>
-        <h3 class="text-lg font-semibold text-white mb-1">Automatización procesos IA</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Automatización procesos IA</h3>
         <p class="text-gray-300/90">Asistentes, OCR y clasificación de documentos o imágenes. Menos tiempo tecleando, más consistencia en los datos.</p>
         <span class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
           Saber más
@@ -146,7 +196,7 @@
       <!-- ERP/CRM a medida -->
       <a href="/erp-crm-medida/" aria-label="ERP/CRM a medida — Saber más" class="svc-card p-6 pb-14 block group relative">
         <div class="svc-icon mb-3"><i data-lucide="grid"></i></div>
-        <h3 class="text-lg font-semibold text-white mb-1">ERP/CRM a medida</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">ERP/CRM a medida</h3>
         <p class="text-gray-300/90">Procesos comerciales, inventario y finanzas con automatizaciones: recordatorios, validaciones y paneles claros.</p>
         <span class="absolute bottom-4 right-4 inline-flex items-center gap-1 text-indigo-300/90 group-hover:text-white transition-all">
           Saber más
@@ -157,7 +207,7 @@
       <!-- Mantenimiento y soporte (sin enlace) -->
 <div class="svc-card p-6 block relative">
   <div class="svc-icon mb-3"><i data-lucide="activity"></i></div>
-  <h3 class="text-lg font-semibold text-white mb-1">Mantenimiento y soporte</h3>
+  <h3 class="text-lg font-semibold text-indigo-300 mb-1">Mantenimiento y soporte</h3>
   <p class="text-gray-300/90">
     Monitorización, parches y mejoras evolutivas. Observabilidad para detectar incidencias antes de que impacten.
   </p>
@@ -166,7 +216,7 @@
 <!-- Consultoría MVP (sin enlace) -->
 <div class="svc-card p-6 block relative">
   <div class="svc-icon mb-3"><i data-lucide="timer"></i></div>
-  <h3 class="text-lg font-semibold text-white mb-1">Consultoría MVP</h3>
+  <h3 class="text-lg font-semibold text-indigo-300 mb-1">Consultoría MVP</h3>
   <p class="text-gray-300/90">
     De la idea al primer producto útil en semanas. Alcance mínimo que ya entrega valor y prepara el terreno para crecer.
   </p>
@@ -182,17 +232,17 @@
     <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Precios y plazos orientativos — España</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 mt-6">
       <article class="price-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-1">MVP específico (2–6 semanas)</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">MVP específico (2–6 semanas)</h3>
         <p class="text-gray-300/90 mb-1">2.000–6.000 €</p>
         <p class="text-gray-300/80 text-sm">Una pieza concreta para resolver el mayor cuello de botella.</p>
       </article>
       <article class="price-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-1">App departamental (6–12 semanas)</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">App departamental (6–12 semanas)</h3>
         <p class="text-gray-300/90 mb-1">6.000–15.000 €</p>
         <p class="text-gray-300/80 text-sm">Digitaliza logística, ventas, producción o servicios con integraciones.</p>
       </article>
       <article class="price-card p-6">
-        <h3 class="text-lg font-semibold text-white mb-1">Sistema integral (12+ semanas)</h3>
+        <h3 class="text-lg font-semibold text-indigo-300 mb-1">Sistema integral (12+ semanas)</h3>
         <p class="text-gray-300/90 mb-1">desde 15.000 €</p>
         <p class="text-gray-300/80 text-sm">Varias áreas conectadas con automatizaciones y paneles.</p>
       </article>
@@ -202,30 +252,49 @@
 </section>
 
 {# FAQ (hub) #}
-<section id="faq" class="services-section py-14">
+<section id="faq" class="services-section py-16">
   <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white text-center">Preguntas frecuentes</h2>
-    <div class="faq-accordion max-w-3xl mx-auto mt-6">
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qtext">¿La IA es imprescindible?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
-        <div class="faq-a">No. Solo se usa cuando aporta. A veces lo mejor es una buena base de datos y procesos claros.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qtext">¿Cómo protegéis los datos y el RGPD?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
-        <div class="faq-a">Regiones UE cuando corresponde, anonimización y registros de auditoría. Los datos de tu empresa no se usan para entrenar servicios públicos.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qtext">¿Qué pasa si el modelo “alucina”?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
-        <div class="faq-a">Aplicamos recuperación de contexto (RAG), límites de confianza y revisión humana cuando es crítico. Además, evaluamos prompts y cambios antes de desplegar.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qtext">¿Se integra con mi programa actual?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
-        <div class="faq-a">Sí. Por API, importaciones programadas o conectores estándar; el objetivo es convivir, no romper lo que ya funciona.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qtext">¿Tendré que cambiarlo todo de golpe?</span><span class="icon"><i data-lucide="chevron-down"></i></span></summary>
-        <div class="faq-a">No. Empezamos por una pieza de alto impacto y vamos iterando.</div>
-      </details>
+    <div class="faq-title text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">Preguntas frecuentes</h2>
+    </div>
+    <div class="faq-wrap mt-6">
+      <div class="faq-accordion max-w-3xl mx-auto">
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿La IA es imprescindible?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">No. Solo se usa cuando aporta. A veces lo mejor es una buena base de datos y procesos claros.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Cómo protegéis los datos y el RGPD?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Regiones UE cuando corresponde, anonimización y registros de auditoría. Los datos de tu empresa no se usan para entrenar servicios públicos.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Qué pasa si el modelo “alucina”?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Aplicamos recuperación de contexto (RAG), límites de confianza y revisión humana cuando es crítico. Además, evaluamos prompts y cambios antes de desplegar.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Se integra con mi programa actual?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">Sí. Por API, importaciones programadas o conectores estándar; el objetivo es convivir, no romper lo que ya funciona.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="qtext">¿Tendré que cambiarlo todo de golpe?</span>
+            <span class="icon" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+          </summary>
+          <div class="faq-a">No. Empezamos por una pieza de alto impacto y vamos iterando.</div>
+        </details>
+      </div>
     </div>
   </div>
 </section>

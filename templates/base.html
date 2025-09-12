@@ -53,6 +53,35 @@
     :root {
       --primary-color: #4f46e5;
     }
+    
+    /* Estilos adicionales para mejorar el comportamiento del menú */
+    #services-root {
+      position: relative;
+    }
+    
+    #services-panel {
+      transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), 
+                  transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0ms;
+      will-change: opacity, transform, visibility;
+      visibility: hidden;
+      transform: translateY(10px);
+    }
+    
+    #services-root:hover #services-panel,
+    #services-root:focus-within #services-panel,
+    #services-panel[data-open="true"],
+    #services-panel.menu-visible {
+      transform: translateY(0);
+      visibility: visible;
+    }
+    
+    /* Clase para controlar el retraso del menú */
+    .menu-visible {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transition-delay: 0s !important;
+    }
   </style>
 
   {% block extra_head %}{% endblock %}
@@ -67,7 +96,7 @@
   </a>
 
   <!-- NAVBAR -->
-<header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur border-b border-white/10 relative" role="banner">
+<header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur border-b border-white/10" role="banner">
   <div class="max-w-7xl mx-auto pl-6 pr-12 md:px-6 h-16 flex items-center justify-between">
     <a href="/" class="text-2xl font-bold tracking-tight text-white" aria-label="Inicio">
       Hector<span class="text-[var(--primary-color)]">Herrera</span>
@@ -88,7 +117,7 @@
     <button id="services-toggle" type="button"
             class="inline-flex items-center justify-center h-6 w-6 p-0 rounded-md text-gray-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
             aria-label="Desplegar Servicios" aria-expanded="false" aria-controls="services-panel">
-      <i id="services-chevron" data-lucide="chevron-down" class="w-4 h-4 opacity-80 transition-transform"></i>
+      <i id="services-chevron" data-lucide="chevron-down" class="w-8 h-8 pt-0.5 opacity-80 transition-transform"></i>
     </button>
 
     <!-- Panel: compacto y sin salirse -->
@@ -96,11 +125,10 @@
      class="absolute right-0 left-auto top-full mt-3 w-[min(88vw,480px)]
             bg-gray-900/95 border border-white/10 backdrop-blur
             rounded-xl shadow-lg p-2 grid grid-cols-2 gap-1
-            opacity-0 pointer-events-none
-            transition duration-150 ease-out
-            group-hover/services:opacity-100 group-hover/services:pointer-events-auto
-            group-focus-within/services:opacity-100 group-focus-within/services:pointer-events-auto
-            data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto z-40">
+            opacity-0
+            group-hover/services:opacity-100 
+            group-focus-within/services:opacity-100 
+            data-[open=true]:opacity-100 z-40">
 
       <!-- Ver todo -->
       
@@ -278,6 +306,34 @@
 <script src="{% static 'js/effects.tilt.js' %}"></script>
 <script src="{% static 'js/apps.gallery.js' %}"></script>
 <script src="{% static 'js/boot.init.js' %}"></script>
+
+<script>
+  // Control de menú servicios con retraso
+  document.addEventListener('DOMContentLoaded', function() {
+    const servicesRoot = document.getElementById('services-root');
+    const servicesPanel = document.getElementById('services-panel');
+    let timeoutId = null;
+    
+    if (servicesRoot && servicesPanel) {
+      // Al entrar al área del menú, cancelamos cualquier timeout pendiente
+      servicesRoot.addEventListener('mouseenter', function() {
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+          timeoutId = null;
+        }
+        servicesPanel.classList.add('menu-visible');
+      });
+      
+      // Al salir, establecemos un retraso antes de cerrar
+      servicesRoot.addEventListener('mouseleave', function() {
+        timeoutId = setTimeout(function() {
+          servicesPanel.classList.remove('menu-visible');
+          timeoutId = null;
+        }, 500); // 500ms de retraso antes de cerrar
+      });
+    }
+  });
+</script>
 
 </body>
 
