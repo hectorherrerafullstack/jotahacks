@@ -1,5 +1,5 @@
 /* static/css/styles.css  — Tailwind v4 */
-@import "tailwindcss";
+/* Importaciones de Tailwind ya manejadas por CLI, no necesita @import */
 
 /* Dile a Tailwind dónde buscar clases */
 @source "../../templates/**/*.html" "../../**/*.py" "../../static/js/**/*.js";
