@@ -1,21 +1,26 @@
-// hero.particles.js — tamaños variados + más velocidad (2025-09-10)
+// hero.particles.js — optimizado para rendimiento (2025-09-12)
 (() => {
   // ===== Config =====
   const HERO_SELECTOR = '.hero-section';   // cambia si usas otro contenedor
   const CANVAS_ID = 'hero-canvas';
-
+  
+  // Configuración optimizada para rendimiento
   const CONFIG = {
-    linkDistance: 140,                // distancia de líneas (px CSS)
-    mouseRadius: 140,                 // radio de repulsión (px CSS)
-    densityDivisor: 18000,            // menos => más partículas
-    sizeRange: [0.9, 2.4],            // radio mínimo/máximo (px CSS)
-    speedBase: 0.6,                   // velocidad base (px/frame)
-    speedMultiplier: 1.35,            // <= súbelo para ir más rápido
-    smallIsFaster: true               // las partículas pequeñas se mueven más
+    linkDistance: 120,                // distancia de líneas (px CSS) - reducida
+    mouseRadius: 120,                 // radio de repulsión (px CSS) - reducido
+    densityDivisor: 24000,            // menos partículas para mejor rendimiento
+    sizeRange: [0.8, 2.0],            // radio mínimo/máximo (px CSS) - reducido
+    speedBase: 0.5,                   // velocidad base (px/frame) - reducida
+    speedMultiplier: 1.2,             // <= reducido para mejor rendimiento
+    smallIsFaster: true,              // las partículas pequeñas se mueven más
+    skipFrames: 1,                    // saltear frames para mejor rendimiento
+    lowPowerMode: false,              // modo de bajo consumo
+    maxParticles: 50                  // límite máximo de partículas
   };
 
   // ===== Estado =====
   let heroRoot, canvas, ctx, animationId = null;
+  let frameCount = 0;
   const state = {
     w: 0, h: 0,
     particles: [],

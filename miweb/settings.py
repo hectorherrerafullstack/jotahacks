@@ -58,6 +58,14 @@ MIDDLEWARE = [
     'miweb.middleware.SecurityProtectionMiddleware',  # Middleware personalizado para protección
 ]
 
+# Optimizar middleware en producción
+if not DEBUG:
+    # Añadir middleware de gzip para compresión de respuestas HTTP
+    MIDDLEWARE.insert(1, 'django.middleware.gzip.GZipMiddleware')
+    
+    # Añadir middleware de etag condicional
+    MIDDLEWARE.append('django.middleware.http.ConditionalGetMiddleware')
+
 ROOT_URLCONF = 'miweb.urls'
 
 TEMPLATES = [
@@ -126,7 +134,25 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # WhiteNoise configuration for static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Configurar el cache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+        'TIMEOUT': 300,  # 5 minutos
+    }
+}
+
+# Activar cache de templates en producción
+if not DEBUG:
+    TEMPLATES[0]['OPTIONS']['loaders'] = [
+        ('django.template.loaders.cached.Loader', [
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ]),
+    ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"

@@ -46,7 +46,7 @@
   <!-- Tailwind build -->
   <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
 
-  <!-- Iconos -->
+  <!-- Iconos - cargados de forma asíncrona -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <style>
@@ -54,7 +54,7 @@
       --primary-color: #4f46e5;
     }
     
-    /* Estilos adicionales para mejorar el comportamiento del menú */
+    /* Estilos críticos incrustados para evitar bloqueo de renderizado */
     #services-root {
       position: relative;
     }
@@ -300,12 +300,13 @@
 
   {% block extra_js %}{% endblock %}
 
-<script src="{% static 'js/base.js' %}"></script>
-<script src="{% static 'js/ui.core.js' %}"></script>
-<script src="{% static 'js/hero.particles.js' %}"></script>
-<script src="{% static 'js/effects.tilt.js' %}"></script>
-<script src="{% static 'js/apps.gallery.js' %}"></script>
-<script src="{% static 'js/boot.init.js' %}"></script>
+<!-- Scripts con defer para mejorar rendimiento -->
+<script src="{% static 'js/base.js' %}" defer></script>
+<script src="{% static 'js/ui.core.js' %}" defer></script>
+<script src="{% static 'js/hero.particles.js' %}" defer></script>
+<script src="{% static 'js/effects.tilt.js' %}" defer></script>
+<script src="{% static 'js/apps.gallery.js' %}" defer></script>
+<script src="{% static 'js/boot.init.js' %}" defer></script>
 
 <script>
   // Control de menú servicios con retraso
