@@ -147,6 +147,7 @@ CACHES = {
 
 # Activar cache de templates en producción
 if not DEBUG:
+    TEMPLATES[0]['APP_DIRS'] = False  # Deshabilitar APP_DIRS cuando usamos loaders
     TEMPLATES[0]['OPTIONS']['loaders'] = [
         ('django.template.loaders.cached.Loader', [
             'django.template.loaders.filesystem.Loader',
